@@ -81,6 +81,8 @@ class LoginViewController: UIViewController {
                         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.currentUser = user
                         
+                        appDelegate.buildUserInterface()
+                        
                         return
                     }
                     

@@ -8,16 +8,22 @@
 
 import UIKit
 import CoreData
+import MMDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var currentUser: User?
+    var drawerContainer: MMDrawerController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        buildUserInterface()
+        
+        customizeAppearance()
+        
         return true
     }
 
@@ -105,6 +111,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
             }
+        }
+    }
+    
+    // MARK: - appearance
+    func customizeAppearance() {
+//        let barTintColor = UIColor(red: 247/255, green: 249/255, blue: 250/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = BAR_TINT_COLOR
+        
+        window!.tintColor = TINT_COLOR
+        window!.backgroundColor = BACKGROUND_COLOR
+    }
+    
+    // MARK: - build main(home) page
+    func buildUserInterface(){
+        let login = NSUserDefaults.standardUserDefaults().boolForKey("login")
+        
+        if login {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let main = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as? HomePageViewController
+            let left = storyboard.instantiateViewControllerWithIdentifier("MainMenuViewController") as? MainMenuViewController
+            
+            guard let mainVC = main,leftVC = left else {
+                return
+            }
+            let leftNav = UINavigationController(rootViewController: leftVC)
+            
+            drawerContainer = MMDrawerController(centerViewController: mainVC, leftDrawerViewController: leftNav)
+            drawerContainer?.showsShadow = false
+            
+            drawerContainer?.maximumLeftDrawerWidth = 240
+            drawerContainer?.setDrawerVisualStateBlock(MMDrawerVisualState.slideAndScaleVisualStateBlock())
+            drawerContainer?.openDrawerGestureModeMask = .All
+            drawerContainer?.closeDrawerGestureModeMask = [.PanningCenterView, .PanningDrawerView, .PanningNavigationBar]
+
+            window?.rootViewController = drawerContainer
         }
     }
 
