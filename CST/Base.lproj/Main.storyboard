@@ -1,25 +1,151 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="CST" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CST-LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Ex4-cR-2bN">
+                                <rect key="frame" x="130" y="25" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="7et-il-Y4O"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vxp-2Z-cME">
+                                <rect key="frame" x="20" y="123" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="z8f-MW-Vir"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="NMZ-gg-RVN"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-pR-fck">
+                                <rect key="frame" x="20" y="169" width="280" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dfT-cq-glB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="登    录">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rpq-V2-QBX"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyI-D3-FSX">
+                                <rect key="frame" x="20" y="85" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Y36-Cc-BiY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ex4-cR-2bN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="2nO-36-Ddy"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8tq-GZ-TEG"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="trailing" secondItem="Vxp-2Z-cME" secondAttribute="trailing" id="Hcg-Jd-neI"/>
+                            <constraint firstItem="SqI-pR-fck" firstAttribute="leading" secondItem="Vxp-2Z-cME" secondAttribute="leading" id="JpB-nE-8cq"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Nsd-gz-Ovr"/>
+                            <constraint firstItem="SqI-pR-fck" firstAttribute="trailing" secondItem="Vxp-2Z-cME" secondAttribute="trailing" id="WRI-IZ-6c8"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="centerX" secondItem="Ex4-cR-2bN" secondAttribute="centerX" id="ZhA-Zc-jSz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SqI-pR-fck" secondAttribute="bottom" constant="369" id="bRF-dA-MJ1"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="top" secondItem="Ex4-cR-2bN" secondAttribute="bottom" id="eCi-xN-TaE"/>
+                            <constraint firstItem="SqI-pR-fck" firstAttribute="top" secondItem="Vxp-2Z-cME" secondAttribute="bottom" constant="16" id="nlw-85-TgD"/>
+                            <constraint firstItem="fyI-D3-FSX" firstAttribute="leading" secondItem="Vxp-2Z-cME" secondAttribute="leading" id="xfg-Rb-dE2"/>
+                            <constraint firstItem="Vxp-2Z-cME" firstAttribute="top" secondItem="fyI-D3-FSX" secondAttribute="bottom" constant="8" symbolic="YES" id="yBu-Zx-EIC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userNameTextField" destination="fyI-D3-FSX" id="6Y5-aK-P2d"/>
+                        <outlet property="userPwdTextField" destination="Vxp-2Z-cME" id="ksw-3z-PMI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-596" y="-97"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="Wjw-ud-dg2">
+            <objects>
+                <viewController id="YVi-ne-MHb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Q4-hf-y5g"/>
+                        <viewControllerLayoutGuide type="bottom" id="HZP-bg-a76"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cTU-fA-HrC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="7md-lU-Q5u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRP-yN-QWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="217"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="6jV-0H-JMi">
+            <objects>
+                <viewController id="dya-eC-DaW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Irb-hk-PBz"/>
+                        <viewControllerLayoutGuide type="bottom" id="hBL-to-uNU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Mr-HD-Fwn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Khh-ao-SnE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2K-LJ-pB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="-412"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Ll6-w0-6sh">
+            <objects>
+                <tabBarController id="7Uz-1L-bjE" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="yh8-TX-tfW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dya-eC-DaW" kind="relationship" relationship="viewControllers" id="WuS-74-zxf"/>
+                        <segue destination="YVi-ne-MHb" kind="relationship" relationship="viewControllers" id="2yA-zJ-6dQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vf-WQ-Lx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="-97"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CST-LOGO" width="512" height="512"/>
+    </resources>
 </document>
