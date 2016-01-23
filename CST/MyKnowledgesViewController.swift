@@ -20,6 +20,7 @@ class MyKnowledgesViewController: UIViewController {
     
     func setupLeftButton(){
         let btn = MMDrawerBarButtonItem.init(target: self, action: "hideMenuButtonTapped")
+        btn.tintColor = UIColor.whiteColor()
         navigationItem.setLeftBarButtonItem(btn, animated: true)
     }
     

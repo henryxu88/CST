@@ -10,21 +10,21 @@ import UIKit
 
 class MainMenuViewController: UITableViewController {
     
-    let businessMenu = ["客户一览","联系人一览","项目一览","考勤一览","反馈一览","交流一览","公告一览"]
-    let settingMenu = ["注销用户","退出应用"]
-    let sectionMenu = ["业务" , "设置"]
+    let businessMenu = [Words.menuClient,Words.menuLinker,Words.menuProject,Words.menuSignin,Words.menuFeedback,Words.menuCommunicate,Words.menuAnnoncement]
+    let settingMenu = [Words.menuUserLogout , Words.menuExitApp]
+    let sectionMenu = [Words.menuCategoryBusiness , Words.menuCategorySetting]
     let cellID = "MenuCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth,UIViewAutoresizing.FlexibleHeight]
-        tableView.backgroundColor = MAIN_MENU_BACKGROUND_COLOR
+        tableView.backgroundColor = Style.mainMenuBackgroundColor
         tableView.separatorStyle = .None
         
-        view.backgroundColor = MAIN_MENU_VIEW_BACKGROUND_COLOR
-        navigationController?.navigationBar.barTintColor = MAIN_MENU_BAR_COLOR
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : MAIN_MENU_BAR_TITLE_COLOR]
+        view.backgroundColor = Style.mainMenuViewBackgroundColor
+        navigationController?.navigationBar.barTintColor = Style.mainMenuBarColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Style.mainMenuBarTitleColor]
         
     }
 

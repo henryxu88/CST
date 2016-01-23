@@ -116,11 +116,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - appearance
     func customizeAppearance() {
-//        let barTintColor = UIColor(red: 247/255, green: 249/255, blue: 250/255, alpha: 1)
-        UINavigationBar.appearance().barTintColor = BAR_TINT_COLOR
         
-        window!.tintColor = TINT_COLOR
-        window!.backgroundColor = BACKGROUND_COLOR
+        
+        UINavigationBar.appearance().barTintColor = Style.barTintColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Style.barTintTextColor]
+        
+        window!.tintColor = Style.tintColor
+        window!.backgroundColor = Style.backgroundColor
     }
     
     // MARK: - build main(home) page
