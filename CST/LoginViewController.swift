@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         }
         
 //        print("deviceId:" + deviceId)
-        let url = URL_LOGIN
+        let url = NetManager.URL_LOGIN
         let parameters = ["username": userName, "password": userPwd, "deviceId": deviceId]
         Alamofire.request(.POST, url ,parameters: parameters).validate().responseJSON { response in
             switch response.result {

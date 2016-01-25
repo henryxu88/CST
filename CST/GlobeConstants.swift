@@ -10,17 +10,21 @@ import Foundation
 import UIKit
 
 // urls
-let HOST = "http://10.10.11.49:8089/"
-
-let BASE_PATH = HOST + "ec-web/app/"
-
-let URL_LOGIN = BASE_PATH + "login.action"
+struct NetManager {
+    static let HOST = "http://10.10.11.49:8089/"
+    static let BASE_PATH = HOST + "ec-web/app/"
+    static let URL_LOGIN = BASE_PATH + "login.action"
+    
+    static let netError = "网络异常，请检查网络"
+    static let pageSize = 10
+}
 
 
 // styles
 struct Style{
     // MARK: general style
     static var tintColor = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1)    //34aadc 文字的颜色
+    static var tintColorHalfAlpha = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.2)    //34aadc 文字的颜色 alpha：0.2
 
     static var barTintColor = UIColor(red: 0/255, green: 162/255, blue: 237/255, alpha: 1)    //282828 导航条的背景色
     static var barTintTextColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)    //fafafa 导航条的文字颜色
@@ -72,6 +76,8 @@ struct Words{
     static var myMessages = "我的消息"
     static var currentProjects = "当前项目"
     static var knowledgeShare = "知识共享"
+    static var createHandle = "新建操作"
+    static var aboutUs = "关于我们"
     
     // MARK: tab bar title
     static var prjBasic = "基本信息"

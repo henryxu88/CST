@@ -5,3 +5,4 @@
 #import <MMDrawerController/MMDrawerController.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <HMSegmentedControl/HMSegmentedControl.h>
+#import "XZMTabbarExtension.h"
