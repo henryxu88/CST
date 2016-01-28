@@ -1,23 +1,23 @@
 //
-//  MyKnowledgesViewController.swift
+//  AboutUsViewController.swift
 //  CST
 //
-//  Created by henry on 16/1/20.
+//  Created by henry on 16/1/25.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
 import UIKit
 import MMDrawerController
 
-class MyKnowledgesViewController: UIViewController {
+class AboutUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-        setupLeftButton()
+        view.backgroundColor = UIColor.blueColor()
         
-        view.backgroundColor = UIColor.orangeColor()
+        setupLeftButton()
     }
     
     func setupLeftButton(){
@@ -46,6 +46,5 @@ class MyKnowledgesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
 
 }

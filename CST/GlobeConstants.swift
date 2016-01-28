@@ -9,14 +9,32 @@
 import Foundation
 import UIKit
 
+// catalog related
+enum ProinfoCatalog {
+    case PrjsAll
+    case PrjsRelated
+    case PrjsNotFinish
+    case PrjsFinished
+}
+
+// cell related
+struct CellManager {
+    static let prjCellId = "ProjectCell"
+
+}
+
 // urls
 struct NetManager {
     static let HOST = "http://10.10.11.49:8089/"
     static let BASE_PATH = HOST + "ec-web/app/"
     static let URL_LOGIN = BASE_PATH + "login.action"
     
+    static let PROINFO_LIST = "proinfo!getList.action"   // catalog==14
+    static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // catalog==14
+    
     static let netError = "网络异常，请检查网络"
-    static let pageSize = 10
+    static let requestError = "请求数据失败"
+    static let pageSize = 20
 }
 
 
@@ -48,7 +66,7 @@ struct Style{
 // words
 struct Words{
     // MARK: main menu word
-    static var menuClient = "菜单一览"
+    static var menuClient = "客户一览"
     static var menuLinker = "联系人一览"
     static var menuProject = "项目一览"
     static var menuSignin = "考勤一览"
@@ -76,7 +94,7 @@ struct Words{
     static var myMessages = "我的消息"
     static var currentProjects = "当前项目"
     static var knowledgeShare = "知识共享"
-    static var createHandle = "新建操作"
+    static var myBusiness = "我的业务"
     static var aboutUs = "关于我们"
     
     // MARK: tab bar title
@@ -84,4 +102,7 @@ struct Words{
     static var prjComment = "交流信息"
     static var prjSignin = "考勤日历"
     static var prjBack = "反馈列表"
+    
+    // MARK: search bar placeholder
+    static var searchPrjs = "搜索项目名称"
 }

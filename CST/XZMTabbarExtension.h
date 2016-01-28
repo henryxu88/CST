@@ -31,7 +31,10 @@
 @property (nonatomic,weak) UIButton *centerButton;
 
 // 取消动画
-@property (nonatomic,assign) BOOL cancelAnimation;;
+@property (nonatomic,assign) BOOL cancelAnimation;
+
+// 选中的按钮
+@property (nonatomic,weak) UIButton *seletBtn;
 
 /**
  *  设置高亮背景图片

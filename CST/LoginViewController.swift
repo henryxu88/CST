@@ -8,9 +8,13 @@
 
 import UIKit
 import Alamofire
+import MBProgressHUD
+import Toast_Swift
 import SwiftyJSON
 
 class LoginViewController: UIViewController {
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     @IBOutlet weak var userNameTextField: UITextField!
     
@@ -24,6 +28,12 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleLoginSuccess() {
+        view.makeToast("登录成功", duration: 2.0, position: ToastPosition.Center)
+        // 生成主界面
+        appDelegate.buildUserInterface()
     }
 
 
@@ -47,48 +57,52 @@ class LoginViewController: UIViewController {
             return
         }
         
-//        print("deviceId:" + deviceId)
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.labelText = "提示"
+        hud.detailsLabelText = "正在登录，请等待......"
+        hud.userInteractionEnabled = false
+        
         let url = NetManager.URL_LOGIN
         let parameters = ["username": userName, "password": userPwd, "deviceId": deviceId]
         Alamofire.request(.POST, url ,parameters: parameters).validate().responseJSON { response in
+            hud.hide(true)
+            
             switch response.result {
             case .Success:
+                
                 if let value = response.result.value {
-                    let json = JSON(value)
-
-                    let code = json["result"]["errorCode"].stringValue
-                    if code != "1" {
-                        let msg = json["result"]["errorMessage"].string ?? ""
-                        self.displayMessage("错误信息：\(msg)")
-                        return
-                    } else {
-
-                        let data = json["data"]
-                        let user = User.parse(data, username: userName)
-//                        print("user: \(user.name)")
+                    
+                    let user = User.parse(value)
+                    let res = user.result!
+                    
+                    if res.OK() {
+                        //登录成功
+                        user.username = userName
+                        //根据"uid":aid , "u":username , 生成HMAC（Hash-based Message Authentication Code）：基于散列的消息认证码
+                        user.digest = CrypoUtils.digestWith(user.salt, AndContent: user.aid + user.username)
                         
-                        let userDefaults = NSUserDefaults.standardUserDefaults()
-                        //记录登录账号
-                        userDefaults.setObject(user.username, forKey: "loginName")
-                        userDefaults.setObject(user.digest, forKey: "loginDigest")
-                        userDefaults.setObject(user.id, forKey: "loginUid")
-                        userDefaults.setObject(true, forKey: "login")
+                        self.appDelegate.saveLoginInfo(user)
+                        
                         //记录是否曾经登录
+                        let userDefaults = NSUserDefaults.standardUserDefaults()
                         userDefaults.setObject("yes", forKey: "hasLogged")
-
                         userDefaults.synchronize()
                         
-                        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                        appDelegate.currentUser = user
-                        
-                        appDelegate.buildUserInterface()
-                        
-                        return
+                        //提示登录成功并构建主界面
+                        self.handleLoginSuccess()
+                    } else {
+                        //登录失败
+                        self.appDelegate.cleanLoginInfo()
+//                        let code = res.errorCode
+                        let msg = res.errorMessage
+//                        let info = "错误代码 － \(code) 错误信息 － \(msg)"
+                        self.view.makeToast("登录失败：\(msg)", duration: 3.0, position: .Center)
                     }
-                    
                 }
+                
             case .Failure(let error):
                 print(error)
+                self.view.makeToast("对不起，现在无法登录！", duration: 3.0, position: .Center)
             }
         }
         

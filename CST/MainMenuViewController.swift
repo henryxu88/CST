@@ -17,6 +17,8 @@ class MainMenuViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.selectedIndex = 0
 
         tableView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth,UIViewAutoresizing.FlexibleHeight]
         tableView.backgroundColor = Style.mainMenuBackgroundColor

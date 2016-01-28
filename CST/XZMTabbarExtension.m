@@ -16,7 +16,7 @@
 static CGFloat const btnH = 49;
 @interface XZMTabbarExtension ()
 @property (nonatomic,strong) UIImageView  *btnImgView;
-@property (nonatomic,weak) UIButton *seletBtn;
+//@property (nonatomic,weak) UIButton *seletBtn;
 @property (nonatomic,weak) UIButton *shadeItem;
 @end
 
@@ -54,6 +54,10 @@ static CGFloat const btnH = 49;
         _btnImgView = [[UIImageView alloc] initWithImage:tabBarItem.image highlightedImage:tabBarItem.selectedImage];
 
         item.tag = idx;
+        
+        if (idx == 0) {
+            self.seletBtn = item;
+        }
         
         _btnImgView.center = CGPointMake(btnW/2, btnH/2);
     
@@ -122,8 +126,6 @@ static CGFloat const btnH = 49;
         }
     }
     
-   
-   
 }
 
 - (void)buttonClickAction:(UIButton *)btn{

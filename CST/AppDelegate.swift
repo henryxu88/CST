@@ -9,20 +9,63 @@
 import UIKit
 import CoreData
 import MMDrawerController
+import SwiftFilePath
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var currentUser: User?
     var drawerContainer: MMDrawerController?
 
+    private(set) var currentUser: User?
+    private(set) var login = false
+    private(set) var loginUid = ""
+    private(set) var loginName = ""
+    private(set) var loginDigest = ""
+    
+    private(set) var saveImagePath = ""
+    
+    // MARK: - user login related
+    func isLogin() -> Bool {
+        return login
+    }
+    
+    func saveLoginInfo(user: User) {
+        
+        currentUser = user
+        loginUid = user.id
+        loginName = user.username
+        loginDigest = user.digest
+        login = true
+        
+        //如果未登录，则设置推送参数
+//        setJPushAlias(user.id)
+   
+    }
+    
+    func cleanLoginInfo() {
+        currentUser = nil
+        loginUid = ""
+        loginName = ""
+        loginDigest = ""
+        login = false
+    }
 
+    // MARK: - app life circyle
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        buildUserInterface()
+        // set save image path
+        saveImagePath = Path.documentsDir.toString() + "/images/"
+        
+        // iamge loader : initImageLoader(self)
+        
+        // location : MainLocationManager.init(this)
+        
+        // JPush : 
         
         customizeAppearance()
+        
+        //        buildUserInterface()
         
         return true
     }
