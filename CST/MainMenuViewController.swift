@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMDrawerController
 
 class MainMenuViewController: UITableViewController {
     
@@ -91,13 +92,41 @@ class MainMenuViewController: UITableViewController {
     
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let menuText = cell?.textLabel?.text ?? ""
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         switch indexPath.section {
         case 0:
-            print("business")
+            switch menuText {
+            case Words.menuClient:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("ClientListViewController") as? ClientListViewController
+                
+                if let vc = vc {
+                    vc.title = menuText
+                    let nav = UINavigationController(rootViewController: vc)
+                    setCenterController(nav)
+                }
+                
+                break
+            default:
+                break
+            }
+            print("business:\(menuText)")
         case 1:
-            print("setting")
+            print("setting:\(menuText)")
         default:
             break
+        }
+    }
+    
+    func setCenterController(nav: UINavigationController){
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if let drawer = appDelegate.drawerContainer {
+            drawer.setCenterViewController(nav, withCloseAnimation: true, completion: nil)
+            drawer.toggleDrawerSide(.Left, animated: true, completion: nil)
         }
     }
 }

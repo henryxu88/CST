@@ -20,7 +20,7 @@ enum ProinfoCatalog {
 // cell related
 struct CellManager {
     static let prjCellId = "ProjectCell"
-
+    static let clientCellId = "ClientCell"
 }
 
 // urls
@@ -29,8 +29,10 @@ struct NetManager {
     static let BASE_PATH = HOST + "ec-web/app/"
     static let URL_LOGIN = BASE_PATH + "login.action"
     
-    static let PROINFO_LIST = "proinfo!getList.action"   // catalog==14
-    static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // catalog==14
+    static let CLIENT_LIST = "client!getList.action"
+    
+    static let PROINFO_LIST = "proinfo!getList.action"
+    static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // 与我相关的项目
     
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"
@@ -105,4 +107,5 @@ struct Words{
     
     // MARK: search bar placeholder
     static var searchPrjs = "搜索项目名称"
+    static var searchClients = "搜索客户名称"
 }

@@ -73,5 +73,18 @@ class Linkman: Entity {
         
         return obj
     }
+    
+    class func parseListItem(json: JSON) -> Linkman {
+        let obj = Linkman()
+        
+        obj.id = json["id"].stringValue
+        
+        obj.name = json["name"].stringValue
+        
+        obj.duty = json["duty"].stringValue
+        obj.mobile = json["mobile"].stringValue
+        
+        return obj
+    }
 
 }

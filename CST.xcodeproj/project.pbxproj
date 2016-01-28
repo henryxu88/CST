@@ -25,6 +25,10 @@
 		B29CBB2F1C4F5AC8009C053A /* MyProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB2E1C4F5AC8009C053A /* MyProjectsViewController.swift */; };
 		B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */; };
 		B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */; };
+		B29D8B911C59F0F600E4F079 /* ClientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B901C59F0F600E4F079 /* ClientList.swift */; };
+		B29D8B931C59F48800E4F079 /* LinkmanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B921C59F48800E4F079 /* LinkmanList.swift */; };
+		B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B941C59F61400E4F079 /* ClientApi.swift */; };
+		B29D8B971C59FD2500E4F079 /* ClientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B961C59FD2500E4F079 /* ClientListViewController.swift */; };
 		B2A121781C48C31B00D28BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A121771C48C31B00D28BBF /* AppDelegate.swift */; };
 		B2A1217A1C48C31B00D28BBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A121791C48C31B00D28BBF /* LoginViewController.swift */; };
 		B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2A1217E1C48C31B00D28BBF /* CST.xcdatamodeld */; };
@@ -85,6 +89,10 @@
 		B29CBB2E1C4F5AC8009C053A /* MyProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProjectsViewController.swift; sourceTree = "<group>"; };
 		B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKnowledgesViewController.swift; sourceTree = "<group>"; };
 		B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoApi.swift; sourceTree = "<group>"; };
+		B29D8B901C59F0F600E4F079 /* ClientList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientList.swift; sourceTree = "<group>"; };
+		B29D8B921C59F48800E4F079 /* LinkmanList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkmanList.swift; sourceTree = "<group>"; };
+		B29D8B941C59F61400E4F079 /* ClientApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientApi.swift; sourceTree = "<group>"; };
+		B29D8B961C59FD2500E4F079 /* ClientListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientListViewController.swift; sourceTree = "<group>"; };
 		B2A121741C48C31B00D28BBF /* CST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A121771C48C31B00D28BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2A121791C48C31B00D28BBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */,
 				B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */,
 				B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */,
+				B29D8B961C59FD2500E4F079 /* ClientListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -279,6 +288,8 @@
 			children = (
 				B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */,
 				B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */,
+				B29D8B901C59F0F600E4F079 /* ClientList.swift */,
+				B29D8B921C59F48800E4F079 /* LinkmanList.swift */,
 			);
 			name = list;
 			sourceTree = "<group>";
@@ -288,6 +299,7 @@
 			children = (
 				B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */,
 				B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */,
+				B29D8B941C59F61400E4F079 /* ClientApi.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -491,6 +503,7 @@
 				B29CBB2F1C4F5AC8009C053A /* MyProjectsViewController.swift in Sources */,
 				B2062FB81C539E3600397181 /* XZMTabbarExtension.m in Sources */,
 				B29CBB2D1C4F5A81009C053A /* MyMessagesViewController.swift in Sources */,
+				B29D8B911C59F0F600E4F079 /* ClientList.swift in Sources */,
 				B28F4E6A1C58566800F78598 /* Entity.swift in Sources */,
 				B29CBB2B1C4F1CEE009C053A /* MainMenuViewController.swift in Sources */,
 				B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */,
@@ -503,6 +516,7 @@
 				B2F5E3B01C58A93E0020EAE5 /* Client.swift in Sources */,
 				B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */,
 				B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */,
+				B29D8B931C59F48800E4F079 /* LinkmanList.swift in Sources */,
 				B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */,
 				B28F4E741C5885F800F78598 /* Toast.swift in Sources */,
 				B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */,
@@ -510,12 +524,14 @@
 				B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */,
 				B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */,
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
+				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
 				B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */,
 				B2F5E3AE1C589BB20020EAE5 /* Proinfo.swift in Sources */,
 				B2A1217A1C48C31B00D28BBF /* LoginViewController.swift in Sources */,
 				B2A121781C48C31B00D28BBF /* AppDelegate.swift in Sources */,
 				B28F4E721C586BC900F78598 /* CryptoUtils.swift in Sources */,
 				B28F4E701C585E1D00F78598 /* NameEntity.swift in Sources */,
+				B29D8B971C59FD2500E4F079 /* ClientListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

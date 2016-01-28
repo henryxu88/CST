@@ -40,7 +40,7 @@ class ProinfoApi {
                         let res = proinfoList.result
                         if res.OK() {
                             let objs = proinfoList.list
-                            print("objs.count: \(objs.count)")
+//                            print("objs.count: \(objs.count)")
                             if objs.count == 0 {
                                 resultClosure(true,nil)
                             } else {

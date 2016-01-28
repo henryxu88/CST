@@ -67,5 +67,17 @@ class Client: Entity {
         
         return obj
     }
+    
+    class func parseListItem(json: JSON) -> Client {
+        let obj = Client()
+        
+        obj.id = json["id"].stringValue
+        
+        obj.name = json["name"].stringValue
+        
+        obj.typeName = json["typeName"].stringValue
+        
+        return obj
+    }
 
 }
