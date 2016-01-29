@@ -11,6 +11,7 @@ import MMDrawerController
 
 class MainMenuViewController: UITableViewController {
     
+    var menuText = ""
     let businessMenu = [Words.menuClient,Words.menuLinker,Words.menuProject,Words.menuSignin,Words.menuFeedback,Words.menuCommunicate,Words.menuAnnoncement]
     let settingMenu = [Words.menuUserLogout , Words.menuExitApp]
     let sectionMenu = [Words.menuCategoryBusiness , Words.menuCategorySetting]
@@ -93,7 +94,7 @@ class MainMenuViewController: UITableViewController {
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let menuText = cell?.textLabel?.text ?? ""
+        menuText = cell?.textLabel?.text ?? ""
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch indexPath.section {
@@ -103,13 +104,14 @@ class MainMenuViewController: UITableViewController {
                 
                 let vc = storyboard.instantiateViewControllerWithIdentifier("ClientListViewController") as? ClientListViewController
                 
-                if let vc = vc {
-                    vc.title = menuText
-                    let nav = UINavigationController(rootViewController: vc)
-                    setCenterController(nav)
-                }
+                setViewController(vc)
                 
-                break
+            case Words.menuLinker:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("LinkmanListViewController") as? LinkmanListViewController
+                
+                setViewController(vc)
+                
             default:
                 break
             }
@@ -118,6 +120,16 @@ class MainMenuViewController: UITableViewController {
             print("setting:\(menuText)")
         default:
             break
+        }
+    }
+    
+    func setViewController(vc: UIViewController?) {
+        if let vc = vc {
+            vc.title = menuText
+            let nav = UINavigationController(rootViewController: vc)
+            setCenterController(nav)
+        } else {
+            return
         }
     }
     

@@ -11,7 +11,7 @@ import Foundation
 class Entity: Base {
     
     var timestamp = ""
-    var result: Result?     //返回的结果
+    var result = Result()     //返回的结果
     
     var id = ""
     var createDate = ""

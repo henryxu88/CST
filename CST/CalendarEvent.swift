@@ -18,7 +18,7 @@ class CalendarEvent: Entity {
     var type = ""
     
     class func parse(dict: AnyObject) -> CalendarEvent {
-        var obj = CalendarEvent()
+        let obj = CalendarEvent()
         var result = Result()
         let json = JSON(dict)
         
@@ -26,14 +26,13 @@ class CalendarEvent: Entity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            obj = CalendarEvent.parse(json["data"])
+            CalendarEvent.parse(json["data"],obj:obj)
         }
         obj.result = result
         return obj
     }
     
-    class func parse(json: JSON) -> CalendarEvent {
-        let obj = CalendarEvent()
+    class func parse(json: JSON, obj: CalendarEvent) {
         
         obj.id = json["id"].stringValue
         obj.createDate = json["createDate"].stringValue
@@ -49,6 +48,5 @@ class CalendarEvent: Entity {
         obj.endTime = json["endtime"].stringValue
         obj.type = json["type"].stringValue
         
-        return obj
     }
 }

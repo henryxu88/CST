@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
                 if let value = response.result.value {
                     
                     let user = User.parse(value)
-                    let res = user.result!
+                    let res = user.result
                     
                     if res.OK() {
                         //登录成功

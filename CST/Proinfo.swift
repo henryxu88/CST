@@ -36,7 +36,7 @@ class Proinfo: Entity {
     private(set) var end = ""
     
     class func parse(dict: AnyObject) -> Proinfo {
-        var obj = Proinfo()
+        let obj = Proinfo()
         var result = Result()
         let json = JSON(dict)
         
@@ -44,14 +44,13 @@ class Proinfo: Entity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            obj = Proinfo.parse(json["data"])
+            Proinfo.parse(json["data"], obj: obj)
         }
         obj.result = result
         return obj
     }
     
-    class func parse(json: JSON) -> Proinfo {
-        let obj = Proinfo()
+    class func parse(json: JSON, obj: Proinfo) {
         
         obj.id = json["id"].stringValue
         obj.createDate = json["createDate"].stringValue
@@ -82,7 +81,6 @@ class Proinfo: Entity {
         obj.start = json["start"].stringValue
         obj.end = json["end"].stringValue
         
-        return obj
     }
     
     class func parseListItem(json: JSON) -> Proinfo {

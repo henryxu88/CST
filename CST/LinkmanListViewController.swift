@@ -1,8 +1,8 @@
 //
-//  ClientListViewController.swift
+//  LinkmanListViewController.swift
 //  CST
 //
-//  Created by henry on 16/1/28.
+//  Created by henry on 16/1/29.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
@@ -10,20 +10,19 @@ import UIKit
 import MMDrawerController
 import MJRefresh
 
-class ClientListViewController: UIViewController {
+class LinkmanListViewController: UIViewController {
     
     //MARK: - Property -
-    var clients = [Client]()
-    var clientId = ""
-    var client: Client?
+    var linkmen = [Linkman]()
+    var linkmanId = ""
+    var linkman: Linkman?
     
-    var catalog = 1
+    var catalog = 2
     var pageIndex = 0   //下一页是第几页
     var property = "name"
     var keyword = ""
     
     var searchController = UISearchController(searchResultsController: nil)
-    
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
@@ -42,10 +41,10 @@ class ClientListViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         
-        searchController.searchBar.placeholder = Words.searchClients
+        searchController.searchBar.placeholder = Words.searchLinkmen
         
         tableView.tableHeaderView = searchController.searchBar
-    
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,6 +64,7 @@ class ClientListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
         tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
@@ -85,14 +85,14 @@ class ClientListViewController: UIViewController {
         pageIndex = 1
         getKeyWord()
         
-        ClientApi.getClientList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+        LinkmanApi.getLinkmanList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
                     self.pageIndex++
-                    self.clients = objs!
+                    self.linkmen = objs!
                     self.tableView.reloadData()
-                } 
+                }
             } else {
                 self.view.makeToast(NetManager.requestError)
             }
@@ -102,17 +102,17 @@ class ClientListViewController: UIViewController {
     func footerRefresh() {
         getKeyWord()
         
-        ClientApi.getClientList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+        LinkmanApi.getLinkmanList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 
                 if objs == nil {
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 } else {
-                    let count = self.clients.count
+                    let count = self.linkmen.count
                     var indexPaths = [NSIndexPath]()
                     for (i,obj) in objs!.enumerate() {
-                        self.clients.append(obj)
+                        self.linkmen.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
                     self.pageIndex++
@@ -132,96 +132,70 @@ class ClientListViewController: UIViewController {
         headerRefresh()
     }
     
-//    //MARK: - 设置系统菜单的显示／隐藏 -
-//    func setupLeftButton(){
-//        let btn = MMDrawerBarButtonItem.init(target: self, action: "hideMenuButtonTapped")
-//        btn.tintColor = UIColor.whiteColor()
-//        navigationItem.setLeftBarButtonItem(btn, animated: true)
-//    }
-//    
-//    func hideMenuButtonTapped() {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.drawerContainer?.toggleDrawerSide(.Left, animated: true, completion: nil)
-//    }
-//    
-//    //MARK: - 设置返回主界面
-//    func setupRightButton(){
-//        let btn = MMDrawerBarButtonItem.init(target: self, action: "returnHomeButtonTapped")
-//        btn.image = UIImage(named: "tab_bar_user")
-//        btn.tintColor = UIColor.whiteColor()
-//        navigationItem.setRightBarButtonItem(btn, animated: true)
-//    }
-//    
-//    func returnHomeButtonTapped() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let main = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as? HomePageViewController
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.drawerContainer?.setCenterViewController(main, withCloseAnimation: true, completion: nil)
-//    }
-
-    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ClientDetail" {
+        if segue.identifier == "LinkmanDetail" {
             let navController = segue.destinationViewController as! UINavigationController
-            let controller = navController.topViewController as! ClientDetailViewController
-            controller.client = client
+            let controller = navController.topViewController as! LinkmanDetailViewController
+            controller.linkman = linkman
         }
     }
-
+    
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if client != nil {
+        if linkman != nil {
             return true
         }
         return false
     }
     
     func setDetailObj(keyId: String) {
-        ClientApi.getClientDetail(keyId, resultClosure: { (result, obj) -> Void in
+        LinkmanApi.getLinkmanDetail(keyId, resultClosure: { (result, obj) -> Void in
             if result {
                 if let obj = obj {
-                    self.client = obj
-                    self.performSegueWithIdentifier("ClientDetail", sender: self)
+                    self.linkman = obj
+                    self.performSegueWithIdentifier("LinkmanDetail", sender: self)
                 }
             } else {
                 self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }
-    
+
+
 }
 
+
 // MARK: - UITableViewDataSource
-extension ClientListViewController: UITableViewDataSource {
+extension LinkmanListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clients.count
+        return linkmen.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellManager.clientCellId, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellManager.linkmanCellId, forIndexPath: indexPath)
         
-        let client = clients[indexPath.row]
-        cell.textLabel?.text = client.name
-        cell.detailTextLabel?.text = client.typeName
+        let linkman = linkmen[indexPath.row]
+        cell.textLabel?.text = "\(linkman.name) [\(linkman.duty)]"
+        cell.detailTextLabel?.text = linkman.mobile
         
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension ClientListViewController: UITableViewDelegate {
+extension LinkmanListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        clientId = clients[indexPath.row].id
-        setDetailObj(clientId)
+        linkmanId = linkmen[indexPath.row].id
+        setDetailObj(linkmanId)
     }
 }
 
 // MARK: - UISearchResultsUpdating
-extension ClientListViewController: UISearchResultsUpdating {
+extension LinkmanListViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }

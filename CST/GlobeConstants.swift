@@ -21,6 +21,7 @@ enum ProinfoCatalog {
 struct CellManager {
     static let prjCellId = "ProjectCell"
     static let clientCellId = "ClientCell"
+    static let linkmanCellId = "LinkmanCell"
 }
 
 // urls
@@ -30,6 +31,10 @@ struct NetManager {
     static let URL_LOGIN = BASE_PATH + "login.action"
     
     static let CLIENT_LIST = "client!getList.action"
+    static let CLIENT_DETAIL = "client!getDetail.action"
+    
+    static let LINKMAN_LIST = "linkman!getList.action"
+    static let LINKMAN_DETAIL = "linkman!getDetail.action"
     
     static let PROINFO_LIST = "proinfo!getList.action"
     static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // 与我相关的项目
@@ -108,4 +113,5 @@ struct Words{
     // MARK: search bar placeholder
     static var searchPrjs = "搜索项目名称"
     static var searchClients = "搜索客户名称"
+    static var searchLinkmen = "搜索姓名"
 }

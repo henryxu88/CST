@@ -22,7 +22,7 @@ class Announce: Entity {
     private(set) var usersSet = ""
 
     class func parse(dict: AnyObject) -> Announce {
-        var obj = Announce()
+        let obj = Announce()
         var result = Result()
         let json = JSON(dict)
         
@@ -30,14 +30,13 @@ class Announce: Entity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            obj = Announce.parse(json["data"])
+            Announce.parse(json["data"],obj: obj)
         }
         obj.result = result
         return obj
     }
     
-    class func parse(json: JSON) -> Announce {
-        let obj = Announce()
+    class func parse(json: JSON, obj: Announce) {
         
         obj.id = json["id"].stringValue
         
@@ -47,8 +46,7 @@ class Announce: Entity {
         obj.content = json["content"].stringValue
         obj.callType = json["callType"].stringValue
         obj.usersSet = json["usersSet"].stringValue
-               
-        return obj
+
     }
 
 }

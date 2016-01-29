@@ -36,7 +36,7 @@ class Linkman: Entity {
     
     
     class func parse(dict: AnyObject) -> Linkman {
-        var obj = Linkman()
+        let obj = Linkman()
         var result = Result()
         let json = JSON(dict)
         
@@ -44,14 +44,13 @@ class Linkman: Entity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            obj = Linkman.parse(json["data"])
+            Linkman.parse(json["data"],obj: obj)
         }
         obj.result = result
         return obj
     }
     
-    class func parse(json: JSON) -> Linkman {
-        let obj = Linkman()
+    class func parse(json: JSON,obj: Linkman) {
         
         obj.id = json["id"].stringValue
         obj.clientId = json["clientId"].stringValue
@@ -71,7 +70,6 @@ class Linkman: Entity {
         
         obj.remark = json["remark"].stringValue
         
-        return obj
     }
     
     class func parseListItem(json: JSON) -> Linkman {

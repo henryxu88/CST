@@ -13,6 +13,10 @@
 		B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */; };
 		B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22730331C4CCA1400B23816 /* GlobeConstants.swift */; };
 		B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C3E9C1C4DD4D70048E288 /* User.swift */; };
+		B28D6EAE1C5B009600299D66 /* ClientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */; };
+		B28D6EB11C5B482500299D66 /* LinkmanApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EB01C5B482500299D66 /* LinkmanApi.swift */; };
+		B28D6EB31C5B4C9100299D66 /* LinkmanListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EB21C5B4C9100299D66 /* LinkmanListViewController.swift */; };
+		B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EB41C5B4E6700299D66 /* LinkmanDetailViewController.swift */; };
 		B28F4E6A1C58566800F78598 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F4E691C58566800F78598 /* Entity.swift */; };
 		B28F4E6C1C58572B00F78598 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F4E6B1C58572B00F78598 /* Base.swift */; };
 		B28F4E6E1C58578000F78598 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F4E6D1C58578000F78598 /* Result.swift */; };
@@ -76,6 +80,10 @@
 		B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBusinessViewController.swift; sourceTree = "<group>"; };
 		B22730331C4CCA1400B23816 /* GlobeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeConstants.swift; sourceTree = "<group>"; };
 		B28C3E9C1C4DD4D70048E288 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailViewController.swift; sourceTree = "<group>"; };
+		B28D6EB01C5B482500299D66 /* LinkmanApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkmanApi.swift; sourceTree = "<group>"; };
+		B28D6EB21C5B4C9100299D66 /* LinkmanListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkmanListViewController.swift; sourceTree = "<group>"; };
+		B28D6EB41C5B4E6700299D66 /* LinkmanDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkmanDetailViewController.swift; sourceTree = "<group>"; };
 		B28F4E691C58566800F78598 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		B28F4E6B1C58572B00F78598 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		B28F4E6D1C58578000F78598 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -239,6 +247,9 @@
 				B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */,
 				B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */,
 				B29D8B961C59FD2500E4F079 /* ClientListViewController.swift */,
+				B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */,
+				B28D6EB21C5B4C9100299D66 /* LinkmanListViewController.swift */,
+				B28D6EB41C5B4E6700299D66 /* LinkmanDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 				B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */,
 				B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */,
 				B29D8B941C59F61400E4F079 /* ClientApi.swift */,
+				B28D6EB01C5B482500299D66 /* LinkmanApi.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -498,8 +510,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B28D6EB31C5B4C9100299D66 /* LinkmanListViewController.swift in Sources */,
 				B28F4E6E1C58578000F78598 /* Result.swift in Sources */,
 				B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */,
+				B28D6EAE1C5B009600299D66 /* ClientDetailViewController.swift in Sources */,
 				B29CBB2F1C4F5AC8009C053A /* MyProjectsViewController.swift in Sources */,
 				B2062FB81C539E3600397181 /* XZMTabbarExtension.m in Sources */,
 				B29CBB2D1C4F5A81009C053A /* MyMessagesViewController.swift in Sources */,
@@ -522,6 +536,7 @@
 				B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */,
 				B2F5E3B61C58B0B90020EAE5 /* CalendarEvent.swift in Sources */,
 				B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */,
+				B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */,
 				B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */,
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
 				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
@@ -532,6 +547,7 @@
 				B28F4E721C586BC900F78598 /* CryptoUtils.swift in Sources */,
 				B28F4E701C585E1D00F78598 /* NameEntity.swift in Sources */,
 				B29D8B971C59FD2500E4F079 /* ClientListViewController.swift in Sources */,
+				B28D6EB11C5B482500299D66 /* LinkmanApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

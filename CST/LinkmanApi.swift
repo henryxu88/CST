@@ -1,33 +1,33 @@
 //
-//  ClientApi.swift
+//  LinkmanApi.swift
 //  CST
 //
-//  Created by henry on 16/1/28.
+//  Created by henry on 16/1/29.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class ClientApi {
+class LinkmanApi {
     
-    class func getClientList(catalog: Int, pageIndex: Int, property: String, keyword: String, resultClosure:((Bool,[Client]?) -> Void)){
+    class func getLinkmanList(catalog: Int, pageIndex: Int, property: String, keyword: String, resultClosure:((Bool,[Linkman]?) -> Void)){
         
         var parameters = [String:AnyObject]()
         
-        parameters["catalog"] = catalog // 1
+        parameters["catalog"] = catalog // 2
         parameters["pageIndex"] = pageIndex // 1
         parameters["pageSize"] = NetManager.pageSize // 20
         parameters["pageProperty"] = property       // "name"
         parameters["pageKeyword"] = keyword
         
-        let url = NetManager.CLIENT_LIST
+        let url = NetManager.LINKMAN_LIST
         
         let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
-                    let clientList = ClientList.parse(value)
+                    let clientList = LinkmanList.parse(value)
                     let res = clientList.result
                     if res.OK() {
                         let objs = clientList.list
@@ -52,17 +52,17 @@ class ClientApi {
         BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
     }
     
-    class func getClientDetail(keyId: String, resultClosure:((Bool,Client?) -> Void)) {
+    class func getLinkmanDetail(keyId: String, resultClosure:((Bool,Linkman?) -> Void)) {
         var parameters = [String:AnyObject]()
         parameters["keyId"] = keyId
         
-        let url = NetManager.CLIENT_DETAIL
+        let url = NetManager.LINKMAN_DETAIL
         
         let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
-                    let obj = Client.parse(value)
+                    let obj = Linkman.parse(value)
                     let res = obj.result
                     if res.OK() {
                         resultClosure(true,obj)
@@ -79,5 +79,5 @@ class ClientApi {
         
         BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
     }
-    
+
 }

@@ -28,7 +28,7 @@ class Client: Entity {
     private(set) var situtation = ""
     
     class func parse(dict: AnyObject) -> Client {
-        var obj = Client()
+        let obj = Client()
         var result = Result()
         let json = JSON(dict)
         
@@ -36,14 +36,13 @@ class Client: Entity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            obj = Client.parse(json["data"])
+            Client.parse(json["data"],obj: obj)
         }
         obj.result = result
         return obj
     }
     
-    class func parse(json: JSON) -> Client {
-        let obj = Client()
+    class func parse(json: JSON, obj: Client) {
         
         obj.id = json["id"].stringValue
         obj.createDate = json["createDate"].stringValue
@@ -64,8 +63,7 @@ class Client: Entity {
         
         obj.situtation = json["situtation"].stringValue
         obj.remark = json["remark"].stringValue
-        
-        return obj
+
     }
     
     class func parseListItem(json: JSON) -> Client {
