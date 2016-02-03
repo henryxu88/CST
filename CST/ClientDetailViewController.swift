@@ -16,6 +16,8 @@ class ClientDetailViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupReturnButton()
+        
         tableView?.rowHeight = 44.0
 
         // Do any additional setup after loading the view.
@@ -68,10 +70,6 @@ class ClientDetailViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func returnBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
     /*
     // MARK: - Navigation
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pds-2y-fbs" customClass="ProbackCell" customModule="CST" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pds-2y-fbs" id="5w2-yR-xxG">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="601" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-01-01 测试项目010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1au-dD-swu">
+                        <rect key="frame" x="8" y="8" width="304" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="602" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类别：建议  反馈人：张三丰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PK-7x-eZR">
+                        <rect key="frame" x="8" y="37" width="253" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="rA7-op-NEH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="603" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不正常" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsl-kW-O50">
+                        <rect key="frame" x="269" y="36" width="43" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="43" id="4IT-Wh-5Vh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1au-dD-swu" firstAttribute="top" secondItem="5w2-yR-xxG" secondAttribute="topMargin" id="4wT-uU-HWV"/>
+                    <constraint firstItem="3PK-7x-eZR" firstAttribute="leading" secondItem="1au-dD-swu" secondAttribute="leading" id="BOe-Cf-fEj"/>
+                    <constraint firstItem="Nsl-kW-O50" firstAttribute="top" secondItem="1au-dD-swu" secondAttribute="bottom" constant="7" id="IT5-OL-AG5"/>
+                    <constraint firstItem="Nsl-kW-O50" firstAttribute="leading" secondItem="3PK-7x-eZR" secondAttribute="trailing" constant="8" symbolic="YES" id="IcN-Uf-xxp"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nsl-kW-O50" secondAttribute="bottom" constant="0.5" id="PJa-EW-mjO"/>
+                    <constraint firstItem="1au-dD-swu" firstAttribute="trailing" secondItem="5w2-yR-xxG" secondAttribute="trailingMargin" id="U4y-IC-GSL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3PK-7x-eZR" secondAttribute="bottom" constant="-0.5" id="ZkG-Ko-Kae"/>
+                    <constraint firstItem="3PK-7x-eZR" firstAttribute="top" secondItem="1au-dD-swu" secondAttribute="bottom" constant="8" symbolic="YES" id="kjz-UF-6nD"/>
+                    <constraint firstItem="3PK-7x-eZR" firstAttribute="leading" secondItem="5w2-yR-xxG" secondAttribute="leadingMargin" id="mqO-HF-q1Q"/>
+                    <constraint firstItem="Nsl-kW-O50" firstAttribute="trailing" secondItem="1au-dD-swu" secondAttribute="trailing" id="nqO-GU-uCf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="rightSubTitleLabel" destination="Nsl-kW-O50" id="xMy-5u-KfL"/>
+                <outlet property="subTitleLabel" destination="3PK-7x-eZR" id="pJ1-3P-x4I"/>
+                <outlet property="titleLabel" destination="1au-dD-swu" id="d0n-tf-BoA"/>
+            </connections>
+            <point key="canvasLocation" x="326" y="372"/>
+        </tableViewCell>
+    </objects>
+</document>

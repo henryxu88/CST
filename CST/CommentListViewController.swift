@@ -1,8 +1,8 @@
 //
-//  ClientListViewController.swift
+//  CommentListViewController.swift
 //  CST
 //
-//  Created by henry on 16/1/28.
+//  Created by henry on 16/2/3.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
@@ -10,60 +10,51 @@ import UIKit
 import MMDrawerController
 import MJRefresh
 
-class ClientListViewController: UIViewController {
+class CommentListViewController: UIViewController {
     
     //MARK: - Property -
-    var clients = [Client]()
-    var clientId = ""
-    var client: Client?
+    var comments = [Comment]()
+    var commentId = ""
+    var comment: Comment?
     
-    var catalog = 1
+    var catalog = 6
     var pageIndex = 0   //下一页是第几页
-    var property = "name"
+
     var keyword = ""
-    
-    var searchController = UISearchController(searchResultsController: nil)
-    
+    var targetId = ""
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
         
+        let cellNib = UINib(nibName: CellManager.commentCellId, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: CellManager.commentCellId)
+        
         addMJHeaderAndFooter()
         tableView.mj_header.beginRefreshing()
         
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
+        if catalog == 6 {
+            setupLeftButton()
+            setupRightButton()
+        } else if catalog == 51 {
+            setupReturnButton()
+        }
         
-        searchController.searchBar.placeholder = Words.searchClients
-        
-        tableView.tableHeaderView = searchController.searchBar
-    
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // set left button : hide main menu
-        setupLeftButton()
-        setupRightButton()
-    }
-    
-    deinit {
-        searchController.view.removeFromSuperview()
-    }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
@@ -71,28 +62,20 @@ class ClientListViewController: UIViewController {
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
     }
     
-    func getKeyWord() {
-        if searchController.active && searchController.searchBar.text != "" {
-            keyword = searchController.searchBar.text!
-        } else {
-            keyword = ""
-        }
-    }
     
     func headerRefresh() {
         tableView.mj_footer.resetNoMoreData()
         
         pageIndex = 1
-        getKeyWord()
-        
-        ClientApi.getClientList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+
+        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
                     self.pageIndex++
-                    self.clients = objs!
+                    self.comments = objs!
                     self.tableView.reloadData()
-                } 
+                }
             } else {
                 self.view.makeToast(NetManager.requestError)
             }
@@ -100,19 +83,19 @@ class ClientListViewController: UIViewController {
     }
     
     func footerRefresh() {
-        getKeyWord()
+
         
-        ClientApi.getClientList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 
                 if objs == nil {
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 } else {
-                    let count = self.clients.count
+                    let count = self.comments.count
                     var indexPaths = [NSIndexPath]()
                     for (i,obj) in objs!.enumerate() {
-                        self.clients.append(obj)
+                        self.comments.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
                     self.pageIndex++
@@ -128,73 +111,66 @@ class ClientListViewController: UIViewController {
         
     }
     
-    func filterContentForSearchText(searchText: String) {
-        headerRefresh()
-    }
-    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ClientDetail" {
-            let navController = segue.destinationViewController as! UINavigationController
-            let controller = navController.topViewController as! ClientDetailViewController
-            controller.client = client
+        if segue.identifier == "CommentDetail" {
+            //            let navController = segue.destinationViewController as! UINavigationController
+            //            let controller = navController.topViewController as! ProbackDetailViewController
+            //            controller.linkman = proback
         }
     }
-
+    
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if client != nil {
+        if comment != nil {
             return true
         }
         return false
     }
     
     func setDetailObj(keyId: String) {
-        ClientApi.getClientDetail(keyId, resultClosure: { (result, obj) -> Void in
-            if result {
-                if let obj = obj {
-                    self.client = obj
-                    self.performSegueWithIdentifier("ClientDetail", sender: self)
-                }
-            } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
-            }
-        })
+//        CommentApi.getProbackDetail(keyId, resultClosure: { (result, obj) -> Void in
+//            if result {
+//                if let obj = obj {
+//                    self.proback = obj
+//                    self.performSegueWithIdentifier("CommentDetail", sender: self)
+//                }
+//            } else {
+//                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+//            }
+//        })
     }
+    
     
 }
 
+
 // MARK: - UITableViewDataSource
-extension ClientListViewController: UITableViewDataSource {
+extension CommentListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clients.count
+        return comments.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellManager.clientCellId, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellManager.commentCellId, forIndexPath: indexPath) as! CommentCell
         
-        let client = clients[indexPath.row]
-        cell.textLabel?.text = client.name
-        cell.detailTextLabel?.text = client.typeName
+        let comment = comments[indexPath.row]
+        cell.titleLabel.text = comment.subject
+        cell.subTitleLabel.text = "\(comment.text)  [\(comment.createDate)]"
+        cell.rightSubtitleLabel.text = comment.createrName
         
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension ClientListViewController: UITableViewDelegate {
+extension CommentListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        clientId = clients[indexPath.row].id
-        setDetailObj(clientId)
+        commentId = comments[indexPath.row].id
+        setDetailObj(commentId)
     }
 }
 
-// MARK: - UISearchResultsUpdating
-extension ClientListViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
-}

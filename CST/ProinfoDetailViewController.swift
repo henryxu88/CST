@@ -1,102 +1,99 @@
 //
-//  LinkmanDetailViewController.swift
+//  ProinfoDetailViewController.swift
 //  CST
 //
-//  Created by henry on 16/1/29.
+//  Created by henry on 16/2/3.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
 import UIKit
 import Eureka
 
-class LinkmanDetailViewController: FormViewController {
+class ProinfoDetailViewController: FormViewController {
     
-    var linkman: Linkman!
-
+    var proinfo: Proinfo!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupReturnButton()
-
+        
         tableView?.rowHeight = 44.0
         
         // Do any additional setup after loading the view.
-        form +++
-            Section("基本信息")
+        form
+            +++ Section()
             
             <<< LabelRow(){
-                $0.title = "姓名"
-                $0.value = linkman.name
+                $0.title = "项目名称"
+                $0.value = proinfo.name
+            }
+            
+            <<< LabelRow(){
+                $0.title = "项目类别"
+                $0.value = proinfo.categoryName
             }
             
             <<< PushRow<String>(){
                 $0.title = "客户信息"
-                $0.value = linkman.clientName
+                $0.value = proinfo.clientName
             }
             
             <<< LabelRow(){
-                $0.title = "常用称呼"
-                $0.value = linkman.subName
+                $0.title = "所在区域"
+                $0.value = proinfo.province + proinfo.city + proinfo.county
             }
             
             <<< LabelRow(){
-                $0.title = "职位"
-                $0.value = linkman.duty
+                $0.title = "项目地址"
+                $0.value = proinfo.address
             }
             
-            +++ Section("联系方式")
+            +++ Section("人员信息")
             
             <<< LabelRow(){
-                $0.title = "办公电话"
-                $0.value = linkman.tel
-            }
-            
-            <<< LabelRow(){
-                $0.title = "手机"
-                $0.value = linkman.mobile
+                $0.title = "联系人"
+                $0.value = proinfo.linkmanName
             }
             
             <<< LabelRow(){
-                $0.title = "备用手机"
-                $0.value = linkman.mobile_back
+                $0.title = "项目总监"
+                $0.value = proinfo.chief
             }
             
-            <<< LabelRow(){
-                $0.title = "邮箱"
-                $0.value = linkman.email
+            <<< TextAreaRow() {
+                $0.value = "项目组成员：\(proinfo.group)"
+                $0.disabled = true
             }
+            
             
             +++ Section("其他信息")
             
             <<< LabelRow(){
-                $0.title = "生日"
-                $0.value = linkman.birthday
+                $0.title = "启动时间"
+                $0.value = proinfo.start
             }
             
             <<< LabelRow(){
-                $0.title = "个人喜好"
-                $0.value = linkman.preferences
+                $0.title = "完成时间"
+                $0.value = proinfo.end
             }
-            
-            +++ Section("备注信息")
-            
-            <<< TextAreaRow() {
-                $0.value = linkman.remark
-                $0.disabled = true
+        
+            <<< LabelRow(){
+                $0.title = "新建人"
+                $0.value = proinfo.createrName
             }
-            
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "Linkman_Client" {
+        if segue.identifier == "Proinfo_Client" {
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! ClientDetailViewController
             controller.client = sender as! Client
@@ -104,12 +101,12 @@ class LinkmanDetailViewController: FormViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "Linkman_Client" {
+        if identifier == "Proinfo_Client" {
             if sender != nil {
                 return true
             }
         }
-       
+        
         return false
     }
     
@@ -117,7 +114,7 @@ class LinkmanDetailViewController: FormViewController {
         ClientApi.getClientDetail(keyId, resultClosure: { (result, obj) -> Void in
             if result {
                 if let obj = obj {
-                    self.performSegueWithIdentifier("Linkman_Client", sender: obj)
+                    self.performSegueWithIdentifier("Proinfo_Client", sender: obj)
                 }
             } else {
                 self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
@@ -127,18 +124,16 @@ class LinkmanDetailViewController: FormViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        print("section: \(indexPath.section) row: \(indexPath.row)")
-        if indexPath.section == 0 && indexPath.row == 1 {
-            setDetailObj(linkman.clientId)
+        if indexPath.section == 0 && indexPath.row == 2 {
+            setDetailObj(proinfo.clientId)
         }
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.section == 0 && indexPath.row == 1 {
+        if indexPath.section == 0 && indexPath.row == 2 {
             return indexPath
         }
         return nil
     }
+
 }
-
-

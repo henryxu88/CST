@@ -20,16 +20,6 @@ class AboutUserViewController: UIViewController {
         setupLeftButton()
     }
     
-    func setupLeftButton(){
-        let btn = MMDrawerBarButtonItem.init(target: self, action: "hideMenuButtonTapped")
-        btn.tintColor = UIColor.whiteColor()
-        navigationItem.setLeftBarButtonItem(btn, animated: true)
-    }
-    
-    func hideMenuButtonTapped() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.drawerContainer?.toggleDrawerSide(.Left, animated: true, completion: nil)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

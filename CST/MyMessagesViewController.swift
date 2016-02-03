@@ -89,16 +89,7 @@ class MyMessagesViewController: UIViewController {
         self.scrollView.scrollRectToVisible(CGRectMake(viewWidth * CGFloat(index), 0, viewWidth, viewHeight - 148), animated: true)
     }
     
-//    func setupLeftButton(){
-//        let btn = MMDrawerBarButtonItem.init(target: self, action: "hideMenuButtonTapped")
-//        btn.tintColor = UIColor.whiteColor()
-//        navigationItem.setLeftBarButtonItem(btn, animated: true)
-//    }
-//    
-//    func hideMenuButtonTapped() {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.drawerContainer?.toggleDrawerSide(.Left, animated: true, completion: nil)
-//    }
+
 
 
 

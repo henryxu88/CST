@@ -22,13 +22,19 @@ struct CellManager {
     static let prjCellId = "ProjectCell"
     static let clientCellId = "ClientCell"
     static let linkmanCellId = "LinkmanCell"
+    static let probackCellId = "ProbackCell"
+    static let announceCellId = "AnnounceCell"
+    static let commentCellId = "CommentCell"
 }
 
 // urls
 struct NetManager {
     static let HOST = "http://10.10.11.49:8089/"
     static let BASE_PATH = HOST + "ec-web/app/"
+    static let BASE_PATH_COM = HOST + "ec-web/com/"
     static let URL_LOGIN = BASE_PATH + "login.action"
+    
+    static let FILE_PUBLIC = BASE_PATH_COM + "file.action"
     
     static let CLIENT_LIST = "client!getList.action"
     static let CLIENT_DETAIL = "client!getDetail.action"
@@ -37,7 +43,23 @@ struct NetManager {
     static let LINKMAN_DETAIL = "linkman!getDetail.action"
     
     static let PROINFO_LIST = "proinfo!getList.action"
+    static let PROINFO_DETAIL = "proinfo!getDetail.action"
     static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // 与我相关的项目
+    
+    static let PROBACK_LIST = "proback!getList.action"
+    static let PROBACK_LIST_PROINFO = "proback!getListAboutProinfo.action"  // 某一个项目下的反馈列表
+    static let PROBACK_LIST_ABOUTME = "proback!getListAboutMe.action"  // 和我相关的的反馈列表
+    static let PROBACK_DETAIL = "proback!getDetail.action"
+
+    
+    static let ANNOUNCE_LIST = "announce!getList.action"
+    static let ANNOUNCE_DETAIL = "announce!getDetail.action"
+    static let ANNOUNCE_LIST_RELATED = "announce!getListRelated.action"   // 与我相关的项目
+    
+    static let COMMENT_LIST = "comment!getList.action"
+    static let COMMENT_LIST_TARGET = "comment!getAboutTargetList.action"  // 某一个文档下的批注
+    static let COMMENT_LIST_ABOUTME = "comment!getAboutMeList.action"  // 和我相关的的批注
+    static let COMMENT_CREATE = "comment!create.action"
     
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"
@@ -114,4 +136,6 @@ struct Words{
     static var searchPrjs = "搜索项目名称"
     static var searchClients = "搜索客户名称"
     static var searchLinkmen = "搜索姓名"
+    static var searchAnnounce = "搜索公告名称"
+    static var searchProback = "搜索反馈内容"
 }

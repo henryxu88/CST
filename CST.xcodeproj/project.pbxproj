@@ -12,6 +12,18 @@
 		B2062FBC1C53B84A00397181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2062FBA1C53B84A00397181 /* Main.storyboard */; };
 		B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */; };
 		B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22730331C4CCA1400B23816 /* GlobeConstants.swift */; };
+		B28A4FDC1C603F2400AAEE5E /* Proback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FDB1C603F2400AAEE5E /* Proback.swift */; };
+		B28A4FDE1C604A5900AAEE5E /* UserEasyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FDD1C604A5900AAEE5E /* UserEasyView.swift */; };
+		B28A4FE01C604F5800AAEE5E /* ProbackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FDF1C604F5800AAEE5E /* ProbackList.swift */; };
+		B28A4FE21C6050C500AAEE5E /* ProbackApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FE11C6050C500AAEE5E /* ProbackApi.swift */; };
+		B28A4FE41C60524F00AAEE5E /* ProbackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */; };
+		B28A4FE61C60549500AAEE5E /* ProbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FE51C60549500AAEE5E /* ProbackCell.swift */; };
+		B28A4FEA1C60A6B700AAEE5E /* ProjectTabBarContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */; };
+		B28BFF0A1C5F2BAB00191F57 /* AnnounceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BFF091C5F2BAB00191F57 /* AnnounceApi.swift */; };
+		B28BFF0C1C5F2D6F00191F57 /* AnnounceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BFF0B1C5F2D6F00191F57 /* AnnounceList.swift */; };
+		B28BFF0E1C5F3D1000191F57 /* AnnounceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BFF0D1C5F3D1000191F57 /* AnnounceListViewController.swift */; };
+		B28BFF101C5F402200191F57 /* AnnounceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */; };
+		B28BFF121C5F5B2F00191F57 /* ProbackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B28BFF111C5F5B2F00191F57 /* ProbackCell.xib */; };
 		B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28C3E9C1C4DD4D70048E288 /* User.swift */; };
 		B28D6EAE1C5B009600299D66 /* ClientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */; };
 		B28D6EB11C5B482500299D66 /* LinkmanApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28D6EB01C5B482500299D66 /* LinkmanApi.swift */; };
@@ -26,7 +38,7 @@
 		B29CBB291C4F1C90009C053A /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB281C4F1C90009C053A /* HomePageViewController.swift */; };
 		B29CBB2B1C4F1CEE009C053A /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB2A1C4F1CEE009C053A /* MainMenuViewController.swift */; };
 		B29CBB2D1C4F5A81009C053A /* MyMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB2C1C4F5A81009C053A /* MyMessagesViewController.swift */; };
-		B29CBB2F1C4F5AC8009C053A /* MyProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB2E1C4F5AC8009C053A /* MyProjectsViewController.swift */; };
+		B29CBB2F1C4F5AC8009C053A /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */; };
 		B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */; };
 		B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */; };
 		B29D8B911C59F0F600E4F079 /* ClientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29D8B901C59F0F600E4F079 /* ClientList.swift */; };
@@ -43,6 +55,13 @@
 		B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */; };
 		B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */; };
 		B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */; };
+		B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */; };
+		B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EF77391C61DD2900AECC96 /* CommentCell.xib */; };
+		B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */; };
+		B2EF773E1C61E18C00AECC96 /* CommentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */; };
+		B2EF77401C61E31700AECC96 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF773F1C61E31700AECC96 /* Comment.swift */; };
+		B2EF77421C61ED1D00AECC96 /* CommentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77411C61ED1D00AECC96 /* CommentList.swift */; };
+		B2EF77441C61F24200AECC96 /* CommentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77431C61F24200AECC96 /* CommentApi.swift */; };
 		B2F5E3AE1C589BB20020EAE5 /* Proinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3AD1C589BB20020EAE5 /* Proinfo.swift */; };
 		B2F5E3B01C58A93E0020EAE5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3AF1C58A93E0020EAE5 /* Client.swift */; };
 		B2F5E3B21C58AB2F0020EAE5 /* Linkman.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3B11C58AB2F0020EAE5 /* Linkman.swift */; };
@@ -79,6 +98,18 @@
 		B2062FBB1C53B84A00397181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBusinessViewController.swift; sourceTree = "<group>"; };
 		B22730331C4CCA1400B23816 /* GlobeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeConstants.swift; sourceTree = "<group>"; };
+		B28A4FDB1C603F2400AAEE5E /* Proback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proback.swift; sourceTree = "<group>"; };
+		B28A4FDD1C604A5900AAEE5E /* UserEasyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEasyView.swift; sourceTree = "<group>"; };
+		B28A4FDF1C604F5800AAEE5E /* ProbackList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackList.swift; sourceTree = "<group>"; };
+		B28A4FE11C6050C500AAEE5E /* ProbackApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackApi.swift; sourceTree = "<group>"; };
+		B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackListViewController.swift; sourceTree = "<group>"; };
+		B28A4FE51C60549500AAEE5E /* ProbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackCell.swift; sourceTree = "<group>"; };
+		B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabBarContoller.swift; sourceTree = "<group>"; };
+		B28BFF091C5F2BAB00191F57 /* AnnounceApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceApi.swift; sourceTree = "<group>"; };
+		B28BFF0B1C5F2D6F00191F57 /* AnnounceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceList.swift; sourceTree = "<group>"; };
+		B28BFF0D1C5F3D1000191F57 /* AnnounceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceListViewController.swift; sourceTree = "<group>"; };
+		B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnounceDetailViewController.swift; sourceTree = "<group>"; };
+		B28BFF111C5F5B2F00191F57 /* ProbackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProbackCell.xib; sourceTree = "<group>"; };
 		B28C3E9C1C4DD4D70048E288 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailViewController.swift; sourceTree = "<group>"; };
 		B28D6EB01C5B482500299D66 /* LinkmanApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkmanApi.swift; sourceTree = "<group>"; };
@@ -94,7 +125,7 @@
 		B29CBB281C4F1C90009C053A /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B29CBB2A1C4F1CEE009C053A /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		B29CBB2C1C4F5A81009C053A /* MyMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessagesViewController.swift; sourceTree = "<group>"; };
-		B29CBB2E1C4F5AC8009C053A /* MyProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProjectsViewController.swift; sourceTree = "<group>"; };
+		B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKnowledgesViewController.swift; sourceTree = "<group>"; };
 		B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoApi.swift; sourceTree = "<group>"; };
 		B29D8B901C59F0F600E4F079 /* ClientList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientList.swift; sourceTree = "<group>"; };
@@ -117,6 +148,13 @@
 		B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeFunctions.swift; sourceTree = "<group>"; };
 		B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
 		B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSectionHeaderView.swift; sourceTree = "<group>"; };
+		B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoDetailViewController.swift; sourceTree = "<group>"; };
+		B2EF77391C61DD2900AECC96 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListViewController.swift; sourceTree = "<group>"; };
+		B2EF773F1C61E31700AECC96 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		B2EF77411C61ED1D00AECC96 /* CommentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentList.swift; sourceTree = "<group>"; };
+		B2EF77431C61F24200AECC96 /* CommentApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentApi.swift; sourceTree = "<group>"; };
 		B2F5E3AD1C589BB20020EAE5 /* Proinfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proinfo.swift; sourceTree = "<group>"; };
 		B2F5E3AF1C58A93E0020EAE5 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		B2F5E3B11C58AB2F0020EAE5 /* Linkman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Linkman.swift; sourceTree = "<group>"; };
@@ -242,7 +280,6 @@
 				B29CBB281C4F1C90009C053A /* HomePageViewController.swift */,
 				B29CBB2A1C4F1CEE009C053A /* MainMenuViewController.swift */,
 				B29CBB2C1C4F5A81009C053A /* MyMessagesViewController.swift */,
-				B29CBB2E1C4F5AC8009C053A /* MyProjectsViewController.swift */,
 				B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */,
 				B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */,
 				B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */,
@@ -250,6 +287,13 @@
 				B28D6EAD1C5B009600299D66 /* ClientDetailViewController.swift */,
 				B28D6EB21C5B4C9100299D66 /* LinkmanListViewController.swift */,
 				B28D6EB41C5B4E6700299D66 /* LinkmanDetailViewController.swift */,
+				B28BFF0D1C5F3D1000191F57 /* AnnounceListViewController.swift */,
+				B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */,
+				B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */,
+				B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */,
+				B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */,
+				B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */,
+				B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -260,6 +304,10 @@
 				B2062FBA1C53B84A00397181 /* Main.storyboard */,
 				B2A121831C48C31B00D28BBF /* LaunchScreen.storyboard */,
 				B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */,
+				B28BFF111C5F5B2F00191F57 /* ProbackCell.xib */,
+				B2EF77391C61DD2900AECC96 /* CommentCell.xib */,
+				B28A4FE51C60549500AAEE5E /* ProbackCell.swift */,
+				B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -279,6 +327,9 @@
 				B2F5E3B11C58AB2F0020EAE5 /* Linkman.swift */,
 				B2F5E3B31C58AF2E0020EAE5 /* Announce.swift */,
 				B2F5E3B51C58B0B90020EAE5 /* CalendarEvent.swift */,
+				B28A4FDB1C603F2400AAEE5E /* Proback.swift */,
+				B2EF773F1C61E31700AECC96 /* Comment.swift */,
+				B28A4FDD1C604A5900AAEE5E /* UserEasyView.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -301,6 +352,9 @@
 				B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */,
 				B29D8B901C59F0F600E4F079 /* ClientList.swift */,
 				B29D8B921C59F48800E4F079 /* LinkmanList.swift */,
+				B28BFF0B1C5F2D6F00191F57 /* AnnounceList.swift */,
+				B28A4FDF1C604F5800AAEE5E /* ProbackList.swift */,
+				B2EF77411C61ED1D00AECC96 /* CommentList.swift */,
 			);
 			name = list;
 			sourceTree = "<group>";
@@ -312,6 +366,9 @@
 				B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */,
 				B29D8B941C59F61400E4F079 /* ClientApi.swift */,
 				B28D6EB01C5B482500299D66 /* LinkmanApi.swift */,
+				B28BFF091C5F2BAB00191F57 /* AnnounceApi.swift */,
+				B28A4FE11C6050C500AAEE5E /* ProbackApi.swift */,
+				B2EF77431C61F24200AECC96 /* CommentApi.swift */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -435,8 +492,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */,
 				B2062FBC1C53B84A00397181 /* Main.storyboard in Resources */,
 				B2A121851C48C31B00D28BBF /* LaunchScreen.storyboard in Resources */,
+				B28BFF121C5F5B2F00191F57 /* ProbackCell.xib in Resources */,
 				B2A121821C48C31B00D28BBF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,12 +573,16 @@
 				B28F4E6E1C58578000F78598 /* Result.swift in Sources */,
 				B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */,
 				B28D6EAE1C5B009600299D66 /* ClientDetailViewController.swift in Sources */,
-				B29CBB2F1C4F5AC8009C053A /* MyProjectsViewController.swift in Sources */,
+				B29CBB2F1C4F5AC8009C053A /* ProjectListViewController.swift in Sources */,
 				B2062FB81C539E3600397181 /* XZMTabbarExtension.m in Sources */,
 				B29CBB2D1C4F5A81009C053A /* MyMessagesViewController.swift in Sources */,
 				B29D8B911C59F0F600E4F079 /* ClientList.swift in Sources */,
+				B2EF773E1C61E18C00AECC96 /* CommentListViewController.swift in Sources */,
+				B2EF77401C61E31700AECC96 /* Comment.swift in Sources */,
 				B28F4E6A1C58566800F78598 /* Entity.swift in Sources */,
 				B29CBB2B1C4F1CEE009C053A /* MainMenuViewController.swift in Sources */,
+				B28A4FE01C604F5800AAEE5E /* ProbackList.swift in Sources */,
+				B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */,
 				B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */,
 				B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */,
 				B29CBB291C4F1C90009C053A /* HomePageViewController.swift in Sources */,
@@ -527,13 +590,20 @@
 				B2F5E3B21C58AB2F0020EAE5 /* Linkman.swift in Sources */,
 				B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */,
 				B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */,
+				B28A4FE61C60549500AAEE5E /* ProbackCell.swift in Sources */,
 				B2F5E3B01C58A93E0020EAE5 /* Client.swift in Sources */,
 				B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */,
 				B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */,
+				B28A4FE21C6050C500AAEE5E /* ProbackApi.swift in Sources */,
 				B29D8B931C59F48800E4F079 /* LinkmanList.swift in Sources */,
+				B28A4FDE1C604A5900AAEE5E /* UserEasyView.swift in Sources */,
+				B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */,
+				B2EF77421C61ED1D00AECC96 /* CommentList.swift in Sources */,
 				B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */,
 				B28F4E741C5885F800F78598 /* Toast.swift in Sources */,
+				B2EF77441C61F24200AECC96 /* CommentApi.swift in Sources */,
 				B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */,
+				B28BFF0C1C5F2D6F00191F57 /* AnnounceList.swift in Sources */,
 				B2F5E3B61C58B0B90020EAE5 /* CalendarEvent.swift in Sources */,
 				B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */,
 				B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */,
@@ -541,11 +611,17 @@
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
 				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
 				B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */,
+				B28A4FE41C60524F00AAEE5E /* ProbackListViewController.swift in Sources */,
+				B28A4FEA1C60A6B700AAEE5E /* ProjectTabBarContoller.swift in Sources */,
 				B2F5E3AE1C589BB20020EAE5 /* Proinfo.swift in Sources */,
+				B28A4FDC1C603F2400AAEE5E /* Proback.swift in Sources */,
+				B28BFF0E1C5F3D1000191F57 /* AnnounceListViewController.swift in Sources */,
+				B28BFF101C5F402200191F57 /* AnnounceDetailViewController.swift in Sources */,
 				B2A1217A1C48C31B00D28BBF /* LoginViewController.swift in Sources */,
 				B2A121781C48C31B00D28BBF /* AppDelegate.swift in Sources */,
 				B28F4E721C586BC900F78598 /* CryptoUtils.swift in Sources */,
 				B28F4E701C585E1D00F78598 /* NameEntity.swift in Sources */,
+				B28BFF0A1C5F2BAB00191F57 /* AnnounceApi.swift in Sources */,
 				B29D8B971C59FD2500E4F079 /* ClientListViewController.swift in Sources */,
 				B28D6EB11C5B482500299D66 /* LinkmanApi.swift in Sources */,
 			);

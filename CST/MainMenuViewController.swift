@@ -112,6 +112,30 @@ class MainMenuViewController: UITableViewController {
                 
                 setViewController(vc)
                 
+            case Words.menuProject:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("ProjectListViewController") as? ProjectListViewController
+                
+                setViewController(vc)
+                
+            case Words.menuFeedback:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("ProbackListViewController") as? ProbackListViewController
+                
+                setViewController(vc)
+                
+            case Words.menuCommunicate:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("CommentListViewController") as? CommentListViewController
+                
+                setViewController(vc)
+                
+            case Words.menuAnnoncement:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("AnnounceListViewController") as? AnnounceListViewController
+                
+                setViewController(vc)
+                
             default:
                 break
             }

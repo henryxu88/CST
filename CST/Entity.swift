@@ -19,7 +19,7 @@ class Entity: Base {
     
     var createrId = ""
     var createrName = ""
-    var createrface = ""
+    var createrFace = ""
     
     var cacheKey = ""
     var cacheDate = ""

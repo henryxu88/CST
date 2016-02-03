@@ -61,4 +61,32 @@ class ProinfoApi {
         BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
     }
     
+    class func getProinfoDetail(keyId: String, resultClosure:((Bool,Proinfo?) -> Void)) {
+        var parameters = [String:AnyObject]()
+        parameters["keyId"] = keyId
+        
+        let url = NetManager.PROINFO_DETAIL
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let obj = Proinfo.parse(value)
+                    let res = obj.result
+                    if res.OK() {
+                        resultClosure(true,obj)
+                    } else {
+                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
+                        resultClosure(false,nil)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+    
 }

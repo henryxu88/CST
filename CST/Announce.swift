@@ -48,5 +48,19 @@ class Announce: Entity {
         obj.usersSet = json["usersSet"].stringValue
 
     }
+    
+    class func parseListItem(json: JSON) -> Announce {
+        let obj = Announce()
+        
+        obj.id = json["id"].stringValue
+        
+        obj.name = json["name"].stringValue
+        
+        obj.content = json["content"].stringValue
+        obj.publishTime = json["publishTime"].stringValue
+        obj.usersSet = json["usersSet"].stringValue
+        
+        return obj
+    }
 
 }

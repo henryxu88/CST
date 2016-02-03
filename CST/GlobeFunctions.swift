@@ -51,6 +51,17 @@ extension UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.drawerContainer?.setCenterViewController(main, withCloseAnimation: true, completion: nil)
     }
+    
+    //MARK: - 设置返回上一界面
+    func setupReturnButton(){
+        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: "returnButtonTapped")
+        btn.tintColor = UIColor.whiteColor()
+        navigationItem.setLeftBarButtonItem(btn, animated: true)
+    }
+    
+    func returnButtonTapped() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 
