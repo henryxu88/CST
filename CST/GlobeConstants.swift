@@ -25,6 +25,7 @@ struct CellManager {
     static let probackCellId = "ProbackCell"
     static let announceCellId = "AnnounceCell"
     static let commentCellId = "CommentCell"
+    static let calendarEventCellId = "CalendarEventCell"
 }
 
 // urls
@@ -50,7 +51,9 @@ struct NetManager {
     static let PROBACK_LIST_PROINFO = "proback!getListAboutProinfo.action"  // 某一个项目下的反馈列表
     static let PROBACK_LIST_ABOUTME = "proback!getListAboutMe.action"  // 和我相关的的反馈列表
     static let PROBACK_DETAIL = "proback!getDetail.action"
-
+    static let PROBACK_PHOTO_UPLOAD = "proback!uploadPhoto.action"
+    static let PROBACK_CREATE = "proback!create.action"
+    static let PROBACK_INIT = "proback!initDetail.action"
     
     static let ANNOUNCE_LIST = "announce!getList.action"
     static let ANNOUNCE_DETAIL = "announce!getDetail.action"
@@ -60,6 +63,15 @@ struct NetManager {
     static let COMMENT_LIST_TARGET = "comment!getAboutTargetList.action"  // 某一个文档下的批注
     static let COMMENT_LIST_ABOUTME = "comment!getAboutMeList.action"  // 和我相关的的批注
     static let COMMENT_CREATE = "comment!create.action"
+    
+    static let CALENDAR_LIST = "users!getCalendarList.action"           // 某一个天下的日历事件列表
+    static let CALENDAR_DATE_LIST = "users!getCalendarDateList.action"  // 某一个月下的有日历事件的日期列表
+    
+    static let PROSIGNIN_DETAIL = "prosignin!getDetail.action"
+    
+    static let PROLEAVE_DETAIL = "proleave!getDetail.action"
+    static let PROLEAVE_CREATE = "proleave!create.action"
+    static let PROLEAVE_INIT = "proleave!initDetail.action"
     
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"

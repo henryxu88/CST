@@ -49,4 +49,13 @@ class CalendarEvent: Entity {
         obj.type = json["type"].stringValue
         
     }
+    
+    class func parseListItem(json: JSON) -> CalendarEvent {
+        let obj = CalendarEvent()
+        
+        parse(json, obj: obj)
+        
+        return obj
+    }
+
 }

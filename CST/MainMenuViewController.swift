@@ -118,6 +118,12 @@ class MainMenuViewController: UITableViewController {
                 
                 setViewController(vc)
                 
+            case Words.menuSignin:
+                
+                let vc = storyboard.instantiateViewControllerWithIdentifier("CalendarListViewController") as? CalendarListViewController
+                
+                setViewController(vc)
+                
             case Words.menuFeedback:
                 
                 let vc = storyboard.instantiateViewControllerWithIdentifier("ProbackListViewController") as? ProbackListViewController
