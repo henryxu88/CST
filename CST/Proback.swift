@@ -38,7 +38,7 @@ class Proback: Entity {
     private(set) var noticeMen = [UserEasyView]()
     
     // 图片列表
-    private(set) var photoListIds = ""
+//    private(set) var photoListIds = ""
     private(set) var photoList = [String]()
     
     // 图片数量
@@ -104,8 +104,7 @@ class Proback: Entity {
         if !array.isEmpty {
             var objs = [String]()
             for subJson in array {
-                // print(subJson)
-                if !subJson.isEmpty {
+                if !subJson.stringValue.isEmpty {
                     objs.append(NetManager.FILE_PUBLIC + "?gridId=" + subJson.stringValue)
                 }
             }

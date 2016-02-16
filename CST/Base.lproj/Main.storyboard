@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -242,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bO5-Xe-C2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602" y="3183"/>
+            <point key="canvasLocation" x="596" y="3179"/>
         </scene>
         <!--联系人信息-->
         <scene sceneID="lhj-ow-fth">
@@ -264,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7B-9s-11P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="3183"/>
+            <point key="canvasLocation" x="1685" y="3179"/>
         </scene>
         <!--公告信息-->
         <scene sceneID="vxX-gX-eoK">
@@ -306,7 +306,7 @@
         <!--项目请假-->
         <scene sceneID="hdK-EU-388">
             <objects>
-                <viewController id="epx-xi-AKo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProleaveDetailViewController" id="epx-xi-AKo" customClass="ProleaveDetailViewController" customModule="CST" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nhO-Im-i1E"/>
                         <viewControllerLayoutGuide type="bottom" id="ZTQ-Vi-bxe"/>
@@ -320,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Snb-WU-uJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-634" y="2383"/>
+            <point key="canvasLocation" x="-95" y="2395"/>
         </scene>
         <!--My Messages View Controller-->
         <scene sceneID="6jV-0H-JMi">
@@ -447,7 +447,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IK6-Lx-Pje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="3183"/>
+            <point key="canvasLocation" x="1129" y="3179"/>
         </scene>
         <!--Client List View Controller-->
         <scene sceneID="bTb-2x-mfP">
@@ -703,11 +703,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="VVI-fT-A0I" id="X22-SL-yAm"/>
+                        <segue destination="YPT-hL-c0m" kind="modal" identifier="ProbackDetail" id="b8c-6f-Gy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D84-Xl-Bo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="3213"/>
+            <point key="canvasLocation" x="-1159" y="3209"/>
         </scene>
         <!--Calendar List View Controller-->
         <scene sceneID="Kew-hu-5qC">
@@ -768,6 +769,7 @@
                         <outlet property="calendar" destination="ivA-CC-d46" id="J62-1J-LVQ"/>
                         <outlet property="tableView" destination="Z9m-KR-yMo" id="kks-ZG-wY5"/>
                         <segue destination="WX2-Hf-qCG" kind="modal" identifier="ProsigninDetail" id="nqE-FV-tdE"/>
+                        <segue destination="fFV-tS-xK4" kind="modal" identifier="ProleaveDetail" id="NSR-WC-vos"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OG-wB-exr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -818,7 +820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FeL-gH-KJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="3907"/>
+            <point key="canvasLocation" x="-1159" y="3911"/>
         </scene>
         <!--Item-->
         <scene sceneID="fBW-IA-W5F">
@@ -906,7 +908,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZz-WR-KZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1166" y="2383"/>
+            <point key="canvasLocation" x="-627" y="2395"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vHT-XA-tiU">
@@ -926,6 +928,43 @@
             </objects>
             <point key="canvasLocation" x="50" y="1605"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sEb-TH-2A1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YPT-hL-c0m" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fQw-XO-YbQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6YO-6O-Va3" kind="relationship" relationship="rootViewController" id="sSy-WK-2fE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ly-qH-iy0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-608" y="3209"/>
+        </scene>
+        <!--项目反馈-->
+        <scene sceneID="Geh-GS-qTT">
+            <objects>
+                <viewController storyboardIdentifier="ProbackDetailViewController" id="6YO-6O-Va3" customClass="ProbackDetailViewController" customModule="CST" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1mo-Hx-TIu"/>
+                        <viewControllerLayoutGuide type="bottom" id="UEy-cr-tU6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W3d-H1-5Bz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="项目反馈" id="iK8-UN-oE2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PLr-0V-RxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-95" y="3209"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CST-LOGO" width="512" height="512"/>
@@ -933,6 +972,6 @@
         <image name="tab_bar_project" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z3p-ic-LiE"/>
+        <segue reference="HNl-6S-uKe"/>
     </inferredMetricsTieBreakers>
 </document>

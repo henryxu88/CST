@@ -12,6 +12,9 @@
 		B2062FBC1C53B84A00397181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2062FBA1C53B84A00397181 /* Main.storyboard */; };
 		B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */; };
 		B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22730331C4CCA1400B23816 /* GlobeConstants.swift */; };
+		B24CA68B1C7011AB005DC99E /* ProleaveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */; };
+		B24CA68D1C701615005DC99E /* ProbackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */; };
+		B24CA6911C7070F7005DC99E /* ImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24CA6901C7070F7005DC99E /* ImagesCell.xib */; };
 		B28539821C6438160005EC1F /* CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28539811C6438160005EC1F /* CalendarDate.swift */; };
 		B28539841C6438620005EC1F /* CalendarDateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28539831C6438620005EC1F /* CalendarDateList.swift */; };
 		B28539861C6489640005EC1F /* ProsigninDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */; };
@@ -62,6 +65,7 @@
 		B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */; };
 		B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */; };
 		B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */; };
+		B2EF077B1C715EB50009636E /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF077A1C715EB50009636E /* ImagesCell.swift */; };
 		B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */; };
 		B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EF77391C61DD2900AECC96 /* CommentCell.xib */; };
 		B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */; };
@@ -80,6 +84,7 @@
 		B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */; };
 		B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */; };
 		B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */; };
+		CB9FF4419124A97A9733D449 /* Pods_CST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68591313564ED3A19DF6B3F6 /* Pods_CST.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +106,8 @@
 
 /* Begin PBXFileReference section */
 		3159E66CBF04D0162107345E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C14CA24FF3D9E708D7F9FC3 /* Pods-CST.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CST.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CST/Pods-CST.debug.xcconfig"; sourceTree = "<group>"; };
+		68591313564ED3A19DF6B3F6 /* Pods_CST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7310532DDDD2B05FEF96E21D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9E6A16626C19220106B10420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2062FB61C539E2000397181 /* XZMTabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMTabbarExtension.h; sourceTree = "<group>"; };
@@ -108,6 +115,9 @@
 		B2062FBB1C53B84A00397181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBusinessViewController.swift; sourceTree = "<group>"; };
 		B22730331C4CCA1400B23816 /* GlobeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeConstants.swift; sourceTree = "<group>"; };
+		B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProleaveDetailViewController.swift; sourceTree = "<group>"; };
+		B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackDetailViewController.swift; sourceTree = "<group>"; };
+		B24CA6901C7070F7005DC99E /* ImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCell.xib; sourceTree = "<group>"; };
 		B28539811C6438160005EC1F /* CalendarDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDate.swift; sourceTree = "<group>"; };
 		B28539831C6438620005EC1F /* CalendarDateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateList.swift; sourceTree = "<group>"; };
 		B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProsigninDetailViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +175,7 @@
 		B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeFunctions.swift; sourceTree = "<group>"; };
 		B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
 		B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSectionHeaderView.swift; sourceTree = "<group>"; };
+		B2EF077A1C715EB50009636E /* ImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
 		B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoDetailViewController.swift; sourceTree = "<group>"; };
 		B2EF77391C61DD2900AECC96 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -183,6 +194,7 @@
 		B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityList.swift; sourceTree = "<group>"; };
 		B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoList.swift; sourceTree = "<group>"; };
 		B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		BBA7AF254D1E86AF0AE1081E /* Pods-CST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CST.release.xcconfig"; path = "Pods/Target Support Files/Pods-CST/Pods-CST.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2862EC511E1BB3A0946621C7 /* Pods.framework in Frameworks */,
+				CB9FF4419124A97A9733D449 /* Pods_CST.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				3159E66CBF04D0162107345E /* Pods.framework */,
+				68591313564ED3A19DF6B3F6 /* Pods_CST.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,12 +324,14 @@
 				B28BFF0D1C5F3D1000191F57 /* AnnounceListViewController.swift */,
 				B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */,
 				B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */,
+				B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */,
 				B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */,
 				B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */,
 				B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */,
 				B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */,
 				B2F3A73A1C63250B0060D0B0 /* CalendarListViewController.swift */,
 				B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */,
+				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,7 +344,9 @@
 				B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */,
 				B28BFF111C5F5B2F00191F57 /* ProbackCell.xib */,
 				B2EF77391C61DD2900AECC96 /* CommentCell.xib */,
+				B24CA6901C7070F7005DC99E /* ImagesCell.xib */,
 				B28A4FE51C60549500AAEE5E /* ProbackCell.swift */,
+				B2EF077A1C715EB50009636E /* ImagesCell.swift */,
 				B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */,
 			);
 			name = Views;
@@ -408,6 +426,8 @@
 			children = (
 				7310532DDDD2B05FEF96E21D /* Pods.debug.xcconfig */,
 				9E6A16626C19220106B10420 /* Pods.release.xcconfig */,
+				4C14CA24FF3D9E708D7F9FC3 /* Pods-CST.debug.xcconfig */,
+				BBA7AF254D1E86AF0AE1081E /* Pods-CST.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -525,6 +545,7 @@
 				B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */,
 				B2062FBC1C53B84A00397181 /* Main.storyboard in Resources */,
 				B2A121851C48C31B00D28BBF /* LaunchScreen.storyboard in Resources */,
+				B24CA6911C7070F7005DC99E /* ImagesCell.xib in Resources */,
 				B28BFF121C5F5B2F00191F57 /* ProbackCell.xib in Resources */,
 				B2A121821C48C31B00D28BBF /* Assets.xcassets in Resources */,
 			);
@@ -559,7 +580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CST/Pods-CST-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86A4851173207B99795EA069 /* Embed Pods Frameworks */ = {
@@ -574,7 +595,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CST/Pods-CST-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ADDB296E38E980458F70DD46 /* Check Pods Manifest.lock */ = {
@@ -604,6 +625,7 @@
 				B28F4E6E1C58578000F78598 /* Result.swift in Sources */,
 				B2F3A7371C6319670060D0B0 /* CalendarEventList.swift in Sources */,
 				B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */,
+				B2EF077B1C715EB50009636E /* ImagesCell.swift in Sources */,
 				B28D6EAE1C5B009600299D66 /* ClientDetailViewController.swift in Sources */,
 				B29CBB2F1C4F5AC8009C053A /* ProjectListViewController.swift in Sources */,
 				B2062FB81C539E3600397181 /* XZMTabbarExtension.m in Sources */,
@@ -625,6 +647,7 @@
 				B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */,
 				B28A4FE61C60549500AAEE5E /* ProbackCell.swift in Sources */,
 				B2F5E3B01C58A93E0020EAE5 /* Client.swift in Sources */,
+				B24CA68D1C701615005DC99E /* ProbackDetailViewController.swift in Sources */,
 				B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */,
 				B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */,
 				B28A4FE21C6050C500AAEE5E /* ProbackApi.swift in Sources */,
@@ -632,6 +655,7 @@
 				B28A4FDE1C604A5900AAEE5E /* UserEasyView.swift in Sources */,
 				B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */,
 				B2EF77421C61ED1D00AECC96 /* CommentList.swift in Sources */,
+				B24CA68B1C7011AB005DC99E /* ProleaveDetailViewController.swift in Sources */,
 				B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */,
 				B2F3A7391C631D9D0060D0B0 /* CalendarEventApi.swift in Sources */,
 				B28F4E741C5885F800F78598 /* Toast.swift in Sources */,
@@ -801,7 +825,7 @@
 		};
 		B2A121A01C48C31B00D28BBF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7310532DDDD2B05FEF96E21D /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4C14CA24FF3D9E708D7F9FC3 /* Pods-CST.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -816,7 +840,7 @@
 		};
 		B2A121A11C48C31B00D28BBF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E6A16626C19220106B10420 /* Pods.release.xcconfig */;
+			baseConfigurationReference = BBA7AF254D1E86AF0AE1081E /* Pods-CST.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

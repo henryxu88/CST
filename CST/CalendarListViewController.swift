@@ -80,24 +80,6 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
          }
     }
     
-//    func getCalendarEvents(date: NSDate){
-//        
-//        let startTime = Int64(selectedDate.timeIntervalSince1970 * 1000)
-//        let endTime = Int64(selectedDate.fs_dateByAddingDays(1).timeIntervalSince1970 * 1000)
-//        
-//        CalendarEventApi.getCalendarEventList(catalog, pageIndex: pageIndex, proinfoId: proinfoId, startTime: startTime, endTime: endTime) { (result, objs) -> Void in
-//            if result {
-//                if objs != nil {
-//                    self.pageIndex++
-//                    self.calendarEvents = objs!
-//                    self.tableView.reloadData()
-//                }
-//            } else {
-//                self.view.makeToast(NetManager.requestError)
-//            }
-//        }
-//    }
-    
     func calendar(calendar: FSCalendar!, hasEventForDate date: NSDate!) -> Bool {
         if eventDates.isEmpty {
             return false
@@ -106,7 +88,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
     }
     
     func calendarCurrentPageDidChange(calendar: FSCalendar!) {
-//        NSLog("change page to \(calendar.stringFromDate(calendar.currentPage))")    change page to 2015-08-01
+//        print("change page to \(calendar.stringFromDate(calendar.currentPage))")    change page to 2015-08-01
         getEventDates(calendar.currentPage)
     }
     
@@ -195,6 +177,10 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! ProsigninDetailViewController
             controller.prosignin = sender as! Prosignin
+        } else if segue.identifier == "ProleaveDetail" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let controller = navController.topViewController as! ProleaveDetailViewController
+            controller.proleave = sender as! Proleave
         }
     }
     
@@ -208,7 +194,15 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
     func setDetailObj(obj: CalendarEvent) {
         if obj.type == "Leave" {
             // 请假
-            
+            ProleaveApi.getProleaveDetail(obj.id, resultClosure: { (result, obj) -> Void in
+                if result {
+                    if let obj = obj {
+                        self.performSegueWithIdentifier("ProleaveDetail", sender: obj)
+                    }
+                } else {
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                }
+            })
         } else if obj.type == "Signin" {
             // 签到
             ProsigninApi.getProsigninDetail(obj.id, resultClosure: { (result, obj) -> Void in
