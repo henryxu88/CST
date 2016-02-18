@@ -84,6 +84,7 @@
 		B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */; };
 		B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */; };
 		B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */; };
+		B2FF93881C74199700807E38 /* CommentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF93871C74199700807E38 /* CommentDetailViewController.swift */; };
 		CB9FF4419124A97A9733D449 /* Pods_CST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68591313564ED3A19DF6B3F6 /* Pods_CST.framework */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 		B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityList.swift; sourceTree = "<group>"; };
 		B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoList.swift; sourceTree = "<group>"; };
 		B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		B2FF93871C74199700807E38 /* CommentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDetailViewController.swift; sourceTree = "<group>"; };
 		BBA7AF254D1E86AF0AE1081E /* Pods-CST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CST.release.xcconfig"; path = "Pods/Target Support Files/Pods-CST/Pods-CST.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -329,6 +331,7 @@
 				B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */,
 				B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */,
 				B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */,
+				B2FF93871C74199700807E38 /* CommentDetailViewController.swift */,
 				B2F3A73A1C63250B0060D0B0 /* CalendarListViewController.swift */,
 				B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */,
 				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
@@ -642,6 +645,7 @@
 				B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */,
 				B29CBB291C4F1C90009C053A /* HomePageViewController.swift in Sources */,
 				B28F4E6C1C58572B00F78598 /* Base.swift in Sources */,
+				B2FF93881C74199700807E38 /* CommentDetailViewController.swift in Sources */,
 				B2F5E3B21C58AB2F0020EAE5 /* Linkman.swift in Sources */,
 				B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */,
 				B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */,

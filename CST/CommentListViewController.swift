@@ -9,6 +9,7 @@
 import UIKit
 import MMDrawerController
 import MJRefresh
+import JSQMessagesViewController
 
 class CommentListViewController: UIViewController {
     
@@ -116,32 +117,30 @@ class CommentListViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CommentDetail" {
-            //            let navController = segue.destinationViewController as! UINavigationController
-            //            let controller = navController.topViewController as! ProbackDetailViewController
-            //            controller.linkman = proback
+            let navController = segue.destinationViewController as! UINavigationController
+            let controller = navController.topViewController as! CommentDetailViewController
+            controller.comments = sender as! [Comment]
         }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if comment != nil {
+        if sender != nil {
             return true
         }
         return false
     }
     
-    func setDetailObj(keyId: String) {
-//        CommentApi.getProbackDetail(keyId, resultClosure: { (result, obj) -> Void in
-//            if result {
-//                if let obj = obj {
-//                    self.proback = obj
-//                    self.performSegueWithIdentifier("CommentDetail", sender: self)
-//                }
-//            } else {
-//                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
-//            }
-//        })
+    func setDetailObj(keyword: String, targetId: String) {
+        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
+            if result {
+                if let comments = comments {
+                    self.performSegueWithIdentifier("CommentDetail", sender: comments)
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+            }
+        }
     }
-    
     
 }
 
@@ -169,8 +168,9 @@ extension CommentListViewController: UITableViewDataSource {
 extension CommentListViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        commentId = comments[indexPath.row].id
-        setDetailObj(commentId)
+        keyword = comments[indexPath.row].id
+        targetId = comments[indexPath.row].targetId
+        setDetailObj(keyword,targetId: targetId)
     }
 }
 

@@ -19,6 +19,8 @@ protocol ShowImagesProtocol: NSObjectProtocol {
 
 //MARK: ImagesCell
 public class ImagesCell : Cell<Set<String>>, CellType {
+    // 图片缓存用
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     weak var delegateShow: ShowImagesProtocol!
     

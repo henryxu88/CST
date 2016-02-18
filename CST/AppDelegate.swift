@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import MMDrawerController
 import SwiftFilePath
+import AlamofireImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) var loginDigest = ""
     
     private(set) var saveImagePath = ""
+    let downloader = ImageDownloader()
+    let imageCache = AutoPurgingImageCache()
     
     // MARK: - user login related
     func isLogin() -> Bool {

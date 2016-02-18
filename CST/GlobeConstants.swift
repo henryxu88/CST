@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+//JSQMessage
+struct JSQMessageContants {
+    static let kCellTopLabelHeightDefault = CGFloat(25.0)
+    static let kAvatarSizeDefault = UInt(30)
+}
+
 // catalog related
 enum ProinfoCatalog {
     case PrjsAll
