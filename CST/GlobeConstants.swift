@@ -32,6 +32,7 @@ struct CellManager {
     static let announceCellId = "AnnounceCell"
     static let commentCellId = "CommentCell"
     static let calendarEventCellId = "CalendarEventCell"
+    static let userPickerCellId = "UserPickerCell"
 }
 
 // urls
@@ -39,7 +40,10 @@ struct NetManager {
     static let HOST = "http://10.10.11.49:8089/"
     static let BASE_PATH = HOST + "ec-web/app/"
     static let BASE_PATH_COM = HOST + "ec-web/com/"
+    
     static let URL_LOGIN = BASE_PATH + "login.action"
+    
+    static let USER_LIST = "users!getList.action"
     
     static let FILE_PUBLIC = BASE_PATH_COM + "file.action"
     
@@ -79,9 +83,11 @@ struct NetManager {
     static let PROLEAVE_CREATE = "proleave!create.action"
     static let PROLEAVE_INIT = "proleave!initDetail.action"
     
+    static let requestSending = "正在发送......"
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"
     static let pageSize = 20
+    static let pageSizeTargetComments = 100
 }
 
 
@@ -156,4 +162,7 @@ struct Words{
     static var searchLinkmen = "搜索姓名"
     static var searchAnnounce = "搜索公告名称"
     static var searchProback = "搜索反馈内容"
+    
+    static var selectUser = "选择人员"
+    static var selectUserPlaceholder = "已选择人员列表"
 }

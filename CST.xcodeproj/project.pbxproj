@@ -85,6 +85,9 @@
 		B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */; };
 		B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */; };
 		B2FF93881C74199700807E38 /* CommentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF93871C74199700807E38 /* CommentDetailViewController.swift */; };
+		B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */; };
+		B2FFF5661C76A91D003133C4 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5651C76A91D003133C4 /* UserApi.swift */; };
+		B2FFF5681C76AC05003133C4 /* UserViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5671C76AC05003133C4 /* UserViewList.swift */; };
 		CB9FF4419124A97A9733D449 /* Pods_CST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68591313564ED3A19DF6B3F6 /* Pods_CST.framework */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +199,9 @@
 		B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoList.swift; sourceTree = "<group>"; };
 		B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		B2FF93871C74199700807E38 /* CommentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDetailViewController.swift; sourceTree = "<group>"; };
+		B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPickerViewController.swift; sourceTree = "<group>"; };
+		B2FFF5651C76A91D003133C4 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		B2FFF5671C76AC05003133C4 /* UserViewList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewList.swift; sourceTree = "<group>"; };
 		BBA7AF254D1E86AF0AE1081E /* Pods-CST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CST.release.xcconfig"; path = "Pods/Target Support Files/Pods-CST/Pods-CST.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -332,6 +338,7 @@
 				B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */,
 				B2EF773D1C61E18C00AECC96 /* CommentListViewController.swift */,
 				B2FF93871C74199700807E38 /* CommentDetailViewController.swift */,
+				B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */,
 				B2F3A73A1C63250B0060D0B0 /* CalendarListViewController.swift */,
 				B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */,
 				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
@@ -401,6 +408,7 @@
 				B28BFF0B1C5F2D6F00191F57 /* AnnounceList.swift */,
 				B28A4FDF1C604F5800AAEE5E /* ProbackList.swift */,
 				B2EF77411C61ED1D00AECC96 /* CommentList.swift */,
+				B2FFF5671C76AC05003133C4 /* UserViewList.swift */,
 				B2F3A7361C6319670060D0B0 /* CalendarEventList.swift */,
 				B28539831C6438620005EC1F /* CalendarDateList.swift */,
 			);
@@ -411,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */,
+				B2FFF5651C76A91D003133C4 /* UserApi.swift */,
 				B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */,
 				B29D8B941C59F61400E4F079 /* ClientApi.swift */,
 				B28D6EB01C5B482500299D66 /* LinkmanApi.swift */,
@@ -650,12 +659,14 @@
 				B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */,
 				B29CBB311C4F5B19009C053A /* MyKnowledgesViewController.swift in Sources */,
 				B28A4FE61C60549500AAEE5E /* ProbackCell.swift in Sources */,
+				B2FFF5681C76AC05003133C4 /* UserViewList.swift in Sources */,
 				B2F5E3B01C58A93E0020EAE5 /* Client.swift in Sources */,
 				B24CA68D1C701615005DC99E /* ProbackDetailViewController.swift in Sources */,
 				B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */,
 				B29D8B8F1C59A77A00E4F079 /* ProinfoApi.swift in Sources */,
 				B28A4FE21C6050C500AAEE5E /* ProbackApi.swift in Sources */,
 				B29D8B931C59F48800E4F079 /* LinkmanList.swift in Sources */,
+				B2FFF5661C76A91D003133C4 /* UserApi.swift in Sources */,
 				B28A4FDE1C604A5900AAEE5E /* UserEasyView.swift in Sources */,
 				B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */,
 				B2EF77421C61ED1D00AECC96 /* CommentList.swift in Sources */,
@@ -674,6 +685,7 @@
 				B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */,
 				B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */,
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
+				B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */,
 				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
 				B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */,
 				B2F3A73B1C63250B0060D0B0 /* CalendarListViewController.swift in Sources */,

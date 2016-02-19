@@ -23,6 +23,7 @@ class CommentListViewController: UIViewController {
 
     var keyword = ""
     var targetId = ""
+    var targetClass = ""
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
@@ -85,7 +86,6 @@ class CommentListViewController: UIViewController {
     
     func footerRefresh() {
 
-        
         CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
@@ -120,6 +120,9 @@ class CommentListViewController: UIViewController {
             let navController = segue.destinationViewController as! UINavigationController
             let controller = navController.topViewController as! CommentDetailViewController
             controller.comments = sender as! [Comment]
+            controller.targetId = targetId
+            controller.targetClass = targetClass
+            controller.keyword = keyword
         }
     }
     
@@ -170,6 +173,7 @@ extension CommentListViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         keyword = comments[indexPath.row].id
         targetId = comments[indexPath.row].targetId
+        targetClass = comments[indexPath.row].targetClass
         setDetailObj(keyword,targetId: targetId)
     }
 }

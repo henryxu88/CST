@@ -28,6 +28,7 @@ class CommentApi {
             } else {
                 parameters["ctargetId"] = targetId
                 parameters["commentId"] = keyword
+                parameters["pageSize"] = NetManager.pageSizeTargetComments
                 url = NetManager.COMMENT_LIST_TARGET
             }
         }
@@ -62,6 +63,42 @@ class CommentApi {
     }
     
     // 创建批注
-    
+    class func createComment(comment: Comment ,resultClosure:((Bool) -> Void)){
+        
+        var parameters = [String:AnyObject]()
+        
+        parameters["comment.text"] = comment.text
+        parameters["comment.targetClass"] = comment.targetClass
+        parameters["comment.targetId"] = comment.targetId
+        
+        if !comment.atUsers.isEmpty {
+            parameters["comment.atUsers"] = comment.atUsers
+        }
+        
+        let url: String = NetManager.COMMENT_CREATE
+        
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let commentList = CommentList.parse(value)
+                    let res = commentList.result
+                    if res.OK() {
+                        resultClosure(true)
+                    } else {
+                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
+                        resultClosure(false)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+
 
 }

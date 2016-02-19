@@ -9,17 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-class UserEasyView: Base {
+// Equatable potocol
+func == (user1: UserEasyView, user2: UserEasyView) -> Bool {
+    return user1.id == user2.id
+}
+
+class UserEasyView: Entity, Equatable {
     
-    private(set) var id = ""
-    private(set) var uid = ""
     private(set) var name = ""
     
     class func parse(json: JSON) -> UserEasyView {
         let obj = UserEasyView()
         
         obj.id = json["id"].stringValue
-        obj.uid = json["uid"].stringValue
         obj.name = json["name"].stringValue
     
         return obj

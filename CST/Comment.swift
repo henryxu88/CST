@@ -18,14 +18,15 @@ class Comment: Entity {
     private(set) var type = ""
     
     // @的用户成员
-    private(set) var atUsersName = ""
+    var atUsers = ""   // userId1,userId2
+    var atUsersName = ""   // @Name1,@Name2
     // 批注内容
-    private(set) var text = ""
+    var text = ""
     
     // 被批注的文档Id
-    private(set) var targetId = ""
+    var targetId = ""
     // 被批注的文档Class
-    private(set) var targetClass = ""
+    var targetClass = ""
     
     class func parse(dict: AnyObject) -> Comment {
         let obj = Comment()

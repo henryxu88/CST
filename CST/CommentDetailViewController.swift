@@ -13,6 +13,12 @@ import AlamofireImage
 class CommentDetailViewController: JSQMessagesViewController {
     
     // MARK: Properties
+    var keyword = ""
+    var targetId = ""
+    var targetClass = ""
+    var userIds = [String]()
+    var userNames = [String]()
+    
     var avatars = [String : JSQMessagesAvatarImage]()
     var comments = [Comment]()
     var messages = [JSQMessage]()
@@ -20,8 +26,6 @@ class CommentDetailViewController: JSQMessagesViewController {
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//    let downloader = ImageDownloader()
-//    let imageCache = AutoPurgingImageCache()
     
     /**
      设置消息的背景图片
@@ -32,6 +36,27 @@ class CommentDetailViewController: JSQMessagesViewController {
             UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(
             UIColor.jsq_messageBubbleLightGrayColor())
+    }
+    
+    func refreshData() {
+        if !comments.isEmpty {
+            comments.removeAll()
+        }
+        
+        if !messages.isEmpty {
+            messages.removeAll()
+        }
+        
+        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
+            if result {
+                if let comments = comments {
+                    self.comments = comments
+                    self.observeMessages()
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+            }
+        }
     }
     
     /**
@@ -46,13 +71,16 @@ class CommentDetailViewController: JSQMessagesViewController {
             let senderId = comment.createrId
             let senderDisplayName = comment.createrName
             let date = NSDate.fs_dateFromString(comment.createDate, format: "yyyy-MM-dd HH:mm:ss")
-            let text = comment.text
+            let text = comment.atUsersName + " " + comment.text
             let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
             
             messages.append(message)
             
             // 缓存用户的头像图片
             if !avatars.keys.contains(senderId) {
+                
+                // 先用缺省图像
+                avatars[senderId] = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "no_pic_face"), diameter: JSQMessageContants.kAvatarSizeDefault)
                 
                 if !comment.createrFace.isEmpty {   // 有头像的URL
                     
@@ -63,9 +91,9 @@ class CommentDetailViewController: JSQMessagesViewController {
                     if cachedAvatarImage == nil {   // 没有缓存
 
                         appDelegate.downloader.downloadImage(URLRequest: URLRequest) { response in
-                            
                             if let imageUser = response.result.value {
                                 self.appDelegate.imageCache.addImage(imageUser, forRequest: URLRequest) // add to image cache
+                                
                                 let image = JSQMessagesAvatarImageFactory.avatarImageWithImage(imageUser, diameter: JSQMessageContants.kAvatarSizeDefault)
                                 self.avatars[senderId] = image
                             }
@@ -75,9 +103,6 @@ class CommentDetailViewController: JSQMessagesViewController {
                         avatars[senderId] = JSQMessagesAvatarImageFactory.avatarImageWithImage(cachedAvatarImage, diameter: JSQMessageContants.kAvatarSizeDefault)
                     }
                     
-                } else {    // 没有头像的URL
-                    let imageDefault = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "no_pic_face"), diameter: JSQMessageContants.kAvatarSizeDefault)
-                    avatars[senderId] = imageDefault
                 }
                 
             }
@@ -99,12 +124,8 @@ class CommentDetailViewController: JSQMessagesViewController {
         observeMessages()
         
         setupBubbles()
-
+        
     }
-    
-    /*
-   
-    */
     
     // MARK: view layout delegate methods
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
@@ -128,7 +149,7 @@ class CommentDetailViewController: JSQMessagesViewController {
             let message = messages[indexPath.item]
             if message.senderId == senderId {
                 return outgoingBubbleImageView
-            } else { // 3
+            } else { 
                 return incomingBubbleImageView
             }
     }
@@ -170,19 +191,54 @@ class CommentDetailViewController: JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!,
         senderDisplayName: String!, date: NSDate!) {
             
-//            let itemRef = messageRef.childByAutoId() // 1
-//            let messageItem = [ // 2
-//                "text": text,
-//                "senderId": senderId
-//            ]
-//            itemRef.setValue(messageItem) // 3
+            if targetId.isEmpty || targetClass.isEmpty {
+                displayMessage("该批注的对象不能为空！")
+                return
+            }
             
-            // 4
+            // 生成 tmpcomment
+            let tmpcomment = Comment()
+            tmpcomment.text = text
+            tmpcomment.targetId = targetId
+            tmpcomment.targetClass = targetClass
+            
+            if !userIds.isEmpty {
+                tmpcomment.atUsers = userIds.joinWithSeparator(",")
+                tmpcomment.atUsersName = userNames.flatMap{ "@" + $0 }.joinWithSeparator(",")
+            }
+            
+            // 发出声音提示
             JSQSystemSoundPlayer.jsq_playMessageSentSound()
             
-            // 5
-            finishSendingMessage()
-            
+            // 发送保存请求
+            CommentApi.createComment(tmpcomment) { (result) -> Void in
+                if result {
+                    self.refreshData()
+                    self.userIds.removeAll()
+                    self.userNames.removeAll()
+                    self.finishSendingMessage()
+                } else {
+                    self.displayMessage(NetManager.requestError)
+                }
+            }
     }
     
+    override func didPressAccessoryButton(sender: UIButton!) {
+        // 跳转到选人界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("UserPickerViewController") as? UserPickerViewController
+        vc?.delegate = self
+        
+        let nav = UINavigationController(rootViewController: vc!)
+        presentViewController(nav, animated: true, completion: nil)
+    }
+    
+}
+
+extension CommentDetailViewController: UserPickerProtocol {
+    func getSelectedUsers(users: [UserEasyView]) {
+        if !users.isEmpty {
+            userIds = UserEasyView.getIds(users)
+            userNames = UserEasyView.getNames(users)
+        }
+    }
 }
