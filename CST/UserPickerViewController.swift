@@ -24,6 +24,7 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
     }
     var filteredUsers = [UserEasyView]()
     var delegate: UserPickerProtocol?
+    var limitToOne = false
     
     //MARK: Public methods
     @IBAction func doneButtonTapped(){
@@ -93,7 +94,12 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
         userPickerView.autoresizingMask = [UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleWidth]
         userPickerView.delegate = self
         userPickerView.setPlaceholderLabelText(Words.selectUserPlaceholder)
-//        userPickerView.limitToOne = true
+        if limitToOne {
+            userPickerView.limitToOne = true
+        } else {
+            userPickerView.limitToOne = false
+        }
+
         view.addSubview(userPickerView)
         
         let layer = userPickerView.layer
