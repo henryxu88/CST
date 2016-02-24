@@ -34,7 +34,7 @@ class MyBusinessViewController: UIViewController {
         // Add 3 buttons with their selector
         menu.addButton("项目签到", target: self, selector: Selector("button2Pressed"))
         menu.addButton("项目反馈", target: self, selector: Selector("button2Pressed"))
-        menu.addButton("项目请假", target: self, selector: Selector("button2Pressed"))
+        menu.addButton("项目请假", target: self, selector: Selector("showProleaveInput"))
         
         menu.fontName = "Verdana-Bold"
         menu.colorScheme = HOKColorScheme.Hokusai
@@ -70,10 +70,7 @@ class MyBusinessViewController: UIViewController {
         
         // set left button : hide main menu
         setupLeftButton()
-        
 
-        
-        
     }
     
     //MARK: - MJRefresh -
@@ -147,6 +144,25 @@ class MyBusinessViewController: UIViewController {
     func button2Pressed() {
         print("button2Pressed")
     }
+    
+    // Selector for button 3
+    func showProleaveInput() {
+//        print("showProleaveInput")
+        ProleaveApi.initProleaveDetail(prjId) { (result, obj) -> Void in
+            if result {
+                if let obj = obj {
+                    // 跳转到ProleaveInputViewController界面
+                    let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProleaveInputViewController") as? ProleaveInputViewController
+                    vc?.proleave = obj
+                    let nav = UINavigationController(rootViewController: vc!)
+                    self.presentViewController(nav, animated: true, completion: nil)
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError)
+            }
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -179,9 +195,9 @@ extension MyBusinessViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         prjId = prjs[indexPath.row].id
-        print("prjId: \(prjId)")
-        // show menu sheet
-        menuSheet.show()
+//        print("prjId: \(prjId)")
+        
+        menuSheet.show()    // show menu sheet
     }
 }
 

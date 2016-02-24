@@ -98,6 +98,7 @@ struct NetManager {
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"
     static let markReadedError = "标记文档已读出错"
+    static let requestSuccess = "操作成功"
     static let pageSize = 20
     static let pageSizeTargetComments = 100
 }

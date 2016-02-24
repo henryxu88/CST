@@ -15,9 +15,9 @@ class Proleave: Entity {
     private(set) var proInfoName = ""
 
     // 请假事由
-    private(set) var reason = ""
+    var reason = ""
     // 请假日期
-    private(set) var leaveDate = ""
+    var leaveDate = ""
 
     
     class func parse(dict: AnyObject) -> Proleave {
