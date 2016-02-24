@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Entity: Base {
     
@@ -24,4 +25,16 @@ class Entity: Base {
     var cacheKey = ""
     var cacheDate = ""
     
+    class func parseResult(dict: AnyObject) -> Entity {
+        let obj = Entity()
+        var result = Result()
+        let json = JSON(dict)
+        
+        if !json["result"].isEmpty {
+            result = Result.parse(json["result"])
+        }
+        
+        obj.result = result
+        return obj
+    }
 }

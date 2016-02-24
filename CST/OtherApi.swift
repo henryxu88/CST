@@ -1,41 +1,65 @@
 //
-//  AnnounceApi.swift
+//  OtherApi.swift
 //  CST
 //
-//  Created by henry on 16/2/1.
+//  Created by henry on 16/2/23.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class AnnounceApi {
+class OtherApi {
     
-    class func getAnnounceList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", resultClosure:((Bool,[Announce]?) -> Void)){
+    class func markRead(docId: String, resultClosure: (Bool) -> Void) {
         
         var parameters = [String:AnyObject]()
         
-        parameters["catalog"] = catalog
-        parameters["pageIndex"] = pageIndex // 1
-        parameters["pageSize"] = NetManager.pageSize // 20
-        parameters["pageProperty"] = property       // "name"
-        parameters["pageKeyword"] = keyword
+        parameters["docId"] = docId // 文档的ID
         
-        var url: String
-        if catalog == 7 {
-            url = NetManager.ANNOUNCE_LIST          //7
-        } else {
-            url = NetManager.ANNOUNCE_LIST_RELATED  //12
-        }
+        let url = NetManager.MARK_DOC_READED
         
         let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
-                    let list = AnnounceList.parse(value)
-                    let res = list.result
+                    let entity = Entity.parseResult(value)
+                    let res = entity.result
                     if res.OK() {
-                        let objs = list.list
+                        resultClosure(true)
+                    } else {
+                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
+                        resultClosure(false)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+    
+    class func getResumeList(catalog: Int, pageIndex: Int, keyId: String, resultClosure:((Bool,[Resume]?) -> Void)){
+        
+        var parameters = [String:AnyObject]()
+        
+        parameters["catalog"] = catalog // 241
+        parameters["pageIndex"] = pageIndex // 1
+        parameters["pageSize"] = NetManager.pageSize // 20
+        parameters["keyId"] = keyId       // proback's id
+        
+        let url = NetManager.RESUME_LIST
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let resumeList = ResumeList.parse(value)
+                    let res = resumeList.result
+                    if res.OK() {
+                        let objs = resumeList.list
 
                         if objs.count == 0 {
                             resultClosure(true,nil)
@@ -43,34 +67,6 @@ class AnnounceApi {
                             resultClosure(true,objs)
                         }
                         
-                    } else {
-                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
-                        resultClosure(false,nil)
-                    }
-                }
-            case .Failure(let error):
-                print(error)
-                resultClosure(false,nil)
-            }
-        }
-        
-        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
-    }
-    
-    class func getAnnounceDetail(keyId: String, resultClosure:((Bool,Announce?) -> Void)) {
-        var parameters = [String:AnyObject]()
-        parameters["keyId"] = keyId
-        
-        let url = NetManager.ANNOUNCE_DETAIL
-        
-        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let obj = Announce.parse(value)
-                    let res = obj.result
-                    if res.OK() {
-                        resultClosure(true,obj)
                     } else {
                         print("code:\(res.errorCode) msg:\(res.errorMessage)")
                         resultClosure(false,nil)

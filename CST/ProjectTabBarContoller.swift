@@ -28,19 +28,23 @@ class ProjectTabBarContoller: UITabBarController {
         super.viewDidLoad()
         
         /** 添加子控制器 */
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc1 = storyboard.instantiateViewControllerWithIdentifier("ProinfoDetailViewController") as? ProinfoDetailViewController
+        // 基本信息
+        let vc1 = storyboard!.instantiateViewControllerWithIdentifier("ProinfoDetailViewController") as? ProinfoDetailViewController
         vc1?.proinfo = proinfo
-        
         tabBarChildViewController(vc1!, norImage: UIImage(named: "tab_bar_message_nor")!, selImage: UIImage(named: "tab_bar_message")! , title: Words.prjBasic)
         
-        let vc2 = storyboard.instantiateViewControllerWithIdentifier("MyKnowledgesViewController") as? MyKnowledgesViewController
+        // 交流信息
+        let vc2 = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
+        vc2?.targetId = proinfo.id
         tabBarChildViewController(vc2!, norImage: UIImage(named: "tab_bar_project_nor")!, selImage: UIImage(named: "tab_bar_project")! , title: Words.prjComment)
         
-        let vc3 = storyboard.instantiateViewControllerWithIdentifier("MyKnowledgesViewController") as? MyKnowledgesViewController
+        // 考勤日历
+        let vc3 = storyboard!.instantiateViewControllerWithIdentifier("CalendarListViewController") as? CalendarListViewController
+        vc3?.proinfoId = proinfo.id
         tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_knowledge_nor")!, selImage: UIImage(named: "tab_bar_knowledge")! , title: Words.prjSignin)
         
-        let vc4 = storyboard.instantiateViewControllerWithIdentifier("ProbackListViewController") as? ProbackListViewController
+        // 反馈列表
+        let vc4 = storyboard!.instantiateViewControllerWithIdentifier("ProbackListViewController") as? ProbackListViewController
         vc4?.catalog = 9
         vc4?.proinfoId = proinfo.id
         tabBarChildViewController(vc4!, norImage: UIImage(named: "tab_bar_user_nor")!, selImage: UIImage(named: "tab_bar_user")! , title: Words.prjBack)
@@ -113,7 +117,6 @@ extension ProjectTabBarContoller: XZMTabbarExtensionDelegate {
     
     func xzm_tabBar(tabBar: XZMTabbarExtension, didSelectItem index: Int) {
         selectedIndex = index
-        //        print("sel index: \(selectedIndex)")
-        
+//        print("sel index: \(selectedIndex)")
     }
 }

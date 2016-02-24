@@ -30,7 +30,9 @@ struct CellManager {
     static let linkmanCellId = "LinkmanCell"
     static let probackCellId = "ProbackCell"
     static let announceCellId = "AnnounceCell"
+    static let knowledgeCell = "KnowledgeCell"
     static let commentCellId = "CommentCell"
+    static let resumeCellId = "ResumeCell"
     static let calendarEventCellId = "CalendarEventCell"
     static let userPickerCellId = "UserPickerCell"
 }
@@ -46,6 +48,8 @@ struct NetManager {
     static let USER_LIST = "users!getList.action"
     
     static let FILE_PUBLIC = BASE_PATH_COM + "file.action"
+    
+    static let MARK_DOC_READED = "readinfo!create.action"
     
     static let CLIENT_LIST = "client!getList.action"
     static let CLIENT_DETAIL = "client!getDetail.action"
@@ -65,9 +69,16 @@ struct NetManager {
     static let PROBACK_CREATE = "proback!create.action"
     static let PROBACK_INIT = "proback!initDetail.action"
     
+    static let RESUME_LIST = "resume!getList.action"
+    
     static let ANNOUNCE_LIST = "announce!getList.action"
     static let ANNOUNCE_DETAIL = "announce!getDetail.action"
     static let ANNOUNCE_LIST_RELATED = "announce!getListRelated.action"   // 与我相关的项目
+    
+    static let KNOWLEDGE_LIST = "knowledge!getList.action"
+    static let KNOWLEDGE_DETAIL = "knowledge!getDetail.action"
+    static let KNOWLEDGE_WEBVIEW = BASE_PATH + "knowledge!webview.action?keyId="
+    static let KNOWLEDGE_FILEVIEW = "knowledge!fileview.action"
     
     static let COMMENT_LIST = "comment!getList.action"
     static let COMMENT_LIST_TARGET = "comment!getAboutTargetList.action"  // 某一个文档下的批注
@@ -86,6 +97,7 @@ struct NetManager {
     static let requestSending = "正在发送......"
     static let netError = "网络异常，请检查网络"
     static let requestError = "请求数据失败"
+    static let markReadedError = "标记文档已读出错"
     static let pageSize = 20
     static let pageSizeTargetComments = 100
 }

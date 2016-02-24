@@ -28,19 +28,13 @@ class HomePageViewController: UITabBarController {
         /** 添加子控制器 */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyboard.instantiateViewControllerWithIdentifier("MyMessagesViewController") as? MyMessagesViewController
-        
-//        let vc1 = MyMessagesViewController()
         tabBarChildViewController(vc1!, norImage: UIImage(named: "tab_bar_message_nor")!, selImage: UIImage(named: "tab_bar_message")! , title: Words.myMessages)
         
         let vc2 = storyboard.instantiateViewControllerWithIdentifier("MyBusinessViewController") as? MyBusinessViewController
         tabBarChildViewController(vc2!, norImage: UIImage(named: "tab_bar_project_nor")!, selImage: UIImage(named: "tab_bar_project")! , title: Words.currentProjects)
         
         let vc3 = storyboard.instantiateViewControllerWithIdentifier("MyKnowledgesViewController") as? MyKnowledgesViewController
-//        let vc3 = MyKnowledgesViewController()
         tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_knowledge_nor")!, selImage: UIImage(named: "tab_bar_knowledge")! , title: Words.knowledgeShare)
-        
-//        let vc4 = storyboard.instantiateViewControllerWithIdentifier("MyBusinessViewController") as? MyBusinessViewController
-//        tabBarChildViewController(vc4!, norImage: UIImage(named: "tab_bar_user_nor")!, selImage: UIImage(named: "tab_bar_user")! , title: Words.myBusiness)
         
         setTabBar()
         

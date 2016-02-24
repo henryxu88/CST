@@ -22,8 +22,17 @@ class ProbackDetailViewController: FormViewController {
         tableView?.rowHeight = 44.0
         
         // Do any additional setup after loading the view.
-        form +++
-            Section("反馈信息")
+        form
+            +++ Section("反馈履历"){
+                $0.hidden = Condition.Predicate(NSPredicate(value: proback.hasResume == "0"))
+            }
+            
+            <<< ButtonRow("resumeButtonRow") {
+                $0.title = "打开反馈履历列表"
+                $0.onCellSelection(self.resumeButtonTapped)
+            }
+        
+            +++ Section("反馈信息")
             
             <<< LabelRow(){
                 $0.title = "项目名称"
@@ -94,6 +103,15 @@ class ProbackDetailViewController: FormViewController {
 //        imagesRow?.cell.delegateShow = self
     }
     
+    func resumeButtonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
+        // 跳转到ResumeListViewController界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("ResumeListViewController") as? ResumeListViewController
+        vc?.keyId = proback.id
+        
+        let nav = UINavigationController(rootViewController: vc!)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,8 +119,10 @@ class ProbackDetailViewController: FormViewController {
     
     
     // MARK: - UITableViewDelegate
-    
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.section == 0 && indexPath.row == 0 && proback.hasResume == "1" {
+            return indexPath
+        }
         return nil
     }
 }

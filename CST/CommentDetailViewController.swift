@@ -121,7 +121,11 @@ class CommentDetailViewController: JSQMessagesViewController {
         senderId = appDelegate.currentUser?.id
         senderDisplayName = appDelegate.currentUser?.name
         
-        observeMessages()
+        if targetId.isEmpty {
+            observeMessages()
+        } else {
+            refreshData()
+        }
         
         setupBubbles()
         

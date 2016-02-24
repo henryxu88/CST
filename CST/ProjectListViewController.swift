@@ -69,7 +69,7 @@ class ProjectListViewController: UIViewController {
         segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : Style.tintColor]
         segmentedControl.selectionIndicatorColor = Style.tintColor
         segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox
-        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
+        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone
         segmentedControl.tag = 101
         
         segmentedControl.indexChangeBlock = { [weak self] in self?.segmentIndexChanged($0) }
@@ -82,8 +82,9 @@ class ProjectListViewController: UIViewController {
         scrollView.backgroundColor = Style.backgroundColor
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentSize = CGSizeMake(viewWidth * CGFloat(segmentedControl.sectionTitles.count) , scrollViewHeight)   //
+        scrollView.contentSize = CGSizeMake(viewWidth * CGFloat(segmentedControl.sectionTitles.count) , scrollViewHeight)
         scrollView.delegate = self
+        scrollView.scrollEnabled = false
         
         view.addSubview(scrollView)
     }
@@ -232,17 +233,17 @@ class ProjectListViewController: UIViewController {
 
 }
 
-extension ProjectListViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let pageWidth = scrollView.bounds.width
-        let page = scrollView.contentOffset.x / pageWidth
-        let index = UInt(page)
-        segmentIndexChanged(Int(index))
-        
-        segmentedControl.setSelectedSegmentIndex(index, animated: true)
-    }
-}
+//extension ProjectListViewController: UIScrollViewDelegate {
+//    
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        let pageWidth = scrollView.bounds.width
+//        let page = scrollView.contentOffset.x / pageWidth
+//        let index = UInt(page)
+//        segmentIndexChanged(Int(index))
+//        
+//        segmentedControl.setSelectedSegmentIndex(index, animated: true)
+//    }
+//}
 
 // MARK: - UITableViewDataSource
 extension ProjectListViewController: UITableViewDataSource {

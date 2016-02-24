@@ -11,6 +11,12 @@
 		B2062FB81C539E3600397181 /* XZMTabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B2062FB71C539E3600397181 /* XZMTabbarExtension.m */; };
 		B2062FBC1C53B84A00397181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2062FBA1C53B84A00397181 /* Main.storyboard */; };
 		B2093EDE1C564DA8006AC1B7 /* MyBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */; };
+		B20B279C1C7BEC83001AF81E /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B279B1C7BEC83001AF81E /* Knowledge.swift */; };
+		B20B279E1C7BF2A5001AF81E /* KnowledgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B279D1C7BF2A5001AF81E /* KnowledgeList.swift */; };
+		B20B27A01C7BF497001AF81E /* KnowledgeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B279F1C7BF497001AF81E /* KnowledgeApi.swift */; };
+		B20B27A21C7BFE70001AF81E /* KnowledgeDatailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B27A11C7BFE70001AF81E /* KnowledgeDatailViewController.swift */; };
+		B20B27A51C7C0A81001AF81E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B27A41C7C0A81001AF81E /* WebViewController.swift */; };
+		B20B27A71C7C45F6001AF81E /* OtherApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20B27A61C7C45F6001AF81E /* OtherApi.swift */; };
 		B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22730331C4CCA1400B23816 /* GlobeConstants.swift */; };
 		B24CA68B1C7011AB005DC99E /* ProleaveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */; };
 		B24CA68D1C701615005DC99E /* ProbackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */; };
@@ -65,6 +71,11 @@
 		B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */; };
 		B2BF8B891C560E1C001A3EC5 /* AboutUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */; };
 		B2C4973D1C4FC39500224007 /* MenuSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */; };
+		B2C8B5B81C7D3E4E005C733C /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8B5B71C7D3E4E005C733C /* Resume.swift */; };
+		B2C8B5BA1C7D42E3005C733C /* ResumeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8B5B91C7D42E3005C733C /* ResumeList.swift */; };
+		B2C8B5BC1C7D467F005C733C /* ResumeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8B5BB1C7D467F005C733C /* ResumeListViewController.swift */; };
+		B2C8B5BE1C7D55B4005C733C /* ProleaveInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C8B5BD1C7D55B4005C733C /* ProleaveInputViewController.swift */; };
+		B2CAA9131C7B0EC2003AF733 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CAA9121C7B0EC2003AF733 /* MIBadgeButton.swift */; };
 		B2EF077B1C715EB50009636E /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF077A1C715EB50009636E /* ImagesCell.swift */; };
 		B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */; };
 		B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EF77391C61DD2900AECC96 /* CommentCell.xib */; };
@@ -118,6 +129,12 @@
 		B2062FB71C539E3600397181 /* XZMTabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMTabbarExtension.m; sourceTree = "<group>"; };
 		B2062FBB1C53B84A00397181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBusinessViewController.swift; sourceTree = "<group>"; };
+		B20B279B1C7BEC83001AF81E /* Knowledge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
+		B20B279D1C7BF2A5001AF81E /* KnowledgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeList.swift; sourceTree = "<group>"; };
+		B20B279F1C7BF497001AF81E /* KnowledgeApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeApi.swift; sourceTree = "<group>"; };
+		B20B27A11C7BFE70001AF81E /* KnowledgeDatailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeDatailViewController.swift; sourceTree = "<group>"; };
+		B20B27A41C7C0A81001AF81E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B20B27A61C7C45F6001AF81E /* OtherApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherApi.swift; sourceTree = "<group>"; };
 		B22730331C4CCA1400B23816 /* GlobeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeConstants.swift; sourceTree = "<group>"; };
 		B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProleaveDetailViewController.swift; sourceTree = "<group>"; };
 		B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackDetailViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +196,11 @@
 		B2A121AC1C48C43500D28BBF /* GlobeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobeFunctions.swift; sourceTree = "<group>"; };
 		B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUserViewController.swift; sourceTree = "<group>"; };
 		B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSectionHeaderView.swift; sourceTree = "<group>"; };
+		B2C8B5B71C7D3E4E005C733C /* Resume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
+		B2C8B5B91C7D42E3005C733C /* ResumeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeList.swift; sourceTree = "<group>"; };
+		B2C8B5BB1C7D467F005C733C /* ResumeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeListViewController.swift; sourceTree = "<group>"; };
+		B2C8B5BD1C7D55B4005C733C /* ProleaveInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProleaveInputViewController.swift; sourceTree = "<group>"; };
+		B2CAA9121C7B0EC2003AF733 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		B2EF077A1C715EB50009636E /* ImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
 		B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoDetailViewController.swift; sourceTree = "<group>"; };
 		B2EF77391C61DD2900AECC96 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -244,6 +266,7 @@
 		B2062FB51C539DA900397181 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B2CAA90B1C7B0CA2003AF733 /* CustomBadge */,
 				B2062FB91C539E4A00397181 /* TabBar */,
 			);
 			name = ThirdParty;
@@ -323,6 +346,8 @@
 				B29CBB2A1C4F1CEE009C053A /* MainMenuViewController.swift */,
 				B29CBB2C1C4F5A81009C053A /* MyMessagesViewController.swift */,
 				B29CBB301C4F5B19009C053A /* MyKnowledgesViewController.swift */,
+				B20B27A11C7BFE70001AF81E /* KnowledgeDatailViewController.swift */,
+				B20B27A41C7C0A81001AF81E /* WebViewController.swift */,
 				B2093EDD1C564DA8006AC1B7 /* MyBusinessViewController.swift */,
 				B2BF8B881C560E1C001A3EC5 /* AboutUserViewController.swift */,
 				B29D8B961C59FD2500E4F079 /* ClientListViewController.swift */,
@@ -333,6 +358,7 @@
 				B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */,
 				B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */,
 				B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */,
+				B2C8B5BB1C7D467F005C733C /* ResumeListViewController.swift */,
 				B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */,
 				B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */,
 				B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */,
@@ -342,6 +368,7 @@
 				B2F3A73A1C63250B0060D0B0 /* CalendarListViewController.swift */,
 				B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */,
 				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
+				B2C8B5BD1C7D55B4005C733C /* ProleaveInputViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -376,6 +403,7 @@
 				B2F5E3AF1C58A93E0020EAE5 /* Client.swift */,
 				B2F5E3B11C58AB2F0020EAE5 /* Linkman.swift */,
 				B2F5E3B31C58AF2E0020EAE5 /* Announce.swift */,
+				B20B279B1C7BEC83001AF81E /* Knowledge.swift */,
 				B2F5E3B51C58B0B90020EAE5 /* CalendarEvent.swift */,
 				B28539811C6438160005EC1F /* CalendarDate.swift */,
 				B28A4FDB1C603F2400AAEE5E /* Proback.swift */,
@@ -383,6 +411,7 @@
 				B28A4FDD1C604A5900AAEE5E /* UserEasyView.swift */,
 				B28539871C648D2F0005EC1F /* Prosignin.swift */,
 				B28539891C648EDD0005EC1F /* Proleave.swift */,
+				B2C8B5B71C7D3E4E005C733C /* Resume.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -398,6 +427,14 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		B2CAA90B1C7B0CA2003AF733 /* CustomBadge */ = {
+			isa = PBXGroup;
+			children = (
+				B2CAA9121C7B0EC2003AF733 /* MIBadgeButton.swift */,
+			);
+			name = CustomBadge;
+			sourceTree = "<group>";
+		};
 		B2F5E3B71C58B2D10020EAE5 /* list */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,7 +443,9 @@
 				B29D8B901C59F0F600E4F079 /* ClientList.swift */,
 				B29D8B921C59F48800E4F079 /* LinkmanList.swift */,
 				B28BFF0B1C5F2D6F00191F57 /* AnnounceList.swift */,
+				B20B279D1C7BF2A5001AF81E /* KnowledgeList.swift */,
 				B28A4FDF1C604F5800AAEE5E /* ProbackList.swift */,
+				B2C8B5B91C7D42E3005C733C /* ResumeList.swift */,
 				B2EF77411C61ED1D00AECC96 /* CommentList.swift */,
 				B2FFF5671C76AC05003133C4 /* UserViewList.swift */,
 				B2F3A7361C6319670060D0B0 /* CalendarEventList.swift */,
@@ -420,10 +459,12 @@
 			children = (
 				B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */,
 				B2FFF5651C76A91D003133C4 /* UserApi.swift */,
+				B20B27A61C7C45F6001AF81E /* OtherApi.swift */,
 				B29D8B8E1C59A77A00E4F079 /* ProinfoApi.swift */,
 				B29D8B941C59F61400E4F079 /* ClientApi.swift */,
 				B28D6EB01C5B482500299D66 /* LinkmanApi.swift */,
 				B28BFF091C5F2BAB00191F57 /* AnnounceApi.swift */,
+				B20B279F1C7BF497001AF81E /* KnowledgeApi.swift */,
 				B28A4FE11C6050C500AAEE5E /* ProbackApi.swift */,
 				B2EF77431C61F24200AECC96 /* CommentApi.swift */,
 				B2F3A7381C631D9D0060D0B0 /* CalendarEventApi.swift */,
@@ -633,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B285398C1C6490960005EC1F /* ProsigninApi.swift in Sources */,
+				B20B279E1C7BF2A5001AF81E /* KnowledgeList.swift in Sources */,
 				B28D6EB31C5B4C9100299D66 /* LinkmanListViewController.swift in Sources */,
 				B28F4E6E1C58578000F78598 /* Result.swift in Sources */,
 				B2F3A7371C6319670060D0B0 /* CalendarEventList.swift in Sources */,
@@ -668,6 +710,7 @@
 				B29D8B931C59F48800E4F079 /* LinkmanList.swift in Sources */,
 				B2FFF5661C76A91D003133C4 /* UserApi.swift in Sources */,
 				B28A4FDE1C604A5900AAEE5E /* UserEasyView.swift in Sources */,
+				B20B27A51C7C0A81001AF81E /* WebViewController.swift in Sources */,
 				B2EF773C1C61DF8B00AECC96 /* CommentCell.swift in Sources */,
 				B2EF77421C61ED1D00AECC96 /* CommentList.swift in Sources */,
 				B24CA68B1C7011AB005DC99E /* ProleaveDetailViewController.swift in Sources */,
@@ -676,22 +719,30 @@
 				B28F4E741C5885F800F78598 /* Toast.swift in Sources */,
 				B28539881C648D2F0005EC1F /* Prosignin.swift in Sources */,
 				B2EF77441C61F24200AECC96 /* CommentApi.swift in Sources */,
+				B20B279C1C7BEC83001AF81E /* Knowledge.swift in Sources */,
 				B285398E1C64921A0005EC1F /* ProleaveApi.swift in Sources */,
+				B20B27A71C7C45F6001AF81E /* OtherApi.swift in Sources */,
 				B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */,
 				B28BFF0C1C5F2D6F00191F57 /* AnnounceList.swift in Sources */,
 				B2F5E3B61C58B0B90020EAE5 /* CalendarEvent.swift in Sources */,
 				B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */,
+				B20B27A01C7BF497001AF81E /* KnowledgeApi.swift in Sources */,
 				B285398A1C648EDD0005EC1F /* Proleave.swift in Sources */,
 				B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */,
+				B2C8B5B81C7D3E4E005C733C /* Resume.swift in Sources */,
+				B2C8B5BA1C7D42E3005C733C /* ResumeList.swift in Sources */,
 				B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */,
+				B2C8B5BC1C7D467F005C733C /* ResumeListViewController.swift in Sources */,
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
 				B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */,
 				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
 				B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */,
 				B2F3A73B1C63250B0060D0B0 /* CalendarListViewController.swift in Sources */,
+				B2CAA9131C7B0EC2003AF733 /* MIBadgeButton.swift in Sources */,
 				B28539861C6489640005EC1F /* ProsigninDetailViewController.swift in Sources */,
 				B28A4FE41C60524F00AAEE5E /* ProbackListViewController.swift in Sources */,
 				B28A4FEA1C60A6B700AAEE5E /* ProjectTabBarContoller.swift in Sources */,
+				B2C8B5BE1C7D55B4005C733C /* ProleaveInputViewController.swift in Sources */,
 				B2F5E3AE1C589BB20020EAE5 /* Proinfo.swift in Sources */,
 				B28A4FDC1C603F2400AAEE5E /* Proback.swift in Sources */,
 				B28BFF0E1C5F3D1000191F57 /* AnnounceListViewController.swift in Sources */,
@@ -699,6 +750,7 @@
 				B28539821C6438160005EC1F /* CalendarDate.swift in Sources */,
 				B2A1217A1C48C31B00D28BBF /* LoginViewController.swift in Sources */,
 				B2A121781C48C31B00D28BBF /* AppDelegate.swift in Sources */,
+				B20B27A21C7BFE70001AF81E /* KnowledgeDatailViewController.swift in Sources */,
 				B28F4E721C586BC900F78598 /* CryptoUtils.swift in Sources */,
 				B28F4E701C585E1D00F78598 /* NameEntity.swift in Sources */,
 				B28BFF0A1C5F2BAB00191F57 /* AnnounceApi.swift in Sources */,

@@ -11,7 +11,7 @@ import Alamofire
 
 class ProbackApi {
     
-    class func getProbackList(catalog: Int, pageIndex: Int, property: String, keyword: String, proinfoId: String = "" ,resultClosure:((Bool,[Proback]?) -> Void)){
+    class func getProbackList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", proinfoId: String = "" ,resultClosure:((Bool,[Proback]?) -> Void)){
         
         var parameters = [String:AnyObject]()
         
