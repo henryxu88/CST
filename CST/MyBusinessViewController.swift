@@ -5,7 +5,7 @@
 //  Created by henry on 16/1/25.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import Hokusai
 import MMDrawerController
@@ -24,6 +24,10 @@ class MyBusinessViewController: UIViewController {
     
     var searchController = UISearchController(searchResultsController: nil)
   
+    var locService: BMKLocationService!
+    var geocodeSearch: BMKGeoCodeSearch!
+    var lastLocation: CLLocation?
+    var addressSignin = ""
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +36,7 @@ class MyBusinessViewController: UIViewController {
     var menuSheet: Hokusai {
         let menu = Hokusai()
         // Add 3 buttons with their selector
-        menu.addButton("项目签到", target: self, selector: Selector("button2Pressed"))
+        menu.addButton("项目签到", target: self, selector: Selector("prjSignin"))
         menu.addButton("项目反馈", target: self, selector: Selector("button2Pressed"))
         menu.addButton("项目请假", target: self, selector: Selector("showProleaveInput"))
         
@@ -54,6 +58,19 @@ class MyBusinessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //初始化BMKLocationService
+        locService = BMKLocationService()
+        locService.delegate = self
+        
+        // 设置定位精确度，默认：kCLLocationAccuracyBest
+        locService.desiredAccuracy = kCLLocationAccuracyBest
+        locService.distanceFilter = 100
+        
+        //初始化BMKGeoCodeSearch
+        geocodeSearch = BMKGeoCodeSearch()
+        geocodeSearch.delegate = self
+        
+        // table
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -71,6 +88,18 @@ class MyBusinessViewController: UIViewController {
         // set left button : hide main menu
         setupLeftButton()
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //启动LocationService
+        locService.startUserLocationService()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        //停止LocationService
+        locService.stopUserLocationService()
     }
     
     //MARK: - MJRefresh -
@@ -140,6 +169,16 @@ class MyBusinessViewController: UIViewController {
         headerRefresh()
     }
     
+    // Selector for button 1
+    func prjSignin() {
+        print("prjSignin")
+        if let location = lastLocation {
+            getReverseGeo(location)
+        } else {
+            displayMessage("无法获得当前位置的经纬度！")
+        }
+    }
+    
     // Selector for button 2
     func button2Pressed() {
         print("button2Pressed")
@@ -147,7 +186,7 @@ class MyBusinessViewController: UIViewController {
     
     // Selector for button 3
     func showProleaveInput() {
-//        print("showProleaveInput")
+
         ProleaveApi.initProleaveDetail(prjId) { (result, obj) -> Void in
             if result {
                 if let obj = obj {
@@ -206,4 +245,48 @@ extension MyBusinessViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
+}
+
+// MARK: - BMKLocationServiceDelegate
+extension MyBusinessViewController: BMKLocationServiceDelegate , BMKGeoCodeSearchDelegate {
+    
+    //处理位置坐标更新
+    func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
+        if let location = userLocation.location {
+            lastLocation = location
+        }
+    }
+    
+    func getReverseGeo(location: CLLocation) {
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+        let option = BMKReverseGeoCodeOption()
+        let pt = CLLocationCoordinate2DMake(latitude, longitude)
+        option.reverseGeoPoint = pt
+        
+        let result = geocodeSearch.reverseGeoCode(option)
+        if result {
+            print("反检索成功")
+        } else {
+            print("反检索失败")
+        }
+        
+    }
+
+    func onGetReverseGeoCodeResult(searcher: BMKGeoCodeSearch!, result: BMKReverseGeoCodeResult!, errorCode error: BMKSearchErrorCode) {
+        if error.rawValue == 0 {    // no error
+            let addressDetail = result.addressDetail
+            addressSignin = addressDetail.province + addressDetail.city + addressDetail.district + addressDetail.streetName + addressDetail.streetNumber
+            print("add:\(addressDetail)")
+            print("addressSignin:\(addressSignin)")
+        } else {
+            view.makeToast("反地理编码检索出错！")
+        }
+    }
+    
+    func didFailToLocateUserWithError(error: NSError!) {
+        print("error: \(error)")
+    }
+    
 }

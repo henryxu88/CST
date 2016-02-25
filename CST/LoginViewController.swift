@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import MBProgressHUD
-import Toast_Swift
 import SwiftyJSON
 
 class LoginViewController: UIViewController {
@@ -31,6 +30,7 @@ class LoginViewController: UIViewController {
     }
     
     func handleLoginSuccess() {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "login")
         view.makeToast("登录成功", duration: 2.0, position: ToastPosition.Center)
         // 生成主界面
         appDelegate.buildUserInterface()

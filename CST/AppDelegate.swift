@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var drawerContainer: MMDrawerController?
+    
+    var mapManager: BMKMapManager?
 
     private(set) var currentUser: User?
     private(set) var login = false
@@ -63,7 +65,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // iamge loader : initImageLoader(self)
         
         // location : MainLocationManager.init(this)
-        
+        mapManager = BMKMapManager() // 初始化 BMKMapManager
+        // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key
+        let ret = mapManager?.start("MlgNspG5faWfR7koWpLGtxN1", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
+        if let ret = ret where ret {
+            print("mapManager start success!")
+        } else {
+            print("mapManager start failed!")
+        }
+                
         // JPush : 
         
         customizeAppearance()
@@ -173,8 +183,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - build main(home) page
     func buildUserInterface(){
+
         let login = NSUserDefaults.standardUserDefaults().boolForKey("login")
-        
+
         if login {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
