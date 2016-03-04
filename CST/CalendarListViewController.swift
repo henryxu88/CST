@@ -200,7 +200,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.performSegueWithIdentifier("ProleaveDetail", sender: obj)
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                    self.view.makeToast(NetManager.requestError)
                 }
             })
         } else if obj.type == "Signin" {
@@ -211,7 +211,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.performSegueWithIdentifier("ProsigninDetail", sender: obj)
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                    self.view.makeToast(NetManager.requestError)
                 }
             })
         }

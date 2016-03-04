@@ -14,10 +14,30 @@ class ProbackDetailViewController: FormViewController {
     
     var proback: Proback!
     
+    //MARK: - 设置按钮
+    func setupRightButtons(){
+        var items = [UIBarButtonItem]()
+        
+        let btnComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "commentButtonTapped")
+        btnComment.tintColor = UIColor.whiteColor()
+        items.append(btnComment)
+        
+        let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "editButtonTapped")
+        btnEdit.tintColor = UIColor.whiteColor()
+        items.append(btnEdit)
+        
+        navigationItem.setRightBarButtonItems(items, animated: true)
+    }
+    
+    override func returnButtonTapped() {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupReturnButton()
+        setupRightButtons()
         
         tableView?.rowHeight = 44.0
         
@@ -97,10 +117,9 @@ class ProbackDetailViewController: FormViewController {
             <<< ImagesRow("ImagesRow"){
                 $0.value = Set(proback.photoList.flatMap{$0})
                 $0.cell.delegateShow = self
+                $0.cell.baseTag = 1001
             }
         
-//        let imagesRow : ImagesRow? = form.rowByTag("ImagesRow")
-//        imagesRow?.cell.delegateShow = self
     }
     
     func resumeButtonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
@@ -125,6 +144,23 @@ class ProbackDetailViewController: FormViewController {
         }
         return nil
     }
+    
+    // MARK: - 批注按钮事件
+    func commentButtonTapped() {
+        // 跳转到CommentDetailViewController界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
+        vc?.targetId = proback.id
+        let nav = UINavigationController(rootViewController: vc!)
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    // MARK: - 编辑按钮事件
+    func editButtonTapped() {
+        // 跳转到ProbackInputViewController界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("ProbackInputViewController") as? ProbackInputViewController
+        vc?.proback = proback
+        navigationController?.pushViewController(vc!, animated: true)
+    }
 }
 
 extension ProbackDetailViewController: SSImageBrowserDelegate, ShowImagesProtocol {
@@ -141,8 +177,8 @@ extension ProbackDetailViewController: SSImageBrowserDelegate, ShowImagesProtoco
         browser.usePopAnimation = true
         browser.scaleImage = currentImageView.image
         
-        let index = currentImageView.tag - 1001
-        browser.setInitialPageIndex(index)
+        let index = currentImageView.tag % 1000
+        browser.setInitialPageIndex(index - 1)
         
         // Show
         presentViewController(browser, animated: true, completion: nil)

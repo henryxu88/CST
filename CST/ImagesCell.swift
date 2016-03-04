@@ -19,26 +19,43 @@ protocol ShowImagesProtocol: NSObjectProtocol {
 
 //MARK: ImagesCell
 public class ImagesCell : Cell<Set<String>>, CellType {
+    
+    
     // 图片缓存用
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     weak var delegateShow: ShowImagesProtocol!
     
-    var urls = [String]()
+    var isNewAdd = false        // 是否是新添加的选择照片
+    var maxAddNum = 0           // 最多可以上传的照片数
+    var baseTag = 1001          // imageView的tag起始数
     var photos = [SSPhoto]()
     var count = 0
+    var urls = [String]()       // 已经上传的图片的URL集合
+    var images = [UIImage]()    // 通过图片选择控件选中的图片集合
     
     func initData(){
         
-        photos = [SSPhoto]()
-        if let value = row.value {
-            count = value.count
-            urls = Array(value.flatMap{$0})
+        if isNewAdd {
+            count = images.count
+        } else {
+            if let value = row.value {
+                count = value.count
+                urls = Array(value.flatMap{$0})
+            }
         }
         
         height = {
             var h: CGFloat
-            switch self.count {
+            var c = 0
+            
+            if self.isNewAdd {
+                c = self.maxAddNum
+            } else {
+                c = self.count
+            }
+            
+            switch c {
             case 0:
                 h = 0
             case 1..<4:
@@ -54,27 +71,35 @@ public class ImagesCell : Cell<Set<String>>, CellType {
     }
     
     public override func setup() {
-        initData()
-
+        images = [UIImage]()
+        photos = [SSPhoto]()
+        
         row.title = nil
         super.setup()
         selectionStyle = .None
         
+        initData()
         reloadData()
-        
+    }
+    
+    public override func update() {
+        initData()
+        reloadData()
     }
     
     func reloadData(){
+        if count == 0 {
+            return
+        }
+//        print("count:\(count)")
+        
         let itemWidth = CGFloat(90.0)
         let itemHeight = CGFloat(90.0)
         let itemMargin = CGFloat(10.0)
         let itemCols = 3
         
         for i in 0..<count {
-            if urls[i].isEmpty {
-                continue
-            }
-
+            
             let c = i % itemCols
             let r = i / itemCols
             
@@ -82,11 +107,16 @@ public class ImagesCell : Cell<Set<String>>, CellType {
             let y = itemMargin + (itemWidth + itemMargin) * CGFloat(r)
             
             let imageView = UIImageView(frame: CGRectMake(x, y, itemWidth, itemHeight))
-            imageView.tag = 1001 + i
             imageView.contentMode = .ScaleAspectFit
             
-            let url = NSURL(string: urls[i])!
-            imageView.af_setImageWithURL(url)
+            if isNewAdd {
+                imageView.image = images[i]
+            } else {
+                let surl = urls[i]
+                let url = NSURL(string: surl)!
+                imageView.af_setImageWithURL(url)
+            }
+            imageView.tag = baseTag + i
             
             let tap = UITapGestureRecognizer(target: self, action: "imageOnScreenTapped:")
             imageView.addGestureRecognizer(tap)
@@ -97,10 +127,9 @@ public class ImagesCell : Cell<Set<String>>, CellType {
     }
     
     func imageOnScreenTapped(sender: UITapGestureRecognizer) {
-//        print("imageOnScreenTapped")
         if photos.isEmpty {
             for i in 0..<count {
-                let imageView = self.contentView.viewWithTag(1001 + i) as! UIImageView
+                let imageView = self.contentView.viewWithTag(baseTag + i) as! UIImageView
                 if let image = imageView.image {
                     photos.append(SSPhoto(image: image))
                 }
@@ -109,6 +138,7 @@ public class ImagesCell : Cell<Set<String>>, CellType {
         
         if !photos.isEmpty {
             let imageView = sender.view as! UIImageView
+//            print("imageOnScreenTapped:\(imageView.tag)")
             delegateShow.showImages(photos, currentImageView: imageView)
         }
     }

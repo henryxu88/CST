@@ -15,13 +15,7 @@ class ProleaveInputViewController: FormViewController {
     let timestamp = String(NSDate.timeIntervalSinceReferenceDate())
     var proleave: Proleave!
     
-    func setupSaveButton(){
-        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: "submit")
-        btn.title = "保存"
-        btn.tintColor = UIColor.whiteColor()
-        navigationItem.setRightBarButtonItem(btn, animated: true)
-    }
-    
+    // 保存按钮触发的操作
     func submit() {
         
         if proleave.leaveDate.isEmpty {

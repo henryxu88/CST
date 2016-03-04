@@ -120,7 +120,7 @@ class LinkmanDetailViewController: FormViewController {
                     self.performSegueWithIdentifier("Linkman_Client", sender: obj)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }

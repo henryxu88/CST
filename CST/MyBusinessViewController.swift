@@ -5,7 +5,7 @@
 //  Created by henry on 16/1/25.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
-import Foundation
+
 import UIKit
 import Hokusai
 import MMDrawerController
@@ -22,12 +22,16 @@ class MyBusinessViewController: UIViewController {
     var property = "name"
     var keyword = ""
     
+    var handleType = 0
+    
     var searchController = UISearchController(searchResultsController: nil)
   
     var locService: BMKLocationService!
     var geocodeSearch: BMKGeoCodeSearch!
     var lastLocation: CLLocation?
-    var addressSignin = ""
+    var address = ""
+    var latitudeStr = ""
+    var longitudeStr = ""
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
@@ -37,7 +41,7 @@ class MyBusinessViewController: UIViewController {
         let menu = Hokusai()
         // Add 3 buttons with their selector
         menu.addButton("项目签到", target: self, selector: Selector("prjSignin"))
-        menu.addButton("项目反馈", target: self, selector: Selector("button2Pressed"))
+        menu.addButton("项目反馈", target: self, selector: Selector("showProbackInput"))
         menu.addButton("项目请假", target: self, selector: Selector("showProleaveInput"))
         
         menu.fontName = "Verdana-Bold"
@@ -64,7 +68,7 @@ class MyBusinessViewController: UIViewController {
         
         // 设置定位精确度，默认：kCLLocationAccuracyBest
         locService.desiredAccuracy = kCLLocationAccuracyBest
-        locService.distanceFilter = 100
+        locService.distanceFilter = 10
         
         //初始化BMKGeoCodeSearch
         geocodeSearch = BMKGeoCodeSearch()
@@ -171,7 +175,10 @@ class MyBusinessViewController: UIViewController {
     
     // Selector for button 1
     func prjSignin() {
-        print("prjSignin")
+        handleType = 1
+        
+        lastLocation = locService.userLocation.location
+        
         if let location = lastLocation {
             getReverseGeo(location)
         } else {
@@ -179,14 +186,61 @@ class MyBusinessViewController: UIViewController {
         }
     }
     
+    func prjAssign(latitude: String, longitude: String) {
+        ProinfoApi.assign(prjId, address: address, latitude: latitude, longitude: longitude, resultClosure: { (isOk,result) -> Void in
+            if isOk {
+                if let result = result {
+                    if result.errorCode == "1" {
+                        self.displayMessage(result.errorMessage, withTitle: "提示")
+                    } else {
+                        self.displayMessage(result.errorMessage)
+                    }
+                }
+            } else {
+                self.view.makeToast("项目签到失败，请重新签到")
+            }
+        })
+    }
+    
     // Selector for button 2
-    func button2Pressed() {
-        print("button2Pressed")
+    func showProbackInput() {
+        handleType = 2
+        
+        lastLocation = locService.userLocation.location
+        
+        if let location = lastLocation {
+            getReverseGeo(location)
+        } else {
+            displayMessage("无法获得当前位置的经纬度！")
+        }
+    }
+    
+    func probackInput(latitude: String, longitude: String) {
+        
+        ProbackApi.initProbackDetail(prjId) { (isOk, obj) -> Void in
+            if isOk {
+                if let obj = obj {
+                    obj.address = self.address
+                    obj.latitude = self.latitudeStr
+                    obj.longitude = self.longitudeStr
+                    // 跳转到ProbackInputViewController界面
+                    let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackInputViewController") as? ProbackInputViewController
+                    vc?.proback = obj
+                    let nav = UINavigationController(rootViewController: vc!)
+                    self.presentViewController(nav, animated: true, completion: nil)
+                }
+            } else {
+                self.view.makeToast("初始化项目反馈表失败，请重新反馈！")
+            }
+
+        }
+        
     }
     
     // Selector for button 3
     func showProleaveInput() {
-
+        handleType = 3
+        
         ProleaveApi.initProleaveDetail(prjId) { (result, obj) -> Void in
             if result {
                 if let obj = obj {
@@ -252,9 +306,7 @@ extension MyBusinessViewController: BMKLocationServiceDelegate , BMKGeoCodeSearc
     
     //处理位置坐标更新
     func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
-        if let location = userLocation.location {
-            lastLocation = location
-        }
+
     }
     
     func getReverseGeo(location: CLLocation) {
@@ -267,7 +319,7 @@ extension MyBusinessViewController: BMKLocationServiceDelegate , BMKGeoCodeSearc
         
         let result = geocodeSearch.reverseGeoCode(option)
         if result {
-            print("反检索成功")
+//            print("反检索成功")
         } else {
             print("反检索失败")
         }
@@ -276,12 +328,33 @@ extension MyBusinessViewController: BMKLocationServiceDelegate , BMKGeoCodeSearc
 
     func onGetReverseGeoCodeResult(searcher: BMKGeoCodeSearch!, result: BMKReverseGeoCodeResult!, errorCode error: BMKSearchErrorCode) {
         if error.rawValue == 0 {    // no error
+            
+            latitudeStr = "\(lastLocation!.coordinate.latitude)"
+            longitudeStr = "\(lastLocation!.coordinate.longitude)"
+            
             let addressDetail = result.addressDetail
-            addressSignin = addressDetail.province + addressDetail.city + addressDetail.district + addressDetail.streetName + addressDetail.streetNumber
-            print("add:\(addressDetail)")
-            print("addressSignin:\(addressSignin)")
+            var address = ""
+            if addressDetail.province == addressDetail.city {
+                address = addressDetail.city
+            } else {
+                address = addressDetail.province + addressDetail.city
+            }
+            address += addressDetail.district + addressDetail.streetName + addressDetail.streetNumber
+            self.address = address
+            
+            if address.isEmpty {
+                displayMessage("无法获得当前位置的地理信息！")
+            } else {
+                
+                if handleType ==  1 {
+                    prjAssign(latitudeStr, longitude: longitudeStr)
+                } else if handleType == 2 {
+                    probackInput(latitudeStr, longitude: longitudeStr)
+                }
+                
+            }
         } else {
-            view.makeToast("反地理编码检索出错！")
+            displayMessage("无法获得当前位置的地理信息！")
         }
     }
     

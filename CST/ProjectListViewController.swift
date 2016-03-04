@@ -226,7 +226,7 @@ class ProjectListViewController: UIViewController {
                     self.performSegueWithIdentifier("ProjectDetail", sender: self)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }

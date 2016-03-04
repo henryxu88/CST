@@ -145,7 +145,7 @@ class MainMenuViewController: UITableViewController {
             default:
                 break
             }
-            print("business:\(menuText)")
+//            print("business:\(menuText)")
         case 1:
             print("setting:\(menuText)")
         default:

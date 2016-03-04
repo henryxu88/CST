@@ -89,4 +89,31 @@ class ProinfoApi {
         BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
     }
     
+    class func assign(keyId: String, address: String, latitude: String, longitude: String, resultClosure:((Bool, Result?) -> Void)) {
+        var parameters = [String:AnyObject]()
+        parameters["keyId"] = keyId
+        parameters["addressSignin"] = address
+        parameters["latitude"] = latitude
+        parameters["longitude"] = longitude
+        
+        let url = NetManager.PROINFO_ASSIGN
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let obj = Entity.parseResult(value)
+                    let res = obj.result
+                    resultClosure(true,res)
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+
+    
 }

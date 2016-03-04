@@ -139,32 +139,18 @@ class ProbackListViewController: UIViewController {
         headerRefresh()
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ProbackDetail" {
-            let navController = segue.destinationViewController as! UINavigationController
-            let controller = navController.topViewController as! ProbackDetailViewController
-            controller.proback = sender as! Proback
-        }
-    }
-    
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if sender != nil {
-            return true
-        }
-        return false
-    }
-    
+    // 跳转到反馈详细页面
     func setDetailObj(keyId: String) {
         ProbackApi.getProbackDetail(keyId, resultClosure: { (result, obj) -> Void in
             if result {
                 if let obj = obj {
-//                    self.proback = obj
-                    self.performSegueWithIdentifier("ProbackDetail", sender: obj)
+                    let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackDetailViewController") as? ProbackDetailViewController
+                    vc?.proback = obj
+                    self.navigationController?.pushViewController(vc!, animated: true)
+
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }

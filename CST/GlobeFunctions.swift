@@ -14,11 +14,11 @@ extension UIViewController {
      显示Alert对话框
      
      - parameter msg: 要显示的消息
-     */
-    func displayMessage(msg: String){
+     */    
+    func displayMessage(msg: String, withTitle title: String = "警告"){
         
-        let alertController = UIAlertController(title: "警告", message: msg, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "确定", style: .Default, handler: nil)
         
         alertController.addAction(action)
         
@@ -62,6 +62,21 @@ extension UIViewController {
     func returnButtonTapped() {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    //MARK: - 跳转批注界面
+    func setupCommentButton(){
+        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "commentButtonTapped")
+        btn.tintColor = UIColor.whiteColor()
+        navigationItem.setRightBarButtonItem(btn, animated: true)
+    }
+    
+    //MARK: - 保存按钮
+    func setupSaveButton(){
+        let btn = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: "submit")
+        btn.tintColor = UIColor.whiteColor()
+        navigationItem.setRightBarButtonItem(btn, animated: true)
+    }
+    
 }
 
 

@@ -47,6 +47,8 @@ struct NetManager {
     
     static let USER_LIST = "users!getList.action"
     
+    static let DICT_LIST = "dict!getDictList.action"
+    
     static let FILE_PUBLIC = BASE_PATH_COM + "file.action"
     
     static let MARK_DOC_READED = "readinfo!create.action"
@@ -60,6 +62,7 @@ struct NetManager {
     static let PROINFO_LIST = "proinfo!getList.action"
     static let PROINFO_DETAIL = "proinfo!getDetail.action"
     static let PROINFO_LIST_RELATED = "proinfo!getListRelated.action"   // 与我相关的项目
+    static let PROINFO_ASSIGN = "proinfo!assign.action"
     
     static let PROBACK_LIST = "proback!getList.action"
     static let PROBACK_LIST_PROINFO = "proback!getListAboutProinfo.action"  // 某一个项目下的反馈列表

@@ -89,6 +89,9 @@
 		B2C8B5DB1C7DA812005C733C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C8B5DA1C7DA812005C733C /* libstdc++.6.0.9.tbd */; };
 		B2CAA9131C7B0EC2003AF733 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CAA9121C7B0EC2003AF733 /* MIBadgeButton.swift */; };
 		B2D5A27F1C7ECFF000024A0B /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D5A27E1C7ECFF000024A0B /* BaiduMapAPI_Search.framework */; };
+		B2DA12E41C7FDF83000645EB /* ProbackInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E31C7FDF83000645EB /* ProbackInputViewController.swift */; };
+		B2DA12E71C802FA9000645EB /* DictEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E61C802FA9000645EB /* DictEntry.swift */; };
+		B2DA12E91C80316F000645EB /* DictEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E81C80316F000645EB /* DictEntryList.swift */; };
 		B2EF077B1C715EB50009636E /* ImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF077A1C715EB50009636E /* ImagesCell.swift */; };
 		B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */; };
 		B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EF77391C61DD2900AECC96 /* CommentCell.xib */; };
@@ -108,6 +111,7 @@
 		B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */; };
 		B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */; };
 		B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */; };
+		B2FD4DDD1C84073D0096AFA8 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */; };
 		B2FF93881C74199700807E38 /* CommentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF93871C74199700807E38 /* CommentDetailViewController.swift */; };
 		B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */; };
 		B2FFF5661C76A91D003133C4 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5651C76A91D003133C4 /* UserApi.swift */; };
@@ -228,6 +232,10 @@
 		B2C8B5DA1C7DA812005C733C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		B2CAA9121C7B0EC2003AF733 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		B2D5A27E1C7ECFF000024A0B /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		B2D5A2801C7EDFDE00024A0B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B2DA12E31C7FDF83000645EB /* ProbackInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackInputViewController.swift; sourceTree = "<group>"; };
+		B2DA12E61C802FA9000645EB /* DictEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictEntry.swift; sourceTree = "<group>"; };
+		B2DA12E81C80316F000645EB /* DictEntryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictEntryList.swift; sourceTree = "<group>"; };
 		B2EF077A1C715EB50009636E /* ImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCell.swift; sourceTree = "<group>"; };
 		B2EF77361C61947A00AECC96 /* ProinfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoDetailViewController.swift; sourceTree = "<group>"; };
 		B2EF77391C61DD2900AECC96 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -247,6 +255,7 @@
 		B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityList.swift; sourceTree = "<group>"; };
 		B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoList.swift; sourceTree = "<group>"; };
 		B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		B2FF93871C74199700807E38 /* CommentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDetailViewController.swift; sourceTree = "<group>"; };
 		B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPickerViewController.swift; sourceTree = "<group>"; };
 		B2FFF5651C76A91D003133C4 /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
@@ -259,7 +268,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2D5A27F1C7ECFF000024A0B /* BaiduMapAPI_Search.framework in Frameworks */,
 				B2C8B5DB1C7DA812005C733C /* libstdc++.6.0.9.tbd in Frameworks */,
 				B2C8B5D91C7DA804005C733C /* CoreTelephony.framework in Frameworks */,
 				B2C8B5D71C7DA7F6005C733C /* libsqlite3.0.tbd in Frameworks */,
@@ -271,6 +279,7 @@
 				B2C8B5CB1C7DA79E005C733C /* CoreLocation.framework in Frameworks */,
 				B2C8B5C31C7DA4D1005C733C /* BaiduMapAPI_Base.framework in Frameworks */,
 				B2C8B5C41C7DA4D1005C733C /* BaiduMapAPI_Location.framework in Frameworks */,
+				B2D5A27F1C7ECFF000024A0B /* BaiduMapAPI_Search.framework in Frameworks */,
 				B2C8B5C51C7DA4D1005C733C /* BaiduMapAPI_Utils.framework in Frameworks */,
 				CB9FF4419124A97A9733D449 /* Pods_CST.framework in Frameworks */,
 			);
@@ -296,6 +305,7 @@
 		B1CFA12EDFC9D2A8C1B79C0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2D5A2801C7EDFDE00024A0B /* MapKit.framework */,
 				B2D5A27E1C7ECFF000024A0B /* BaiduMapAPI_Search.framework */,
 				B2C8B5DA1C7DA812005C733C /* libstdc++.6.0.9.tbd */,
 				B2C8B5D81C7DA804005C733C /* CoreTelephony.framework */,
@@ -411,6 +421,7 @@
 				B28BFF0F1C5F402200191F57 /* AnnounceDetailViewController.swift */,
 				B28A4FE31C60524F00AAEE5E /* ProbackListViewController.swift */,
 				B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */,
+				B2DA12E31C7FDF83000645EB /* ProbackInputViewController.swift */,
 				B2C8B5BB1C7D467F005C733C /* ResumeListViewController.swift */,
 				B29CBB2E1C4F5AC8009C053A /* ProjectListViewController.swift */,
 				B28A4FE91C60A6B700AAEE5E /* ProjectTabBarContoller.swift */,
@@ -422,6 +433,7 @@
 				B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */,
 				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
 				B2C8B5BD1C7D55B4005C733C /* ProleaveInputViewController.swift */,
+				B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -465,6 +477,7 @@
 				B28539871C648D2F0005EC1F /* Prosignin.swift */,
 				B28539891C648EDD0005EC1F /* Proleave.swift */,
 				B2C8B5B71C7D3E4E005C733C /* Resume.swift */,
+				B2DA12E61C802FA9000645EB /* DictEntry.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -503,6 +516,7 @@
 				B2FFF5671C76AC05003133C4 /* UserViewList.swift */,
 				B2F3A7361C6319670060D0B0 /* CalendarEventList.swift */,
 				B28539831C6438620005EC1F /* CalendarDateList.swift */,
+				B2DA12E81C80316F000645EB /* DictEntryList.swift */,
 			);
 			name = list;
 			sourceTree = "<group>";
@@ -727,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B285398C1C6490960005EC1F /* ProsigninApi.swift in Sources */,
+				B2DA12E91C80316F000645EB /* DictEntryList.swift in Sources */,
 				B20B279E1C7BF2A5001AF81E /* KnowledgeList.swift in Sources */,
 				B28D6EB31C5B4C9100299D66 /* LinkmanListViewController.swift in Sources */,
 				B28F4E6E1C58578000F78598 /* Result.swift in Sources */,
@@ -744,6 +759,7 @@
 				B28F4E6A1C58566800F78598 /* Entity.swift in Sources */,
 				B29CBB2B1C4F1CEE009C053A /* MainMenuViewController.swift in Sources */,
 				B28539841C6438620005EC1F /* CalendarDateList.swift in Sources */,
+				B2FD4DDD1C84073D0096AFA8 /* MyImagePickerController.swift in Sources */,
 				B28A4FE01C604F5800AAEE5E /* ProbackList.swift in Sources */,
 				B2EF77371C61947A00AECC96 /* ProinfoDetailViewController.swift in Sources */,
 				B22730341C4CCA1400B23816 /* GlobeConstants.swift in Sources */,
@@ -787,6 +803,7 @@
 				B2C8B5BA1C7D42E3005C733C /* ResumeList.swift in Sources */,
 				B28C3E9D1C4DD4D70048E288 /* User.swift in Sources */,
 				B2C8B5BC1C7D467F005C733C /* ResumeListViewController.swift in Sources */,
+				B2DA12E41C7FDF83000645EB /* ProbackInputViewController.swift in Sources */,
 				B2F5E3B41C58AF2E0020EAE5 /* Announce.swift in Sources */,
 				B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */,
 				B29D8B951C59F61400E4F079 /* ClientApi.swift in Sources */,
@@ -809,6 +826,7 @@
 				B28F4E701C585E1D00F78598 /* NameEntity.swift in Sources */,
 				B28BFF0A1C5F2BAB00191F57 /* AnnounceApi.swift in Sources */,
 				B29D8B971C59FD2500E4F079 /* ClientListViewController.swift in Sources */,
+				B2DA12E71C802FA9000645EB /* DictEntry.swift in Sources */,
 				B28D6EB11C5B482500299D66 /* LinkmanApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,7 @@ class AnnounceDetailViewController: FormViewController {
         super.viewDidLoad()
         
         setupReturnButton()
+        setupCommentButton()
         
         tableView?.rowHeight = 44.0
         
@@ -60,9 +61,16 @@ class AnnounceDetailViewController: FormViewController {
     
 
     // MARK: - UITableViewDelegate
-   
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        
         return nil
+    }
+    
+    // MARK: - 批注按钮事件
+    func commentButtonTapped() {
+        // 跳转到CommentDetailViewController界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
+        vc?.targetId = announce.id
+        let nav = UINavigationController(rootViewController: vc!)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 }

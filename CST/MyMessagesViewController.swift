@@ -328,7 +328,7 @@ class MyMessagesViewController: UIViewController {
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         }
     }
@@ -344,7 +344,7 @@ class MyMessagesViewController: UIViewController {
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }
@@ -359,7 +359,7 @@ class MyMessagesViewController: UIViewController {
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }

@@ -11,12 +11,16 @@ import SwiftyJSON
 
 // Equatable potocol
 func == (user1: UserEasyView, user2: UserEasyView) -> Bool {
-    return user1.id == user2.id
+    return user1.hashValue == user2.hashValue
 }
 
-class UserEasyView: Entity, Equatable {
+class UserEasyView: Entity, Equatable , Hashable {
     
     private(set) var name = ""
+    
+    var hashValue: Int {
+        return self.id.hashValue
+    }
     
     class func parse(json: JSON) -> UserEasyView {
         let obj = UserEasyView()

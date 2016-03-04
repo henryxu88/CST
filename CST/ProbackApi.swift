@@ -91,8 +91,99 @@ class ProbackApi {
     }
     
     // 上传反馈图片
+    class func uploadProbackPhoto(keyId: String, image: UIImage, resultClosure:((Bool,Result?) -> Void)) {
+        var imageData = UIImageJPEGRepresentation(image, 1.0)
+        while imageData?.length > 1000000 { // 图片大于1M就缩小点
+            imageData = UIImageJPEGRepresentation(image, 0.7)
+        }
+        
+        let url = NetManager.PROBACK_PHOTO_UPLOAD
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let obj = Entity.parseResult(value)
+                    let res = obj.result
+                    resultClosure(true,res)
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.uploadResult(url, keyId: keyId, data: imageData!, handler: urlHandler)
+    }
     
     // 初始化项目反馈
+    class func initProbackDetail(proinfoId: String, resultClosure:((Bool,Proback?) -> Void)) {
+        var parameters = [String:AnyObject]()
+        parameters["proinfoId"] = proinfoId
+        
+        let url = NetManager.PROBACK_INIT
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let obj = Proback.parse(value)
+                    let res = obj.result
+                    if res.OK() {
+                        resultClosure(true,obj)
+                    } else {
+                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
+                        resultClosure(false,nil)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
     
     // 创建项目反馈
+    class func createProback(proback: Proback, resultClosure:((Bool,Result?) -> Void)) {
+        var parameters = [String:AnyObject]()
+        parameters["proinfoId"] = proback.projectId
+        parameters["categoryId"] = proback.categoryId
+        
+        parameters["backdate"] = proback.backDate
+        parameters["proBack.content"] = proback.content
+        parameters["addressBack"] = proback.address
+        parameters["proBack.mark"] = proback.mark
+        parameters["proBack.regular"] = proback.regular
+        parameters["noticeIds"] = proback.noticemanIds
+        
+//        parameters["photoIds"] = proback.photoListIds
+        parameters["keyId"] = proback.id
+        
+        parameters["longitude"] = proback.longitude
+        parameters["latitude"] = proback.latitude
+        
+//        parameters["proBack.picAmount"] = proback.picAmount
+        parameters["timestamp"] = proback.timestamp
+        
+        let url = NetManager.PROBACK_CREATE
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let obj = Entity.parseResult(value)
+                    let res = obj.result
+                    resultClosure(true,res)
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+    
 }

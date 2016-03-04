@@ -158,7 +158,7 @@ class MyKnowledgesViewController: UIViewController {
                     self.performSegueWithIdentifier("KnowledgeDetail", sender: self)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+                self.view.makeToast(NetManager.requestError)
             }
         })
     }

@@ -59,12 +59,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - app life circyle
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        // Create "imageDir" dir in Documents.
+//        let imageDir = Path.documentsDir["images"]
+//        imageDir.mkdir()
         // set save image path
-        saveImagePath = Path.documentsDir.toString() + "/images/"
+//        saveImagePath = imageDir.toString() + "/"
+//        saveImagePath = Path.documentsDir.toString() + "/images/"
         
         // iamge loader : initImageLoader(self)
         
-        // location : MainLocationManager.init(this)
+        // location 
         mapManager = BMKMapManager() // 初始化 BMKMapManager
         // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key
         let ret = mapManager?.start("MlgNspG5faWfR7koWpLGtxN1", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
@@ -73,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("mapManager start failed!")
         }
-                
+        
         // JPush : 
         
         customizeAppearance()

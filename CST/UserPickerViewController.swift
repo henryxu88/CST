@@ -19,6 +19,7 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
     var tableView: UITableView!
     var users = [UserEasyView]()
     var selectedUsers = [UserEasyView]()
+    var lastSelectedUsers = [UserEasyView]()
     var selectedCount: Int {
         return selectedUsers.count
     }
@@ -70,6 +71,11 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
                 if objs != nil {
                     self.users = objs!
                     self.filteredUsers = objs!
+                    
+                    if !self.lastSelectedUsers.isEmpty {
+                        self.addContacts()
+                    }
+                    
                     self.tableView.reloadData()
                 }
             } else {
@@ -121,6 +127,7 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
         view.insertSubview(tableView, belowSubview: userPickerView)
         
         getUserList()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -167,6 +174,14 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
         
         let user = filteredUsers[indexPath.row]
         
+        // 判断是否是上次已经选中的人员
+        for (_, selectedUser) in lastSelectedUsers.enumerate() {
+            if user == selectedUser {
+                displayMessage("此人是上次已经选中的人员，不能再选了！")
+                return
+            }
+        }
+        
         // if it is already selected so remove it from
         var hasSelected = 0
         for (index, selectedUser) in selectedUsers.enumerate() {
@@ -174,6 +189,7 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
                 cell?.accessoryType = .None
                 selectedUsers.removeAtIndex(index)
                 userPickerView.removeContact(user)
+                
                 hasSelected = 1
                 break
             }
@@ -198,6 +214,25 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
         
         filteredUsers = users
         tableView.reloadData()
+    }
+    
+    func addContacts(){
+        if !lastSelectedUsers.isEmpty {
+            var color: UIColor
+            let count = lastSelectedUsers.count
+            for (index,user) in lastSelectedUsers.enumerate() {
+                if index % count == 1 {
+                    color = UIColor.orangeColor()
+                } else if index % count == 2 {
+                    color = UIColor.purpleColor()
+                } else {
+                    color = UIColor.blueColor()
+                }
+                let style = THContactViewStyle.init(textColor: UIColor.whiteColor(), backgroundColor: color, cornerRadiusFactor: CGFloat(2.0))
+                let selectedStyle = THContactViewStyle.init(textColor: UIColor.whiteColor(), backgroundColor: UIColor.greenColor(), cornerRadiusFactor: CGFloat(2.0))
+                userPickerView.addContact(user, withName: user.name, withStyle: style, andSelectedStyle: selectedStyle)
+            }
+        }
     }
     
     // MARK: NSNotificationCenter
@@ -240,8 +275,10 @@ extension UserPickerViewController: THContactPickerDelegate {
         tableView.frame = frame
     }
     
+    
     func contactPicker(contactPicker: THContactPickerView!, didRemoveContact contact: AnyObject!) {
         let user = contact as! UserEasyView
+        
         selectedUsers = selectedUsers.filter{$0 != user}
         
         let index = users.indexOf(user)

@@ -15,34 +15,34 @@ class Proback: Entity {
     // 项目名称
     private(set) var name = ""
     // 反馈类别
-    private(set) var categoryId = ""
-    private(set) var categoryName = ""
+    var categoryId = ""
+    var categoryName = ""
     // 反馈日期
-    private(set) var backDate = ""
+    var backDate = ""
     // 反馈内容
-    private(set) var content = ""
+    var content = ""
     // 备注
-    private(set) var mark = ""
+    var mark = ""
     // 是否正常 1:正常 0:不正常
-    private(set) var regular = "0"
+    var regular = "0"
     // 签到地址
-    private(set) var address = ""
+    var address = ""
     // 纬度
-    private(set) var latitude = ""
+    var latitude = ""
     // 经度
-    private(set) var longitude = ""
+    var longitude = ""
     // 对应的location对象的Id
     private(set) var locationId = ""
     // 通知人员
-    private(set) var noticemanIds = ""
-    private(set) var noticeMen = [UserEasyView]()
+    var noticemanIds = ""
+    var noticeMen = [UserEasyView]()
     
     // 图片列表
-//    private(set) var photoListIds = ""
-    private(set) var photoList = [String]()
+    var photoListIds = ""
+    var photoList = [String]()
     
     // 图片数量
-    private(set) var picAmount = ""
+    var picAmount = ""
 
     // 是否有反馈履历 1:有 0:暂无
     private(set) var hasResume = "0"

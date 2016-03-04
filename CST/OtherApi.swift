@@ -48,7 +48,7 @@ class OtherApi {
         parameters["catalog"] = catalog // 241
         parameters["pageIndex"] = pageIndex // 1
         parameters["pageSize"] = NetManager.pageSize // 20
-        parameters["keyId"] = keyId       // proback's id
+        parameters["keyId"] = keyId       // comment's id
         
         let url = NetManager.RESUME_LIST
         
@@ -61,6 +61,42 @@ class OtherApi {
                     if res.OK() {
                         let objs = resumeList.list
 
+                        if objs.count == 0 {
+                            resultClosure(true,nil)
+                        } else {
+                            resultClosure(true,objs)
+                        }
+                        
+                    } else {
+                        print("code:\(res.errorCode) msg:\(res.errorMessage)")
+                        resultClosure(false,nil)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        BaseApi.postResult(url, parameters: parameters, handler: urlHandler)
+    }
+    
+    class func getDictList(keyWord: String, resultClosure:((Bool,[DictEntry]?) -> Void)){
+        
+        var parameters = [String:AnyObject]()
+        parameters["keyId"] = keyWord       // 系统字典的关键字
+        
+        let url = NetManager.DICT_LIST
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let dictEntryList = DictEntryList.parse(value)
+                    let res = dictEntryList.result
+                    if res.OK() {
+                        let objs = dictEntryList.list
+                        
                         if objs.count == 0 {
                             resultClosure(true,nil)
                         } else {
