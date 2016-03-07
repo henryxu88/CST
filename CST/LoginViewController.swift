@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
     }
     
     func handleLoginSuccess() {
+        view.endEditing(true)
+        
         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "login")
         view.makeToast("登录成功", duration: 2.0, position: ToastPosition.Center)
         // 生成主界面

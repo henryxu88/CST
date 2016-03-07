@@ -91,12 +91,22 @@ public class ImagesCell : Cell<Set<String>>, CellType {
         if count == 0 {
             return
         }
-//        print("count:\(count)")
+
+        if contentView.subviews.count>0 {
+            for subview in contentView.subviews {
+                subview.removeFromSuperview()
+            }
+        }
         
         let itemWidth = CGFloat(90.0)
         let itemHeight = CGFloat(90.0)
         let itemMargin = CGFloat(10.0)
         let itemCols = 3
+        
+        let size = CGSize(width: 800, height: 1280)
+        let filter = AspectScaledToFillSizeFilter(
+            size: size
+        )
         
         for i in 0..<count {
             
@@ -110,11 +120,13 @@ public class ImagesCell : Cell<Set<String>>, CellType {
             imageView.contentMode = .ScaleAspectFit
             
             if isNewAdd {
-                imageView.image = images[i]
+                imageView.image = images[i].af_imageAspectScaledToFitSize(size)
+//                imageView.image = images[i]
             } else {
                 let surl = urls[i]
                 let url = NSURL(string: surl)!
-                imageView.af_setImageWithURL(url)
+                imageView.af_setImageWithURL(url, placeholderImage: nil, filter: filter)
+                
             }
             imageView.tag = baseTag + i
             
@@ -127,20 +139,18 @@ public class ImagesCell : Cell<Set<String>>, CellType {
     }
     
     func imageOnScreenTapped(sender: UITapGestureRecognizer) {
-        if photos.isEmpty {
-            for i in 0..<count {
-                let imageView = self.contentView.viewWithTag(baseTag + i) as! UIImageView
-                if let image = imageView.image {
-                    photos.append(SSPhoto(image: image))
-                }
+        if !photos.isEmpty {
+            photos.removeAll()
+        }
+        for i in 0..<count {
+            let imageView = self.contentView.viewWithTag(baseTag + i) as! UIImageView
+            if let image = imageView.image {
+                photos.append(SSPhoto(image: image))
             }
         }
         
-        if !photos.isEmpty {
-            let imageView = sender.view as! UIImageView
-//            print("imageOnScreenTapped:\(imageView.tag)")
-            delegateShow.showImages(photos, currentImageView: imageView)
-        }
+        let imageView = sender.view as! UIImageView
+        delegateShow.showImages(photos, currentImageView: imageView)
     }
     
 }

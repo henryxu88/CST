@@ -760,7 +760,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="VVI-fT-A0I" id="X22-SL-yAm"/>
-                        <segue destination="YPT-hL-c0m" kind="modal" identifier="ProbackDetail" id="b8c-6f-Gy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D84-Xl-Bo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1196,24 +1195,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swv-18-IVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="50" y="1605"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="sEb-TH-2A1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YPT-hL-c0m" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fQw-XO-YbQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6YO-6O-Va3" kind="relationship" relationship="rootViewController" id="sSy-WK-2fE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ly-qH-iy0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-608" y="3209"/>
         </scene>
         <!--项目反馈-->
         <scene sceneID="Geh-GS-qTT">

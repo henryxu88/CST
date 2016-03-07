@@ -20,11 +20,11 @@ class ProbackInputViewController: FormViewController {
     
     var photoList = [String]()
     
-    var newImages = [UIImage]()
+    var newImages: [UIImage]?
     var hasUploaded = 0
     var isNewDoc = true
     
-    let imagePickerController = MyImagePickerController()
+    var imagePickerController: MyImagePickerController?
     
     // 提交时数据校验
     func doSubmit() {
@@ -72,8 +72,10 @@ class ProbackInputViewController: FormViewController {
             hud.hide(true)
             if isOk {
                 
-                if self.newImages.count > 0 {
-                    self.uploadImages(result!.errorMessage) // 上传图片
+                if let images = self.newImages {
+//                    self.view.makeToast("开始上传照片......")
+                    self.hasUploaded = 0
+                    self.uploadImage(result!.errorMessage, images: images, index: 0) // 上传图片
                 } else {
                     self.handleSuccess()
                 }
@@ -101,32 +103,34 @@ class ProbackInputViewController: FormViewController {
     }
     
     func handleSuccess() {
+        imagePickerController = nil
+        newImages = nil
+        print("handleSuccess")
         view.makeToast("反馈信息提交成功！")
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
         if isNewDoc {
             dispatch_after(delayTime, dispatch_get_main_queue()) {
                 self.dismissViewControllerAnimated(true, completion: nil)
+                
             }
         } else {
             // 跳转到ProbackListViewController界面
             dispatch_after(delayTime, dispatch_get_main_queue()) {
                 self.navigationController?.popToRootViewControllerAnimated(true)
+                
             }
         }
     }
     
-    func uploadImages(keyId: String) {
-        uploadImage(keyId, image: newImages[0])
-    }
-    
-    func uploadImage(keyId: String, image: UIImage) {
-        ProbackApi.uploadProbackPhoto(keyId, image: image, resultClosure: { (isOk, result) -> Void in
+    func uploadImage(keyId: String, images:[UIImage], index: Int) {
+        ProbackApi.uploadProbackPhoto(keyId, image: images[index], resultClosure: { (isOk, result) -> Void in
             if isOk {
                 let c = ++self.hasUploaded
-                if c == self.newImages.count {
+                if c == images.count {
                     self.handleSuccess()
                 } else {
-                    self.uploadImage(keyId, image: self.newImages[c])
+//                    self.view.makeToast("上传照片第\(c)张照片成功")
+                    self.uploadImage(keyId, images: images, index: c)
                 }
             } else {
                 self.view.makeToast(NetManager.requestError)
@@ -154,11 +158,15 @@ class ProbackInputViewController: FormViewController {
         
         let alertController = UIAlertController(title: "确定离开吗？", message: "未保存的数据会丢失！", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
+            self.imagePickerController = nil
+            self.newImages = nil
+            print("returnButtonTapped")
             if self.isNewDoc {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 self.navigationController?.popToRootViewControllerAnimated(true)
             }
+            
         })
         let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)
         
@@ -167,23 +175,24 @@ class ProbackInputViewController: FormViewController {
         
         presentViewController(alertController, animated: true, completion: nil)
         
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit = 9
+        title = "项目反馈"
+        imagePickerController = MyImagePickerController()
+        imagePickerController!.delegate = self
+        imagePickerController!.imageLimit = 9
         
         // set init value
         if proback.id.isEmpty {
+            isNewDoc = true
             proback.backDate = NSDate().fs_stringWithFormat("yyyy-MM-dd")
         } else {
             if !proback.photoList.isEmpty {
                 photoList = proback.photoList
-                imagePickerController.imageLimit -= photoList.count
+                imagePickerController!.imageLimit -= photoList.count
             }
             isNewDoc = false
         }
@@ -277,10 +286,12 @@ class ProbackInputViewController: FormViewController {
                 $0.cell.baseTag = 1001
             }
             
-            +++ Section("新添加的照片列表")
-            
+            +++ Section("新添加的照片列表"){
+                $0.hidden = Condition.Predicate(NSPredicate(value: imagePickerController!.imageLimit == 0))
+            }
+ 
             <<< ButtonRow("imagesButtonRow") {
-                $0.title = "添加图片［最多\(imagePickerController.imageLimit)张］"
+                $0.title = "添加图片［最多\(imagePickerController!.imageLimit)张］"
                 $0.onCellSelection(self.imagesButtonTapped)
             }
             
@@ -288,7 +299,7 @@ class ProbackInputViewController: FormViewController {
                 $0.cell.delegateShow = self
                 $0.cell.isNewAdd = true
                 $0.cell.baseTag = 2001
-                $0.cell.maxAddNum = imagePickerController.imageLimit
+                $0.cell.maxAddNum = imagePickerController!.imageLimit
             }
     }
     
@@ -309,7 +320,7 @@ class ProbackInputViewController: FormViewController {
     
     func imagesButtonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
 
-        presentViewController(imagePickerController, animated: true, completion: nil)
+        presentViewController(imagePickerController!, animated: true, completion: nil)
 
     }
     
@@ -395,12 +406,27 @@ extension ProbackInputViewController: ImagePickerDelegate {
     }
     
     func doneButtonDidPress(images: [UIImage]) {
-        // 保存图片到应用程序的目录
-        newImages = images
+        if images.count == 0 {
+            return
+        }
+//        // 保存图片
+//        if newImages != nil {
+//            newImages!.removeAll()
+//        } else {
+//            newImages = [UIImage]()
+//        }
+//        
+//        if images.count>0 {
+//            let size = CGSize(width: 800.0, height: 1280.0)
+//            for img in images {
+//                newImages!.append(img.af_imageAspectScaledToFitSize(size))
+//            }
+//        }
         
         dismissViewControllerAnimated(true, completion: nil)
         
         let row: ImagesRow? = self.form.rowByTag("ImagesRow")
+//        row?.cell.images = newImages!
         row?.cell.images = images
         row?.cell.update()
     }

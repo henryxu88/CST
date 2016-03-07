@@ -36,6 +36,8 @@ class ProbackDetailViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "项目反馈"
+        
         setupReturnButton()
         setupRightButtons()
         

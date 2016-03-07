@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) var loginName = ""
     private(set) var loginDigest = ""
     
-    private(set) var saveImagePath = ""
     let downloader = ImageDownloader()
     let imageCache = AutoPurgingImageCache()
     
@@ -54,20 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginName = ""
         loginDigest = ""
         login = false
+        
+        // 清除JPush别名
+//        clearJPushAlias()
     }
 
     // MARK: - app life circyle
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        // Create "imageDir" dir in Documents.
-//        let imageDir = Path.documentsDir["images"]
-//        imageDir.mkdir()
-        // set save image path
-//        saveImagePath = imageDir.toString() + "/"
-//        saveImagePath = Path.documentsDir.toString() + "/images/"
-        
-        // iamge loader : initImageLoader(self)
-        
         // location 
         mapManager = BMKMapManager() // 初始化 BMKMapManager
         // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key
@@ -82,7 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         customizeAppearance()
         
-        //        buildUserInterface()
         
         return true
     }

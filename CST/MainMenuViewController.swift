@@ -147,10 +147,54 @@ class MainMenuViewController: UITableViewController {
             }
 //            print("business:\(menuText)")
         case 1:
-            print("setting:\(menuText)")
+//            print("setting:\(menuText)")
+            switch menuText {
+            case Words.menuUserLogout:
+                logoutApp()
+            case Words.menuExitApp:
+                exitApp()
+            default:
+                break
+            }
         default:
             break
         }
+    }
+    
+    func logoutApp(){
+        let alertController = UIAlertController(title: "退出当前账号", message: "确定退出当前账号吗？", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
+            // 显示登录界面
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
+            self.presentViewController(vc!, animated: true, completion: nil)
+            // 用户注销
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.cleanLoginInfo()
+            
+        })
+        let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func exitApp(){
+        let alertController = UIAlertController(title: "退出", message: "确定退出应用吗？", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            if let drawer = appDelegate.drawerContainer {
+                drawer.toggleDrawerSide(.Left, animated: true, completion: nil)
+            }
+            UIControl().sendAction(Selector("suspend"), to: UIApplication.sharedApplication(), forEvent: nil)
+        })
+        let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func setViewController(vc: UIViewController?) {
