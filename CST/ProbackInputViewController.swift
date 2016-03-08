@@ -71,9 +71,8 @@ class ProbackInputViewController: FormViewController {
         ProbackApi.createProback(proback) { (isOk,result) -> Void in
             hud.hide(true)
             if isOk {
-                
                 if let images = self.newImages {
-//                    self.view.makeToast("开始上传照片......")
+                    self.view.makeToast("开始上传照片......")
                     self.hasUploaded = 0
                     self.uploadImage(result!.errorMessage, images: images, index: 0) // 上传图片
                 } else {
@@ -104,20 +103,17 @@ class ProbackInputViewController: FormViewController {
     
     func handleSuccess() {
         imagePickerController = nil
-        newImages = nil
-        print("handleSuccess")
+
         view.makeToast("反馈信息提交成功！")
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
         if isNewDoc {
             dispatch_after(delayTime, dispatch_get_main_queue()) {
                 self.dismissViewControllerAnimated(true, completion: nil)
-                
             }
         } else {
             // 跳转到ProbackListViewController界面
             dispatch_after(delayTime, dispatch_get_main_queue()) {
                 self.navigationController?.popToRootViewControllerAnimated(true)
-                
             }
         }
     }
@@ -129,7 +125,6 @@ class ProbackInputViewController: FormViewController {
                 if c == images.count {
                     self.handleSuccess()
                 } else {
-//                    self.view.makeToast("上传照片第\(c)张照片成功")
                     self.uploadImage(keyId, images: images, index: c)
                 }
             } else {
@@ -159,8 +154,7 @@ class ProbackInputViewController: FormViewController {
         let alertController = UIAlertController(title: "确定离开吗？", message: "未保存的数据会丢失！", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
             self.imagePickerController = nil
-            self.newImages = nil
-            print("returnButtonTapped")
+
             if self.isNewDoc {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
@@ -280,10 +274,9 @@ class ProbackInputViewController: FormViewController {
                 $0.hidden = Condition.Predicate(NSPredicate(value: proback.photoList.isEmpty))
             }
             
-            <<< ImagesRow("uploadedImagesRow"){
+            <<< ShowImagesRow("ShowImagesRow"){
                 $0.value = Set(proback.photoList.flatMap{$0})
                 $0.cell.delegateShow = self
-                $0.cell.baseTag = 1001
             }
             
             +++ Section("新添加的照片列表"){
@@ -297,8 +290,6 @@ class ProbackInputViewController: FormViewController {
             
             <<< ImagesRow("ImagesRow"){
                 $0.cell.delegateShow = self
-                $0.cell.isNewAdd = true
-                $0.cell.baseTag = 2001
                 $0.cell.maxAddNum = imagePickerController!.imageLimit
             }
     }
@@ -409,24 +400,20 @@ extension ProbackInputViewController: ImagePickerDelegate {
         if images.count == 0 {
             return
         }
-//        // 保存图片
-//        if newImages != nil {
-//            newImages!.removeAll()
-//        } else {
-//            newImages = [UIImage]()
-//        }
-//        
-//        if images.count>0 {
-//            let size = CGSize(width: 800.0, height: 1280.0)
-//            for img in images {
-//                newImages!.append(img.af_imageAspectScaledToFitSize(size))
-//            }
-//        }
+        
+        if images.count>0 {
+            newImages = [UIImage]()
+            for image in images {
+                let ratio = image.size.width / image.size.height
+                let smallImage = image.af_imageAspectScaledToFitSize(CGSize(width: 800, height: 800 / ratio))
+                newImages!.append(smallImage)
+
+            }
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
         
         let row: ImagesRow? = self.form.rowByTag("ImagesRow")
-//        row?.cell.images = newImages!
         row?.cell.images = images
         row?.cell.update()
     }

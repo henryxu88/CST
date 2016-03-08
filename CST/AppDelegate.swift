@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginName = ""
         loginDigest = ""
         login = false
-        
+
         // 清除JPush别名
 //        clearJPushAlias()
     }
@@ -179,8 +179,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - build main(home) page
     func buildUserInterface(){
-
-        let login = NSUserDefaults.standardUserDefaults().boolForKey("login")
 
         if login {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

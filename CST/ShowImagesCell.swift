@@ -1,39 +1,35 @@
 //
-//  ImagesCell.swift
+//  ShowImagesCell.swift
 //  CST
 //
-//  Created by henry on 16/2/15.
+//  Created by henry on 16/3/8.
 //  Copyright © 2016年 9joint. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import MapKit
 import Eureka
 import AlamofireImage
 import SSImageBrowser
 
-protocol ShowImagesProtocol: NSObjectProtocol {
-    func showImages(images: [SSPhoto], currentImageView: UIImageView)
-}
-
-//MARK: ImagesCell : 新添加的选择照片
-public class ImagesCell : Cell<Set<String>>, CellType {
+//MARK: ShowImagesCell
+public class ShowImagesCell : Cell<Set<String>>, CellType {
     
     weak var delegateShow: ShowImagesProtocol!
     
-    var maxAddNum = 0           // 最多可以上传的照片数
     var photos = [SSPhoto]()
     var count = 0
-    var images: [UIImage]?    // 通过图片选择控件选中的图片集合
+    var urls = [String]()       // 已经上传的图片的URL集合
     
     func initData(){
         
-        count = images!.count
+        if let value = row.value {
+            count = value.count
+            urls = Array(value.flatMap{$0})
+        }
         
         height = {
             var h: CGFloat
-            let c = self.maxAddNum
+            let c = self.count
             
             switch c {
             case 0:
@@ -51,7 +47,7 @@ public class ImagesCell : Cell<Set<String>>, CellType {
     }
     
     public override func setup() {
-        images = [UIImage]()
+
         photos = [SSPhoto]()
         
         row.title = nil
@@ -62,16 +58,11 @@ public class ImagesCell : Cell<Set<String>>, CellType {
         reloadData()
     }
     
-    public override func update() {
-        initData()
-        reloadData()
-    }
-    
     func reloadData(){
         if count == 0 {
             return
         }
-
+        
         if contentView.subviews.count>0 {
             for subview in contentView.subviews {
                 subview.removeFromSuperview()
@@ -93,25 +84,28 @@ public class ImagesCell : Cell<Set<String>>, CellType {
             
             let imageView = UIImageView(frame: CGRectMake(x, y, itemWidth, itemHeight))
             imageView.contentMode = .ScaleAspectFit
-            imageView.tag = 2001 + i
-            
-            imageView.image = images![i]
+            imageView.tag = 1001 + i
+            let surl = urls[i]
+            let url = NSURL(string: surl)!
+            imageView.af_setImageWithURL(url)
             
             let tap = UITapGestureRecognizer(target: self, action: "imageOnScreenTapped:")
             imageView.addGestureRecognizer(tap)
             imageView.userInteractionEnabled = true
             
             self.contentView.addSubview(imageView)
+
         }
     }
     
     func imageOnScreenTapped(sender: UITapGestureRecognizer) {
-        if !photos.isEmpty {
-            photos.removeAll()
-        }
-        
-        for i in 0..<count {
-            photos.append(SSPhoto(image: images![i]))
+        if photos.isEmpty {
+            for i in 0..<count {
+                let imageView = self.contentView.viewWithTag(1001 + i) as? UIImageView
+                if let image = imageView!.image {
+                    photos.append(SSPhoto(image: image))
+                }
+            }
         }
         
         let imageView = sender.view as! UIImageView
@@ -120,12 +114,12 @@ public class ImagesCell : Cell<Set<String>>, CellType {
     
 }
 
-//MARK: ImagesRow
-public final class ImagesRow: Row<Set<String>, ImagesCell>, RowType {
+//MARK: ShowImagesRow
+public final class ShowImagesRow: Row<Set<String>, ShowImagesCell>, RowType {
     
     required public init(tag: String?) {
         super.init(tag: tag)
         displayValueFor = nil
-        cellProvider = CellProvider<ImagesCell>(nibName: "ImagesCell")
+        cellProvider = CellProvider<ShowImagesCell>(nibName: "ShowImagesCell")
     }
 }

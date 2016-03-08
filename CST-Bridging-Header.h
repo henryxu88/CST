@@ -6,6 +6,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "XZMTabbarExtension.h"
+#import "GHWalkThroughView.h"
 
 #import <pop/POP.h>
 

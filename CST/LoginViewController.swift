@@ -21,7 +21,25 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        navigationController?.navigationBarHidden = true
+        // 先判断是否已经登录过,如果已经登录过，则跳过介绍页面
+        if NSUserDefaults.standardUserDefaults().stringForKey("hasLogged") != "yes" {
+            let ghView = GHWalkThroughView(frame: view.bounds)
+            ghView.dataSource = self
+            
+            ghView.floatingHeaderView = nil
+            ghView.walkThroughDirection = .Horizontal
+//            ghView.closeTitle = "跳过"
+            
+            ghView.showInView(view, animateDuration: 0.3)
+        } else {
+            if appDelegate.login {
+                appDelegate.buildUserInterface()
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +50,6 @@ class LoginViewController: UIViewController {
     func handleLoginSuccess() {
         view.endEditing(true)
         
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "login")
         view.makeToast("登录成功", duration: 2.0, position: ToastPosition.Center)
         // 生成主界面
         appDelegate.buildUserInterface()
@@ -108,6 +125,24 @@ class LoginViewController: UIViewController {
             }
         }
         
+    }
+}
+
+// MARK: - GHWalkThroughViewDataSource
+extension LoginViewController: GHWalkThroughViewDataSource {
+
+    func numberOfPages() -> Int {
+        return 3
+    }
+    
+    func configurePage(cell: GHWalkThroughPageCell!, atIndex index: Int) {
+        cell.titleImage = nil
+        cell.title = ""
+        cell.desc = ""
+    }
+    
+    func bgImageforPage(index: Int) -> UIImage! {
+        return UIImage(named: "welcome0\(index + 1).jpg")
     }
 }
 

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--系统登录-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="CST" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,24 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CST-LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Ex4-cR-2bN">
-                                <rect key="frame" x="130" y="40" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Joz-4C-5Xi"/>
-                                    <constraint firstAttribute="height" constant="60" id="TD5-VG-26S"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vxp-2Z-cME">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="请输入密码" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vxp-2Z-cME">
                                 <rect key="frame" x="20" y="167" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="NMZ-gg-RVN"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyI-D3-FSX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="请输入手机号" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fyI-D3-FSX">
                                 <rect key="frame" x="20" y="115" width="280" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-pR-fck">
@@ -43,7 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Wl-Fo-jAp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="登    录">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -56,6 +49,13 @@
                                     <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rpq-V2-QBX"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CST-LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Ex4-cR-2bN">
+                                <rect key="frame" x="130" y="40" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Joz-4C-5Xi"/>
+                                    <constraint firstAttribute="height" constant="60" id="TD5-VG-26S"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -72,6 +72,7 @@
                             <constraint firstAttribute="trailing" secondItem="Vxp-2Z-cME" secondAttribute="trailing" constant="20" id="tvR-bD-Rjn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="系统登录" id="Bxz-ip-zFP"/>
                     <connections>
                         <outlet property="userNameTextField" destination="fyI-D3-FSX" id="6Y5-aK-P2d"/>
                         <outlet property="userPwdTextField" destination="Vxp-2Z-cME" id="ksw-3z-PMI"/>
@@ -79,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-458"/>
+            <point key="canvasLocation" x="840" y="-458"/>
         </scene>
         <!--Project List View Controller-->
         <scene sceneID="Wjw-ud-dg2">
@@ -377,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2K-LJ-pB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128" y="-458"/>
+            <point key="canvasLocation" x="1660" y="-458"/>
         </scene>
         <!--Home Page View Controller-->
         <scene sceneID="Ll6-w0-6sh">
@@ -710,7 +711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebD-zk-SDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3011" y="-43"/>
+            <point key="canvasLocation" x="3543" y="-43"/>
         </scene>
         <!--Proinfo Detail View Controller-->
         <scene sceneID="eph-Jg-p6T">
@@ -967,7 +968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pur-eF-QZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="-474"/>
+            <point key="canvasLocation" x="2224" y="-474"/>
         </scene>
         <!--Item-->
         <scene sceneID="fBW-IA-W5F">
@@ -1005,7 +1006,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pah-0n-3xd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2479" y="-43"/>
+            <point key="canvasLocation" x="3011" y="-43"/>
         </scene>
         <!--Project Tab Bar Contoller-->
         <scene sceneID="jyW-Ek-sKx">

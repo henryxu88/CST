@@ -164,12 +164,17 @@ class MainMenuViewController: UITableViewController {
     func logoutApp(){
         let alertController = UIAlertController(title: "退出当前账号", message: "确定退出当前账号吗？", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
-            // 显示登录界面
-            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
-            self.presentViewController(vc!, animated: true, completion: nil)
+            
             // 用户注销
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.cleanLoginInfo()
+            if let drawer = appDelegate.drawerContainer {
+                drawer.toggleDrawerSide(.Left, animated: true, completion: nil)
+            }
+            // 显示登录界面
+            let vc = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
+            let nav = UINavigationController(rootViewController: vc!)
+            self.presentViewController(nav, animated: true, completion: nil)
             
         })
         let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)

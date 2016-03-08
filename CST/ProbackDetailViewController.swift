@@ -116,10 +116,9 @@ class ProbackDetailViewController: FormViewController {
         
             +++ Section("照片列表")
             
-            <<< ImagesRow("ImagesRow"){
+            <<< ShowImagesRow("ShowImagesRow"){
                 $0.value = Set(proback.photoList.flatMap{$0})
                 $0.cell.delegateShow = self
-                $0.cell.baseTag = 1001
             }
         
     }

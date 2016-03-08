@@ -93,8 +93,11 @@ class ProbackApi {
     // 上传反馈图片
     class func uploadProbackPhoto(keyId: String, image: UIImage, resultClosure:((Bool,Result?) -> Void)) {
         var imageData = UIImageJPEGRepresentation(image, 1.0)
+//        print("data org:\(imageData?.length)")
         while imageData?.length > 1000000 { // 图片大于1M就缩小点
+//            print("data before:\(imageData?.length)")
             imageData = UIImageJPEGRepresentation(image, 0.7)
+//            print("data after:\(imageData?.length)")
         }
         
         let url = NetManager.PROBACK_PHOTO_UPLOAD
