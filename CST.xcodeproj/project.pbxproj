@@ -163,6 +163,8 @@
 		B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProleaveDetailViewController.swift; sourceTree = "<group>"; };
 		B24CA68C1C701615005DC99E /* ProbackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackDetailViewController.swift; sourceTree = "<group>"; };
 		B24CA6901C7070F7005DC99E /* ImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCell.xib; sourceTree = "<group>"; };
+		B26328AC1C8FF7AC00337389 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B26328AD1C8FF7AC00337389 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B28539811C6438160005EC1F /* CalendarDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDate.swift; sourceTree = "<group>"; };
 		B28539831C6438620005EC1F /* CalendarDateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateList.swift; sourceTree = "<group>"; };
 		B28539851C6489640005EC1F /* ProsigninDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProsigninDetailViewController.swift; sourceTree = "<group>"; };
@@ -683,7 +685,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = B2A1216B1C48C31B00D28BBF;
@@ -915,6 +916,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B2062FBB1C53B84A00397181 /* Base */,
+				B26328AC1C8FF7AC00337389 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -923,6 +925,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B2A121841C48C31B00D28BBF /* Base */,
+				B26328AD1C8FF7AC00337389 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1026,44 +1029,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-framework",
-					"\"Alamofire\"",
-					"-framework",
-					"\"AlamofireImage\"",
-					"-framework",
-					"\"CryptoSwift\"",
-					"-framework",
-					"\"DACircularProgress\"",
-					"-framework",
-					"\"Eureka\"",
-					"-framework",
-					"\"FSCalendar\"",
-					"-framework",
-					"\"HMSegmentedControl\"",
-					"-framework",
-					"\"Hokusai\"",
-					"-framework",
-					"\"JSQMessagesViewController\"",
-					"-framework",
-					"\"JSQSystemSoundPlayer\"",
-					"-framework",
-					"\"MBProgressHUD\"",
-					"-framework",
-					"\"MJRefresh\"",
-					"-framework",
-					"\"MMDrawerController\"",
-					"-framework",
-					"\"SDWebImage\"",
-					"-framework",
-					"\"SSImageBrowser\"",
-					"-framework",
-					"\"SwiftFilePath\"",
-					"-framework",
-					"\"SwiftyJSON\"",
-					"-framework",
-					"\"THContactPicker\"",
-					"-framework",
-					"\"pop\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.9joint.CST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1087,44 +1052,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-framework",
-					"\"Alamofire\"",
-					"-framework",
-					"\"AlamofireImage\"",
-					"-framework",
-					"\"CryptoSwift\"",
-					"-framework",
-					"\"DACircularProgress\"",
-					"-framework",
-					"\"Eureka\"",
-					"-framework",
-					"\"FSCalendar\"",
-					"-framework",
-					"\"HMSegmentedControl\"",
-					"-framework",
-					"\"Hokusai\"",
-					"-framework",
-					"\"JSQMessagesViewController\"",
-					"-framework",
-					"\"JSQSystemSoundPlayer\"",
-					"-framework",
-					"\"MBProgressHUD\"",
-					"-framework",
-					"\"MJRefresh\"",
-					"-framework",
-					"\"MMDrawerController\"",
-					"-framework",
-					"\"SDWebImage\"",
-					"-framework",
-					"\"SSImageBrowser\"",
-					"-framework",
-					"\"SwiftFilePath\"",
-					"-framework",
-					"\"SwiftyJSON\"",
-					"-framework",
-					"\"THContactPicker\"",
-					"-framework",
-					"\"pop\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.9joint.CST;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,8 +9,9 @@
 import Foundation
 import Eureka
 import SSImageBrowser
-import ImagePicker
 import MBProgressHUD
+import Photos
+import DKImagePickerController
 
 class ProbackInputViewController: FormViewController {
     
@@ -24,7 +25,9 @@ class ProbackInputViewController: FormViewController {
     var hasUploaded = 0
     var isNewDoc = true
     
-    var imagePickerController: MyImagePickerController?
+    var maxImageAdd = 9
+    var assets: [DKAsset]?
+    
     
     // 提交时数据校验
     func doSubmit() {
@@ -102,7 +105,6 @@ class ProbackInputViewController: FormViewController {
     }
     
     func handleSuccess() {
-        imagePickerController = nil
 
         view.makeToast("反馈信息提交成功！")
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
@@ -153,7 +155,6 @@ class ProbackInputViewController: FormViewController {
         
         let alertController = UIAlertController(title: "确定离开吗？", message: "未保存的数据会丢失！", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
-            self.imagePickerController = nil
 
             if self.isNewDoc {
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -175,9 +176,6 @@ class ProbackInputViewController: FormViewController {
         super.viewDidLoad()
         
         title = "项目反馈"
-        imagePickerController = MyImagePickerController()
-        imagePickerController!.delegate = self
-        imagePickerController!.imageLimit = 9
         
         // set init value
         if proback.id.isEmpty {
@@ -186,7 +184,7 @@ class ProbackInputViewController: FormViewController {
         } else {
             if !proback.photoList.isEmpty {
                 photoList = proback.photoList
-                imagePickerController!.imageLimit -= photoList.count
+                maxImageAdd -= photoList.count
             }
             isNewDoc = false
         }
@@ -280,17 +278,17 @@ class ProbackInputViewController: FormViewController {
             }
             
             +++ Section("新添加的照片列表"){
-                $0.hidden = Condition.Predicate(NSPredicate(value: imagePickerController!.imageLimit == 0))
+                $0.hidden = Condition.Predicate(NSPredicate(value: maxImageAdd == 0))
             }
  
             <<< ButtonRow("imagesButtonRow") {
-                $0.title = "添加图片［最多\(imagePickerController!.imageLimit)张］"
+                $0.title = "添加图片［最多\(maxImageAdd)张］"
                 $0.onCellSelection(self.imagesButtonTapped)
             }
             
             <<< ImagesRow("ImagesRow"){
                 $0.cell.delegateShow = self
-                $0.cell.maxAddNum = imagePickerController!.imageLimit
+                $0.cell.maxAddNum = maxImageAdd
             }
     }
     
@@ -309,10 +307,72 @@ class ProbackInputViewController: FormViewController {
         
     }
     
+    // photo methods
+    func showImagePickerWithAssetType(
+        assetType: DKImagePickerControllerAssetType,
+        allowMultipleType: Bool,
+        sourceType: DKImagePickerControllerSourceType = [.Camera, .Photo],
+        allowsLandscape: Bool,
+        singleSelect: Bool) {
+            
+            let pickerController = DKImagePickerController()
+            pickerController.assetType = assetType
+            pickerController.allowsLandscape = allowsLandscape
+            pickerController.allowMultipleTypes = allowMultipleType
+            pickerController.sourceType = sourceType
+            pickerController.singleSelect = singleSelect
+            pickerController.showsCancelButton = true
+            pickerController.maxSelectableCount = self.maxImageAdd
+            pickerController.showsEmptyAlbums = false
+//            pickerController.defaultAssetGroup = PHAssetCollectionSubtype.SmartAlbumFavorites
+            
+            // Clear all the selected assets if you used the picker controller as a single instance.
+            //			pickerController.defaultSelectedAssets = nil
+            pickerController.defaultSelectedAssets = self.assets
+            
+            pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+                self.assets = assets
+                self.reloadAddImagesRow()
+            }
+            
+            self.presentViewController(pickerController, animated: true) {}
+    }
+    
+    func reloadAddImagesRow(){
+        
+        if let assets = assets {
+            
+            if assets.count > 0 {
+                let size = CGSize(width: 800, height: 800)
+                newImages = [UIImage]()
+
+                for asset in assets {
+                    asset.fetchImageWithSize(size, completeBlock: { image, info in
+                        self.newImages!.append(image!)
+                        if assets.count == self.newImages?.count {
+                            self.refreshImagesRow()
+                        }
+                    })
+                }
+
+            }
+            
+        }
+    }
+    
+    func refreshImagesRow(){
+        let row: ImagesRow? = self.form.rowByTag("ImagesRow")
+        row?.cell.images = self.newImages
+        row?.cell.update()
+    }
+    
     func imagesButtonTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
-
-        presentViewController(imagePickerController!, animated: true, completion: nil)
-
+        showImagePickerWithAssetType(
+            DKImagePickerControllerAssetType.AllPhotos,
+            allowMultipleType: true,
+            allowsLandscape: true,
+            singleSelect: false
+        )
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -389,37 +449,3 @@ extension ProbackInputViewController: UserPickerProtocol {
         }
     }
 }
-
-// MARK: - 选择图片控制器的代理
-extension ProbackInputViewController: ImagePickerDelegate {
-    func wrapperDidPress(images: [UIImage]) {
-        
-    }
-    
-    func doneButtonDidPress(images: [UIImage]) {
-        if images.count == 0 {
-            return
-        }
-        
-        if images.count>0 {
-            newImages = [UIImage]()
-            for image in images {
-                let ratio = image.size.width / image.size.height
-                let smallImage = image.af_imageAspectScaledToFitSize(CGSize(width: 800, height: 800 / ratio))
-                newImages!.append(smallImage)
-
-            }
-        }
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        
-        let row: ImagesRow? = self.form.rowByTag("ImagesRow")
-        row?.cell.images = images
-        row?.cell.update()
-    }
-    
-    func cancelButtonDidPress() {
-        
-    }
-}
-

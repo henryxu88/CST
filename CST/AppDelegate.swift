@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import MMDrawerController
-import SwiftFilePath
 import AlamofireImage
 
 @UIApplicationMain

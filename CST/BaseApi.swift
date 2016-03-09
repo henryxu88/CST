@@ -57,9 +57,9 @@ class BaseApi {
         let urlRequest = BaseApi.photoUrlRequestWithComponents(requestUrl, imageData: data)
         
         Alamofire.upload(urlRequest.0, data: urlRequest.1)
-            .progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
-                print("bytesRead:\(bytesRead) totalBytesRead:\(totalBytesRead) totalBytesExpectedToRead:\(totalBytesExpectedToRead)")
-            }
+//            .progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
+//                print("bytesRead:\(bytesRead) totalBytesRead:\(totalBytesRead) totalBytesExpectedToRead:\(totalBytesExpectedToRead)")
+//            }
             .responseJSON(completionHandler: handler)
        
     }

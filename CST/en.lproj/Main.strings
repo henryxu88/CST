@@ -1,0 +1,102 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "1Ys-ak-otp"; */
+"1Ys-ak-otp.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "交流信息"; ObjectID = "4aw-ia-xIP"; */
+"4aw-ia-xIP.title" = "交流信息";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "6Pk-5s-1kU"; */
+"6Pk-5s-1kU.text" = "Title";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "91O-wy-1vQ"; */
+"91O-wy-1vQ.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "B0E-sA-aWA"; */
+"B0E-sA-aWA.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "系统登录"; ObjectID = "Bxz-ip-zFP"; */
+"Bxz-ip-zFP.title" = "系统登录";
+
+/* Class = "UITabBarItem"; title = "考勤日历"; ObjectID = "DXK-ab-maf"; */
+"DXK-ab-maf.title" = "考勤日历";
+
+/* Class = "UINavigationItem"; title = "考勤日历"; ObjectID = "Dr9-7J-CFb"; */
+"Dr9-7J-CFb.title" = "考勤日历";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "IOc-77-7up"; */
+"IOc-77-7up.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "OJs-R3-fKt"; */
+"OJs-R3-fKt.text" = "Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "PjI-aF-Q1F"; */
+"PjI-aF-Q1F.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "批注一览"; ObjectID = "Qdp-N2-zbe"; */
+"Qdp-N2-zbe.title" = "批注一览";
+
+/* Class = "UIButton"; normalTitle = "登    录"; ObjectID = "SqI-pR-fck"; */
+"SqI-pR-fck.normalTitle" = "登    录";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "UcF-oT-hwt"; */
+"UcF-oT-hwt.text" = "Detail";
+
+/* Class = "UINavigationItem"; title = "公告信息"; ObjectID = "Unl-ft-Amh"; */
+"Unl-ft-Amh.title" = "公告信息";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Vmn-St-X2S"; */
+"Vmn-St-X2S.text" = "Subtitle";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "Vxp-2Z-cME"; */
+"Vxp-2Z-cME.placeholder" = "请输入密码";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "WtR-im-zii"; */
+"WtR-im-zii.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "联系人信息"; ObjectID = "X5h-dZ-otU"; */
+"X5h-dZ-otU.title" = "联系人信息";
+
+/* Class = "UINavigationItem"; title = "项目签到"; ObjectID = "Ylg-ke-EEn"; */
+"Ylg-ke-EEn.title" = "项目签到";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "a2u-3t-hIb"; */
+"a2u-3t-hIb.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "eRn-qx-g8l"; */
+"eRn-qx-g8l.title" = "Item 2";
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "fyI-D3-FSX"; */
+"fyI-D3-FSX.placeholder" = "请输入手机号";
+
+/* Class = "UINavigationItem"; title = "系统菜单"; ObjectID = "hEs-hE-oD9"; */
+"hEs-hE-oD9.title" = "系统菜单";
+
+/* Class = "UINavigationItem"; title = "项目反馈"; ObjectID = "iK8-UN-oE2"; */
+"iK8-UN-oE2.title" = "项目反馈";
+
+/* Class = "UINavigationItem"; title = "交流信息"; ObjectID = "jja-zK-ye1"; */
+"jja-zK-ye1.title" = "交流信息";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "oPx-0a-Q9X"; */
+"oPx-0a-Q9X.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "pvS-cZ-gL3"; */
+"pvS-cZ-gL3.text" = "Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ro9-cd-0uH"; */
+"ro9-cd-0uH.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ske-DH-Hee"; */
+"ske-DH-Hee.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "选择人员"; ObjectID = "ugD-Rn-h4y"; */
+"ugD-Rn-h4y.title" = "选择人员";
+
+/* Class = "UINavigationItem"; title = "客户信息"; ObjectID = "v7D-5m-XX7"; */
+"v7D-5m-XX7.title" = "客户信息";
+
+/* Class = "UINavigationItem"; title = "项目请假"; ObjectID = "vPE-wu-mHf"; */
+"vPE-wu-mHf.title" = "项目请假";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ypP-7f-PQE"; */
+"ypP-7f-PQE.text" = "Title";

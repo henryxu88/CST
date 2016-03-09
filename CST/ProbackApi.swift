@@ -96,7 +96,7 @@ class ProbackApi {
 //        print("data org:\(imageData?.length)")
         while imageData?.length > 1000000 { // 图片大于1M就缩小点
 //            print("data before:\(imageData?.length)")
-            imageData = UIImageJPEGRepresentation(image, 0.7)
+            imageData = UIImageJPEGRepresentation(image, 0.5)
 //            print("data after:\(imageData?.length)")
         }
         
