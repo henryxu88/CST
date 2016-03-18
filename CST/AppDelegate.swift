@@ -42,8 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         login = true
         
         //如果未登录，则设置推送参数
-//        setJPushAlias(user.id)
-   
+        setAlias()
     }
     
     func cleanLoginInfo() {
@@ -54,7 +53,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         login = false
 
         // 清除JPush别名
-//        clearJPushAlias()
+        JPUSHService.setAlias("", callbackSelector: nil, object: self)
+    }
+    
+    func setAlias() {
+        if !loginUid.isEmpty {
+            JPUSHService.setAlias(loginUid, callbackSelector: "aliasCallback:tags:alias:", object: self)
+        }
+    }
+    
+    func aliasCallback(code: Int32, tags: NSSet?, alias: NSString?){
+        switch code {
+        case 0:
+            print("设置推送（别名）成功!")
+        case 6002:
+            print("设置推送（别名）超时，20秒后再次尝试")
+            self.performSelector("setAlias", withObject: nil, afterDelay: 20)
+        default:
+            print("设置推送（别名）失败")
+            break
+        }
+        
     }
 
     // MARK: - app life circyle
@@ -62,8 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // location 
         mapManager = BMKMapManager() // 初始化 BMKMapManager
-        // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key
-        let ret = mapManager?.start("MlgNspG5faWfR7koWpLGtxN1", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
+        // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key Release: MlgNspG5faWfR7koWpLGtxN1
+        let ret = mapManager?.start("xd3uZTc1GUSl8UatHdULp7Mo", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
         if let ret = ret where ret {
             print("mapManager start success!")
         } else {
@@ -71,9 +90,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // JPush : 
+        JPUSHService.registerForRemoteNotificationTypes(UIUserNotificationType.Badge.rawValue + UIUserNotificationType.Sound .rawValue + UIUserNotificationType.Alert.rawValue, categories: nil)
+        // Release: c7b6e401927f91b143609040
+        JPUSHService.setupWithOption(launchOptions, appKey: "9f79c4d603f2050cb7e8ab1c", channel: "App Store", apsForProduction: false)
         
+        // custom appearance
         customizeAppearance()
-        
         
         return true
     }
@@ -89,7 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        // 重置推送通知
+        application.applicationIconBadgeNumber = 0
+        application.cancelAllLocalNotifications()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -102,6 +126,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    // MARK: - Remote Notification
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // Required
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // IOS 7+ Support Required
+        if (application.applicationState != UIApplicationState.Active) {
+            if currentUser == nil {
+                // 显示登录界面
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
+                let nav = UINavigationController(rootViewController: vc!)
+                window?.rootViewController = nav
+            } else {
+                buildUserInterface()
+            }
+        }
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.NoData)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("did Fail To Register For Remote Notifications With Error:\(error)")
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        JPUSHService.showLocalNotificationAtFront(notification, identifierKey: nil)
+    }
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -180,6 +236,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func buildUserInterface(){
 
         if login {
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let main = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as? HomePageViewController

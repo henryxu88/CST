@@ -160,7 +160,7 @@ extension CommentListViewController: UITableViewDataSource {
         
         let comment = comments[indexPath.row]
         cell.titleLabel.text = comment.subject
-        cell.subTitleLabel.text = "[\(comment.createDate)]"
+        cell.subTitleLabel.text = "[\(comment.createDate)] \(comment.text)"
         cell.rightSubtitleLabel.text = comment.createrName
         
         return cell

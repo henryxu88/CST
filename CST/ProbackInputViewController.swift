@@ -343,16 +343,22 @@ class ProbackInputViewController: FormViewController {
         if let assets = assets {
             
             if assets.count > 0 {
-                let size = CGSize(width: 800, height: 800)
+//                let size = CGSize(width: 800, height: 800)
                 newImages = [UIImage]()
 
                 for asset in assets {
-                    asset.fetchImageWithSize(size, completeBlock: { image, info in
+                    asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
                         self.newImages!.append(image!)
                         if assets.count == self.newImages?.count {
                             self.refreshImagesRow()
                         }
                     })
+//                    asset.fetchImageWithSize(size, completeBlock: { image, info in
+//                        self.newImages!.append(image!)
+//                        if assets.count == self.newImages?.count {
+//                            self.refreshImagesRow()
+//                        }
+//                    })
                 }
 
             }

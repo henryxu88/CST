@@ -7,6 +7,7 @@
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "XZMTabbarExtension.h"
 #import "GHWalkThroughView.h"
+#import "JPUSHService.h"
 
 #import <pop/POP.h>
 

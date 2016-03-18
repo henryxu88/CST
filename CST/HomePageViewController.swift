@@ -12,6 +12,11 @@ class HomePageViewController: UITabBarController {
 
     var itemArray = [UITabBarItem]()
     
+    deinit {
+//        let defaultCenter = NSNotificationCenter.defaultCenter()
+//        defaultCenter.removeObserver(self, name: kJPFNetworkDidLoginNotification, object: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -24,6 +29,9 @@ class HomePageViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let defaultCenter = NSNotificationCenter.defaultCenter()
+//        defaultCenter.addObserver(self, selector: "networkDidLogin:", name: kJPFNetworkDidLoginNotification, object: nil)
 
         /** 添加子控制器 */
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -95,6 +103,14 @@ class HomePageViewController: UITabBarController {
         customTabBar.delegate = self
         
         self.tabBar.addSubview(customTabBar)
+    }
+    
+    func networkDidLogin(notification: NSNotification) {
+        print("已登录 get RegistrationID:\(JPUSHService.registrationID())")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if appDelegate.isLogin() {
+            JPUSHService.setAlias(appDelegate.loginUid, callbackSelector: nil, object: self)
+        }
     }
 
 }
