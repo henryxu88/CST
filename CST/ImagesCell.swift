@@ -97,7 +97,7 @@ public class ImagesCell : Cell<Set<String>>, CellType {
             
             imageView.image = images![i]
             
-            let tap = UITapGestureRecognizer(target: self, action: "imageOnScreenTapped:")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ImagesCell.imageOnScreenTapped(_:)))
             imageView.addGestureRecognizer(tap)
             imageView.userInteractionEnabled = true
             

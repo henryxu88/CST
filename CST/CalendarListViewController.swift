@@ -80,20 +80,20 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
          }
     }
     
-    func calendar(calendar: FSCalendar!, hasEventForDate date: NSDate!) -> Bool {
+    func calendar(calendar: FSCalendar, hasEventForDate date: NSDate) -> Bool {
         if eventDates.isEmpty {
             return false
         }
         return eventDates.contains(date)
     }
     
-    func calendarCurrentPageDidChange(calendar: FSCalendar!) {
+    func calendarCurrentPageDidChange(calendar: FSCalendar) {
 //        print("change page to \(calendar.stringFromDate(calendar.currentPage))")    change page to 2015-08-01
         getEventDates(calendar.currentPage)
     }
     
     // FSCalendarDelegate
-    func calendar(calendar: FSCalendar!, didSelectDate date: NSDate!) {
+    func calendar(calendar: FSCalendar, didSelectDate date: NSDate) {
         selectedDate = date
         tableView.mj_header.beginRefreshing()
     }
@@ -107,8 +107,8 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(CalendarListViewController.headerRefresh))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(CalendarListViewController.footerRefresh))
     }
     
     
@@ -124,7 +124,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.calendarEvents = objs!
                     self.tableView.reloadData()
                 }else {
@@ -155,7 +155,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.calendarEvents.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.tableView.mj_footer.endRefreshing()
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 } else  {

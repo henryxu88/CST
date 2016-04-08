@@ -51,7 +51,7 @@ class MyMessagesViewController: UIViewController {
         setTableView()
         
         // observer
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "markDocReaded", name: "Notification_MarkDocReadedSuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyMessagesViewController.markDocReaded), name: "Notification_MarkDocReadedSuccess", object: nil)
         
     }
     
@@ -94,7 +94,7 @@ class MyMessagesViewController: UIViewController {
 //        segmentedControl.scrollView.addSubview(button)
 //        view.addSubview(button)
 
-        segmentedControl.addTarget(self, action: "segmentIndexChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(MyMessagesViewController.segmentIndexChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
         view.addSubview(segmentedControl)
         
@@ -145,12 +145,12 @@ class MyMessagesViewController: UIViewController {
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView1.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView1.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
-        tableView2.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView2.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
-        tableView3.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView3.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView1.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView1.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
+        tableView2.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView2.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
+        tableView3.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView3.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
     }
     
     
@@ -165,7 +165,7 @@ class MyMessagesViewController: UIViewController {
                 self.tableView1.mj_header.endRefreshing()
                 if result {
                     if objs != nil {
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.comments = objs!
                         self.tableView1.reloadData()
                         
@@ -180,7 +180,7 @@ class MyMessagesViewController: UIViewController {
                 self.tableView2.mj_header.endRefreshing()
                 if result {
                     if objs != nil {
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.announces = objs!
                         self.tableView2.reloadData()
                         
@@ -195,7 +195,7 @@ class MyMessagesViewController: UIViewController {
                 self.tableView3.mj_header.endRefreshing()
                 if result {
                     if objs != nil {
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.probacks = objs!
                         self.tableView3.reloadData()
                         
@@ -228,7 +228,7 @@ class MyMessagesViewController: UIViewController {
                             self.comments.append(obj)
                             indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                         }
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tableView1.mj_footer.endRefreshing()
                         self.tableView1.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                        
@@ -252,7 +252,7 @@ class MyMessagesViewController: UIViewController {
                             self.announces.append(obj)
                             indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                         }
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tableView2.mj_footer.endRefreshing()
                         self.tableView2.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                                             }
@@ -275,7 +275,7 @@ class MyMessagesViewController: UIViewController {
                             self.probacks.append(obj)
                             indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                         }
-                        self.pageIndex++
+                        self.pageIndex += 1
                         self.tableView3.mj_footer.endRefreshing()
                         self.tableView3.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                        

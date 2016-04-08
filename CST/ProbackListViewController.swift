@@ -74,8 +74,8 @@ class ProbackListViewController: UIViewController {
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ProbackListViewController.headerRefresh))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ProbackListViewController.footerRefresh))
     }
     
     func getKeyWord() {
@@ -96,7 +96,7 @@ class ProbackListViewController: UIViewController {
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.probacks = objs!
                     self.tableView.reloadData()
                 }
@@ -122,7 +122,7 @@ class ProbackListViewController: UIViewController {
                         self.probacks.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.tableView.mj_footer.endRefreshing()
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }

@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setAlias() {
         if !loginUid.isEmpty {
-            JPUSHService.setAlias(loginUid, callbackSelector: "aliasCallback:tags:alias:", object: self)
+            JPUSHService.setAlias(loginUid, callbackSelector: #selector(AppDelegate.aliasCallback(_:tags:alias:)), object: self)
         }
     }
     
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("设置推送（别名）成功!")
         case 6002:
             print("设置推送（别名）超时，20秒后再次尝试")
-            self.performSelector("setAlias", withObject: nil, afterDelay: 20)
+            self.performSelector(#selector(AppDelegate.setAlias), withObject: nil, afterDelay: 20)
         default:
             print("设置推送（别名）失败")
             break
@@ -224,7 +224,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - appearance
     func customizeAppearance() {
         
-        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barTintColor = Style.barTintColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Style.barTintTextColor]
         

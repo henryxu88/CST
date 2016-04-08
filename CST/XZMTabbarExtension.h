@@ -28,13 +28,13 @@
 @property(nullable,nonatomic,copy) NSArray<UITabBarItem *> *items;        // get/set visible UITabBarItems. default is nil. changes not animated. shown in order
 
 // 设置个性化中间按钮
-@property (nonatomic,weak) UIButton *centerButton;
+@property (nonatomic,weak,nullable) UIButton *centerButton;
 
 // 取消动画
 @property (nonatomic,assign) BOOL cancelAnimation;
 
 // 选中的按钮
-@property (nonatomic,weak) UIButton *seletBtn;
+@property (nonatomic,weak,nullable) UIButton *seletBtn;
 
 /**
  *  设置高亮背景图片

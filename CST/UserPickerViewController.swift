@@ -91,7 +91,7 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
         setupReturnButton()
         
         // fill layout
-        if self.respondsToSelector("edgesForExtendedLayout") {
+        if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
             self.edgesForExtendedLayout = [UIRectEdge.Bottom, UIRectEdge.Left, UIRectEdge.Right]
         }
 
@@ -137,8 +137,8 @@ class UserPickerViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         /*Register for keyboard notifications*/
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserPickerViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserPickerViewController.keyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {

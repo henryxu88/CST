@@ -18,11 +18,11 @@ class ProbackDetailViewController: FormViewController {
     func setupRightButtons(){
         var items = [UIBarButtonItem]()
         
-        let btnComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "commentButtonTapped")
+        let btnComment = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: #selector(ProbackDetailViewController.commentButtonTapped))
         btnComment.tintColor = UIColor.whiteColor()
         items.append(btnComment)
         
-        let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "editButtonTapped")
+        let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: #selector(ProbackDetailViewController.editButtonTapped))
         btnEdit.tintColor = UIColor.whiteColor()
         items.append(btnEdit)
         

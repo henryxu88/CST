@@ -89,7 +89,7 @@ public class ShowImagesCell : Cell<Set<String>>, CellType {
             let url = NSURL(string: surl)!
             imageView.af_setImageWithURL(url)
             
-            let tap = UITapGestureRecognizer(target: self, action: "imageOnScreenTapped:")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ShowImagesCell.imageOnScreenTapped(_:)))
             imageView.addGestureRecognizer(tap)
             imageView.userInteractionEnabled = true
             

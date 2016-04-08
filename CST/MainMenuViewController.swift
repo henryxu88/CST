@@ -192,7 +192,7 @@ class MainMenuViewController: UITableViewController {
             if let drawer = appDelegate.drawerContainer {
                 drawer.toggleDrawerSide(.Left, animated: true, completion: nil)
             }
-            UIControl().sendAction(Selector("suspend"), to: UIApplication.sharedApplication(), forEvent: nil)
+            UIControl().sendAction(#selector(NSURLSessionTask.suspend), to: UIApplication.sharedApplication(), forEvent: nil)
         })
         let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)
         

@@ -123,7 +123,8 @@ class ProbackInputViewController: FormViewController {
     func uploadImage(keyId: String, images:[UIImage], index: Int) {
         ProbackApi.uploadProbackPhoto(keyId, image: images[index], resultClosure: { (isOk, result) -> Void in
             if isOk {
-                let c = ++self.hasUploaded
+                self.hasUploaded += 1
+                let c = self.hasUploaded
                 if c == images.count {
                     self.handleSuccess()
                 } else {

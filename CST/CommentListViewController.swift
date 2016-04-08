@@ -60,8 +60,8 @@ class CommentListViewController: UIViewController {
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(CommentListViewController.headerRefresh))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(CommentListViewController.footerRefresh))
     }
     
     
@@ -74,7 +74,7 @@ class CommentListViewController: UIViewController {
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.comments = objs!
                     self.tableView.reloadData()
                 }
@@ -99,7 +99,7 @@ class CommentListViewController: UIViewController {
                         self.comments.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.tableView.mj_footer.endRefreshing()
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }

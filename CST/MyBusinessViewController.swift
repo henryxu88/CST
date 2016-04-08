@@ -40,9 +40,9 @@ class MyBusinessViewController: UIViewController {
     var menuSheet: Hokusai {
         let menu = Hokusai()
         // Add 3 buttons with their selector
-        menu.addButton("项目签到", target: self, selector: Selector("prjSignin"))
-        menu.addButton("项目反馈", target: self, selector: Selector("showProbackInput"))
-        menu.addButton("项目请假", target: self, selector: Selector("showProleaveInput"))
+        menu.addButton("项目签到", target: self, selector: #selector(MyBusinessViewController.prjSignin))
+        menu.addButton("项目反馈", target: self, selector: #selector(MyBusinessViewController.showProbackInput))
+        menu.addButton("项目请假", target: self, selector: #selector(MyBusinessViewController.showProleaveInput))
         
         menu.fontName = "Verdana-Bold"
         menu.colorScheme = HOKColorScheme.Hokusai
@@ -108,8 +108,8 @@ class MyBusinessViewController: UIViewController {
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyBusinessViewController.headerRefresh))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyBusinessViewController.footerRefresh))
     }
     
     func getKeyWord() {
@@ -130,7 +130,7 @@ class MyBusinessViewController: UIViewController {
             self.tableView.mj_header.endRefreshing()
             if result {
                 if prjs != nil {
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.prjs = prjs!
                     self.tableView.reloadData()
                 }
@@ -156,7 +156,7 @@ class MyBusinessViewController: UIViewController {
                         self.prjs.append(prj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.tableView.mj_footer.endRefreshing()
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }

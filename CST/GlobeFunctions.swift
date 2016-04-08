@@ -27,7 +27,7 @@ extension UIViewController {
 
     //MARK: - 设置系统菜单的显示／隐藏 -
     func setupLeftButton(){
-        let btn = MMDrawerBarButtonItem.init(target: self, action: "hideMenuButtonTapped")
+        let btn = MMDrawerBarButtonItem.init(target: self, action: #selector(UIViewController.hideMenuButtonTapped))
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setLeftBarButtonItem(btn, animated: true)
     }
@@ -39,7 +39,7 @@ extension UIViewController {
     
     //MARK: - 设置返回主界面
     func setupRightButton(){
-        let btn = MMDrawerBarButtonItem.init(target: self, action: "returnHomeButtonTapped")
+        let btn = MMDrawerBarButtonItem.init(target: self, action: #selector(UIViewController.returnHomeButtonTapped))
         btn.image = UIImage(named: "tab_bar_user")
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
@@ -54,7 +54,7 @@ extension UIViewController {
     
     //MARK: - 设置返回上一界面
     func setupReturnButton(){
-        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: "returnButtonTapped")
+        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Reply, target: self, action: #selector(UIViewController.returnButtonTapped))
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setLeftBarButtonItem(btn, animated: true)
     }
@@ -65,14 +65,14 @@ extension UIViewController {
     
     //MARK: - 跳转批注界面
     func setupCommentButton(){
-        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "commentButtonTapped")
+        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: Selector("commentButtonTapped"))
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
     }
     
     //MARK: - 保存按钮
     func setupSaveButton(){
-        let btn = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: "submit")
+        let btn = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("submit"))
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
     }

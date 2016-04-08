@@ -111,8 +111,8 @@ class ProjectListViewController: UIViewController {
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "headerRefresh")
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "footerRefresh")
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(ProjectListViewController.headerRefresh))
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ProjectListViewController.footerRefresh))
     }
     
     func getKeyWord() {
@@ -133,7 +133,7 @@ class ProjectListViewController: UIViewController {
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.proinfos = objs!
                     self.tableView.reloadData()
                 }
@@ -159,7 +159,7 @@ class ProjectListViewController: UIViewController {
                         self.proinfos.append(obj)
                         indexPaths.append(NSIndexPath(forRow: count + i, inSection: 0))
                     }
-                    self.pageIndex++
+                    self.pageIndex += 1
                     self.tableView.mj_footer.endRefreshing()
                     self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
                 }
