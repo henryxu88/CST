@@ -40,7 +40,7 @@ extension UIViewController {
     //MARK: - 设置返回主界面
     func setupRightButton(){
         let btn = MMDrawerBarButtonItem.init(target: self, action: #selector(UIViewController.returnHomeButtonTapped))
-        btn.image = UIImage(named: "tab_bar_user")
+        btn.image = UIImage(named: "home_icon")
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
     }

@@ -10,6 +10,59 @@ import Foundation
 import Alamofire
 
 class UserApi {
+    
+    class func authc(username: String,digest: String,resultClosure:((Bool,User?) -> Void)){
+        
+        var parameters = [String:AnyObject]()
+        
+        parameters["u"] = username
+        parameters["digest"] = digest
+        
+        let url = NetManager.BASE_PATH + NetManager.URL_AUTOLOGIN //+ "?u=" + username + "&digest=" + digest
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let user = User.parse(value)
+                    resultClosure(true,user)
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        Alamofire.request(.POST, url ,parameters: parameters).validate().responseJSON(completionHandler: urlHandler)
+        
+    }
+    
+    class func loginWithDeviceId(username: String,password: String,deviceId: String, resultClosure:((Bool,User?) -> Void)){
+        
+        var parameters = [String:AnyObject]()
+        
+        parameters["username"] = username
+        parameters["password"] = password
+        parameters["deviceId"] = deviceId
+        
+        let url = NetManager.BASE_PATH + NetManager.URL_LOGIN
+        
+        let urlHandler = {(response: Response<AnyObject, NSError>) -> Void in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let user = User.parse(value)
+                    resultClosure(true,user)
+                }
+            case .Failure(let error):
+                print(error)
+                resultClosure(false,nil)
+            }
+        }
+        
+        Alamofire.request(.POST, url ,parameters: parameters).validate().responseJSON(completionHandler: urlHandler)
+        
+    }
 
     class func getUserList(catalog: Int, pageIndex: Int, property: String, keyword: String, resultClosure:((Bool,[UserEasyView]?) -> Void)){
         

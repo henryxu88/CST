@@ -43,7 +43,9 @@ struct NetManager {
     static let BASE_PATH = HOST + "ec-web/app/"
     static let BASE_PATH_COM = HOST + "ec-web/com/"
     
-    static let URL_LOGIN = BASE_PATH + "login.action"
+    static let URL_LOGIN = "login.action"
+    static let URL_AUTOLOGIN = "account!authc.action"
+    static let URL_REGISTER = "account!register.action"
     
     static let USER_LIST = "users!getList.action"
     
@@ -143,7 +145,7 @@ struct Words{
     static var menuCommunicate = "交流一览"
     static var menuAnnoncement = "公告一览"
     
-    static var menuCategoryBusiness = "业务"
+    static var menuCategoryBusiness = "工程泛联客"
     static var menuCategorySetting = "设置"
     
     static var menuUserLogout = "注销用户"

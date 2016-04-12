@@ -28,7 +28,7 @@ class User: NameEntity {
     private(set) var departmentName = ""
     
     class func parse(dict: AnyObject) -> User {
-        var user = User()
+        let user = User()
         var result = Result()
         let json = JSON(dict)
 
@@ -36,14 +36,13 @@ class User: NameEntity {
             result = Result.parse(json["result"])
         }
         if !json["data"].isEmpty {
-            user = User.parse(json["data"])
+            User.parse(json["data"],user: user)
         }
         user.result = result
         return user
     }
     
-    class func parse(json: JSON) -> User {
-        let user = User()
+    class func parse(json: JSON, user: User) {
         
         user.salt = json["salt"].stringValue
         
@@ -63,7 +62,6 @@ class User: NameEntity {
         user.departmentId = json["departmentId"].stringValue
         user.departmentName = json["departmentName"].stringValue
         
-        return user
     }
 
 }

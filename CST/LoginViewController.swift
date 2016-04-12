@@ -35,11 +35,43 @@ class LoginViewController: UIViewController {
             
             ghView.showInView(view, animateDuration: 0.3)
         } else {
-            if appDelegate.login {
-                appDelegate.buildUserInterface()
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let username = userDefaults.stringForKey("username")
+            let digest = userDefaults.stringForKey("digest")
+            
+            if let username=username, digest=digest {
+                autoLogin(username,digest:digest)
             }
         }
         
+    }
+    
+    func autoLogin(username: String,digest: String){
+        UserApi.authc(username, digest: digest, resultClosure: { (result, user) in
+            if result {
+                if let user = user {
+                    let res = user.result
+                    
+                    if res.OK() {
+                        //登录成功
+                        user.username = username
+                        user.digest = digest
+                        self.appDelegate.saveLoginInfo(user)
+                        
+                        //跳转到主界面
+                        self.appDelegate.buildUserInterface()
+                    } else {
+                        //登录失败
+                        let msg = res.errorMessage
+                        self.view.makeToast("自动登录失败：\(msg)", duration: 3.0, position: .Center)
+                    }
+                }
+                
+            } else {
+                self.view.makeToast("对不起，现在无法自动登录！", duration: 3.0, position: .Center)
+            }
+        })
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,9 +103,17 @@ class LoginViewController: UIViewController {
         }
         
         //设备唯一码
-        guard let deviceId = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
-            displayMessage("无法获取设备的唯一码！")
-            return
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userDeviceId = userDefaults.stringForKey("userDeviceId")
+        var deviceId = ""
+        if let userDeviceId=userDeviceId {
+            deviceId = userDeviceId
+        } else {
+            guard let deviceId = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
+                displayMessage("无法获取设备的唯一码！")
+                return
+            }
+            userDefaults.setObject(deviceId, forKey: "userDeviceId")
         }
         
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -81,17 +121,10 @@ class LoginViewController: UIViewController {
         hud.detailsLabelText = "正在登录，请等待......"
         hud.userInteractionEnabled = false
         
-        let url = NetManager.URL_LOGIN
-        let parameters = ["username": userName, "password": userPwd, "deviceId": deviceId]
-        Alamofire.request(.POST, url ,parameters: parameters).validate().responseJSON { response in
+        UserApi.loginWithDeviceId(userName, password: userPwd, deviceId: deviceId) { (result, user) in
             hud.hide(true)
-            
-            switch response.result {
-            case .Success:
-                
-                if let value = response.result.value {
-                    
-                    let user = User.parse(value)
+            if result {
+                if let user = user {
                     let res = user.result
                     
                     if res.OK() {
@@ -102,8 +135,10 @@ class LoginViewController: UIViewController {
                         
                         self.appDelegate.saveLoginInfo(user)
                         
-                        //记录是否曾经登录
+                        // 记录下必要信息
                         let userDefaults = NSUserDefaults.standardUserDefaults()
+                        userDefaults.setObject(user.username, forKey: "username")
+                        userDefaults.setObject(user.digest, forKey: "digest")
                         userDefaults.setObject("yes", forKey: "hasLogged")
                         userDefaults.synchronize()
                         
@@ -112,15 +147,12 @@ class LoginViewController: UIViewController {
                     } else {
                         //登录失败
                         self.appDelegate.cleanLoginInfo()
-//                        let code = res.errorCode
                         let msg = res.errorMessage
-//                        let info = "错误代码 － \(code) 错误信息 － \(msg)"
                         self.view.makeToast("登录失败：\(msg)", duration: 3.0, position: .Center)
                     }
                 }
                 
-            case .Failure(let error):
-                print(error)
+            } else {
                 self.view.makeToast("对不起，现在无法登录！", duration: 3.0, position: .Center)
             }
         }

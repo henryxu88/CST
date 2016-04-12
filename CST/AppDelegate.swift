@@ -51,6 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginName = ""
         loginDigest = ""
         login = false
+        
+        // 清除记录下的信息
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.removeObjectForKey("username")
+        userDefaults.removeObjectForKey("digest")
+        userDefaults.removeObjectForKey("hasLogged")
+        userDefaults.synchronize()
 
         // 清除JPush别名
         JPUSHService.setAlias("", callbackSelector: nil, object: self)
@@ -241,13 +248,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let main = storyboard.instantiateViewControllerWithIdentifier("HomePageViewController") as? HomePageViewController
             let left = storyboard.instantiateViewControllerWithIdentifier("MainMenuViewController") as? MainMenuViewController
+            let right = storyboard.instantiateViewControllerWithIdentifier("SelPrjViewController") as? SelPrjViewController
             
-            guard let mainVC = main,leftVC = left else {
+            guard let mainVC = main,leftVC = left,rightVC = right else {
                 return
             }
             let leftNav = UINavigationController(rootViewController: leftVC)
+            let rightNav = UINavigationController(rootViewController: rightVC)
             
-            drawerContainer = MMDrawerController(centerViewController: mainVC, leftDrawerViewController: leftNav)
+            drawerContainer = MMDrawerController(centerViewController: mainVC, leftDrawerViewController: leftNav, rightDrawerViewController: rightNav)
             drawerContainer?.showsShadow = false
             
             drawerContainer?.maximumLeftDrawerWidth = 240

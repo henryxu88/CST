@@ -13,7 +13,8 @@ class MainMenuViewController: UITableViewController {
     
     var menuText = ""
     let businessMenu = [Words.menuClient,Words.menuLinker,Words.menuProject,Words.menuSignin,Words.menuFeedback,Words.menuCommunicate,Words.menuAnnoncement]
-    let settingMenu = [Words.menuUserLogout , Words.menuExitApp]
+    let settingMenu = [Words.menuUserLogout]
+//    let settingMenu = [Words.menuUserLogout , Words.menuExitApp]
     let sectionMenu = [Words.menuCategoryBusiness , Words.menuCategorySetting]
     let cellID = "MenuCell"
 
@@ -152,7 +153,8 @@ class MainMenuViewController: UITableViewController {
             case Words.menuUserLogout:
                 logoutApp()
             case Words.menuExitApp:
-                exitApp()
+                break
+//                exitApp()
             default:
                 break
             }

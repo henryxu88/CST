@@ -124,6 +124,7 @@
 		B2F5E3B91C58B2F10020EAE5 /* EntityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */; };
 		B2F5E3BB1C58B5B00020EAE5 /* ProinfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */; };
 		B2F5E3BD1C58BC340020EAE5 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */; };
+		B2F75F5D1CBB6CD000401365 /* SelPrjViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F75F5C1CBB6CD000401365 /* SelPrjViewController.swift */; };
 		B2FD4DDD1C84073D0096AFA8 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */; };
 		B2FF93881C74199700807E38 /* CommentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF93871C74199700807E38 /* CommentDetailViewController.swift */; };
 		B2FFF5641C76A07B003133C4 /* UserPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */; };
@@ -287,6 +288,7 @@
 		B2F5E3B81C58B2F10020EAE5 /* EntityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityList.swift; sourceTree = "<group>"; };
 		B2F5E3BA1C58B5B00020EAE5 /* ProinfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProinfoList.swift; sourceTree = "<group>"; };
 		B2F5E3BC1C58BC340020EAE5 /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		B2F75F5C1CBB6CD000401365 /* SelPrjViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelPrjViewController.swift; sourceTree = "<group>"; };
 		B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		B2FF93871C74199700807E38 /* CommentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDetailViewController.swift; sourceTree = "<group>"; };
 		B2FFF5631C76A07B003133C4 /* UserPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPickerViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				B24CA68A1C7011AB005DC99E /* ProleaveDetailViewController.swift */,
 				B2C8B5BD1C7D55B4005C733C /* ProleaveInputViewController.swift */,
 				B2FD4DDC1C84073D0096AFA8 /* MyImagePickerController.swift */,
+				B2F75F5C1CBB6CD000401365 /* SelPrjViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				B2A121AD1C48C43500D28BBF /* GlobeFunctions.swift in Sources */,
 				B2F3A73B1C63250B0060D0B0 /* CalendarListViewController.swift in Sources */,
 				B2CAA9131C7B0EC2003AF733 /* MIBadgeButton.swift in Sources */,
+				B2F75F5D1CBB6CD000401365 /* SelPrjViewController.swift in Sources */,
 				B28539861C6489640005EC1F /* ProsigninDetailViewController.swift in Sources */,
 				B28A4FE41C60524F00AAEE5E /* ProbackListViewController.swift in Sources */,
 				B28A4FEA1C60A6B700AAEE5E /* ProjectTabBarContoller.swift in Sources */,
