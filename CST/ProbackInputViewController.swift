@@ -75,7 +75,7 @@ class ProbackInputViewController: FormViewController {
             hud.hide(true)
             if isOk {
                 if let images = self.newImages {
-                    self.view.makeToast("开始上传照片......")
+                    self.view.makeToast("开始上传照片......", duration: 3.0, position: .Center)
                     self.hasUploaded = 0
                     self.uploadImage(result!.errorMessage, images: images, index: 0) // 上传图片
                 } else {
@@ -83,7 +83,7 @@ class ProbackInputViewController: FormViewController {
                 }
                 
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -108,15 +108,8 @@ class ProbackInputViewController: FormViewController {
 
         view.makeToast("反馈信息提交成功！")
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        if isNewDoc {
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        } else {
-            // 跳转到ProbackListViewController界面
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.navigationController?.popToRootViewControllerAnimated(true)
-            }
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
@@ -131,7 +124,7 @@ class ProbackInputViewController: FormViewController {
                     self.uploadImage(keyId, images: images, index: c)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }
@@ -147,7 +140,7 @@ class ProbackInputViewController: FormViewController {
                     row?.options = objs.flatMap{ $0.name }
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }
@@ -156,12 +149,12 @@ class ProbackInputViewController: FormViewController {
         
         let alertController = UIAlertController(title: "确定离开吗？", message: "未保存的数据会丢失！", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
-
-            if self.isNewDoc {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                self.navigationController?.popToRootViewControllerAnimated(true)
-            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+//            if self.isNewDoc {
+//                self.dismissViewControllerAnimated(true, completion: nil)
+//            } else {
+//                self.navigationController?.popToRootViewControllerAnimated(true)
+//            }
             
         })
         let cancelAction = UIAlertAction(title: "取消", style: .Default, handler:nil)

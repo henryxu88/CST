@@ -94,7 +94,7 @@ class MyKnowledgesViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -122,7 +122,7 @@ class MyKnowledgesViewController: UIViewController {
                 
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         
@@ -158,7 +158,7 @@ class MyKnowledgesViewController: UIViewController {
                     self.performSegueWithIdentifier("KnowledgeDetail", sender: self)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }

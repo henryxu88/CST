@@ -124,7 +124,7 @@ class SelPrjViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -152,7 +152,7 @@ class SelPrjViewController: UIViewController {
                 
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         
@@ -186,7 +186,7 @@ class SelPrjViewController: UIViewController {
                     }
                 }
             } else {
-                self.view.makeToast("项目签到失败，请重新签到")
+                self.view.makeToast("项目签到失败，请重新签到", duration: 3.0, position: .Center)
             }
         })
     }
@@ -219,7 +219,7 @@ class SelPrjViewController: UIViewController {
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else {
-                self.view.makeToast("初始化项目反馈表失败，请重新反馈！")
+                self.view.makeToast("初始化项目反馈表失败，请重新反馈！", duration: 3.0, position: .Center)
             }
             
         }
@@ -240,7 +240,7 @@ class SelPrjViewController: UIViewController {
                     self.presentViewController(nav, animated: true, completion: nil)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         

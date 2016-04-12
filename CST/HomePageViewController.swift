@@ -15,11 +15,12 @@ class HomePageViewController: UITabBarController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        for childView in self.tabBar.subviews {
-            if !childView.isKindOfClass(XZMTabbarExtension) {
-                childView.removeFromSuperview()
-            }
-        }
+//        for childView in self.tabBar.subviews {
+//            if !childView.isKindOfClass(XZMTabbarExtension) {
+//                childView.removeFromSuperview()
+//            }
+//        }
+        setTabBar()
     }
     
     override func viewDidLoad() {
@@ -40,15 +41,9 @@ class HomePageViewController: UITabBarController {
         let vc3 = storyboard.instantiateViewControllerWithIdentifier("MyKnowledgesViewController") as? MyKnowledgesViewController
         tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_knowledge_nor")!, selImage: UIImage(named: "tab_bar_knowledge")! , title: Words.knowledgeShare)
         
-        setTabBar()
+//        setTabBar()
         
-        // 默认显示第一个tab bar item选中
-        if let tabBar = self.tabBar.subviews[0] as? XZMTabbarExtension {
-            if let btn = tabBar.seletBtn {
-                let myImageView = btn.subviews[0] as! UIImageView
-                myImageView.highlighted = true
-            }
-        }
+       
         
     }
 
@@ -103,6 +98,14 @@ class HomePageViewController: UITabBarController {
         customTabBar.delegate = self
         
         self.tabBar.addSubview(customTabBar)
+        
+        // 默认显示第一个tab bar item选中
+        if let tabBar = self.tabBar.subviews[0] as? XZMTabbarExtension {
+            if let btn = tabBar.seletBtn {
+                let myImageView = btn.subviews[0] as! UIImageView
+                myImageView.highlighted = true
+            }
+        }
     }
     
 }

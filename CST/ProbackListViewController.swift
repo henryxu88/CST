@@ -101,7 +101,7 @@ class ProbackListViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -129,7 +129,7 @@ class ProbackListViewController: UIViewController {
                 
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         
@@ -145,12 +145,14 @@ class ProbackListViewController: UIViewController {
             if result {
                 if let obj = obj {
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackDetailViewController") as? ProbackDetailViewController
-                    vc?.proback = obj
-                    self.navigationController?.pushViewController(vc!, animated: true)
-
+                    if let vc = vc {
+                        vc.proback = obj
+                        let nav = UINavigationController(rootViewController: vc)
+                        self.presentViewController(nav, animated: true, completion: nil)
+                    }
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }

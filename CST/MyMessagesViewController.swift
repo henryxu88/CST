@@ -173,7 +173,7 @@ class MyMessagesViewController: UIViewController {
                         
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         case 12:
@@ -188,7 +188,7 @@ class MyMessagesViewController: UIViewController {
                         
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         case 13:
@@ -203,7 +203,7 @@ class MyMessagesViewController: UIViewController {
                         
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
 
@@ -237,7 +237,7 @@ class MyMessagesViewController: UIViewController {
                     }
                 } else {
                     self.tableView1.mj_footer.endRefreshing()
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         case 12:
@@ -260,7 +260,7 @@ class MyMessagesViewController: UIViewController {
                                             }
                 } else {
                     self.tableView2.mj_footer.endRefreshing()
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         case 13:
@@ -284,7 +284,7 @@ class MyMessagesViewController: UIViewController {
                     }
                 } else {
                     self.tableView3.mj_footer.endRefreshing()
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
             
@@ -322,15 +322,17 @@ class MyMessagesViewController: UIViewController {
                 if let comments = comments {
                     // 跳转到交流界面
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
-                    vc?.comments = comments
-                    vc?.targetId = targetId
-                    vc?.targetClass = targetClass
-                    vc?.keyword = keyword
-                    let nav = UINavigationController(rootViewController: vc!)
-                    self.presentViewController(nav, animated: true, completion: nil)
+                    if let vc = vc {
+                        vc.comments = comments
+                        vc.targetId = targetId
+                        vc.targetClass = targetClass
+                        vc.keyword = keyword
+                        let nav = UINavigationController(rootViewController: vc)
+                        self.presentViewController(nav, animated: true, completion: nil)
+                    }
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -341,12 +343,14 @@ class MyMessagesViewController: UIViewController {
                 if let obj = obj {
                     // 跳转到公告界面
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("AnnounceDetailViewController") as? AnnounceDetailViewController
-                    vc?.announce = obj
-                    let nav = UINavigationController(rootViewController: vc!)
-                    self.presentViewController(nav, animated: true, completion: nil)
+                    if let vc = vc {
+                        vc.announce = obj
+                        let nav = UINavigationController(rootViewController: vc)
+                        self.presentViewController(nav, animated: true, completion: nil)
+                    }
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }
@@ -359,12 +363,13 @@ class MyMessagesViewController: UIViewController {
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackDetailViewController") as? ProbackDetailViewController
                     if let vc = vc {
                         vc.proback = obj
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        let nav = UINavigationController(rootViewController: vc)
+                        self.presentViewController(nav, animated: true, completion: nil)
                     }
                     
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         })
     }

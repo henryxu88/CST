@@ -29,9 +29,9 @@ class ProbackDetailViewController: FormViewController {
         navigationItem.setRightBarButtonItems(items, animated: true)
     }
     
-    override func returnButtonTapped() {
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
+//    override func returnButtonTapped() {
+//        navigationController?.popToRootViewControllerAnimated(true)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,9 +158,14 @@ class ProbackDetailViewController: FormViewController {
     // MARK: - 编辑按钮事件
     func editButtonTapped() {
         // 跳转到ProbackInputViewController界面
-        let vc = storyboard!.instantiateViewControllerWithIdentifier("ProbackInputViewController") as? ProbackInputViewController
-        vc?.proback = proback
-        navigationController?.pushViewController(vc!, animated: true)
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackInputViewController") as? ProbackInputViewController
+        vc?.proback = self.proback
+        let nav = UINavigationController(rootViewController: vc!)
+        
+        let presentingVC = self.presentingViewController
+        self.dismissViewControllerAnimated(true) {
+            presentingVC!.presentViewController(nav, animated: true, completion: nil)
+        }
     }
 }
 

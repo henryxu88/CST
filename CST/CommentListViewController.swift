@@ -79,7 +79,7 @@ class CommentListViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -106,7 +106,7 @@ class CommentListViewController: UIViewController {
                 
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         
@@ -140,7 +140,7 @@ class CommentListViewController: UIViewController {
                     self.performSegueWithIdentifier("CommentDetail", sender: comments)
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }

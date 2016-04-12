@@ -69,7 +69,7 @@ class ResumeListViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
@@ -96,7 +96,7 @@ class ResumeListViewController: UIViewController {
                 
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         

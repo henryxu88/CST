@@ -134,7 +134,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                     }
                 }
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
 
@@ -163,7 +163,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                 }
             } else {
                 self.tableView.mj_footer.endRefreshing()
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
         
@@ -200,7 +200,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.performSegueWithIdentifier("ProleaveDetail", sender: obj)
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         } else if obj.type == "Signin" {
@@ -211,7 +211,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.performSegueWithIdentifier("ProsigninDetail", sender: obj)
                     }
                 } else {
-                    self.view.makeToast(NetManager.requestError)
+                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
                 }
             })
         }

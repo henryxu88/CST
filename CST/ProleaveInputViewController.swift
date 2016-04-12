@@ -50,7 +50,7 @@ class ProleaveInputViewController: FormViewController {
                 }
                 
             } else {
-                self.view.makeToast(NetManager.requestError)
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }
         }
     }
