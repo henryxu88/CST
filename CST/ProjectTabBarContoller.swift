@@ -27,6 +27,11 @@ class ProjectTabBarContoller: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupReturnButton()
+        
+        if itemArray.count>0 {
+            itemArray.removeAll()
+        }
         /** 添加子控制器 */
         // 基本信息
         let vc1 = storyboard!.instantiateViewControllerWithIdentifier("ProinfoDetailViewController") as? ProinfoDetailViewController
@@ -80,7 +85,6 @@ class ProjectTabBarContoller: UITabBarController {
         vc.title = title
         /** 创建模型 */
         let tabBarItem = nav.tabBarItem
-        tabBarItem.title = title
         tabBarItem.image = norImage
         tabBarItem.selectedImage = selImage
         

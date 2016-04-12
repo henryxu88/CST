@@ -35,6 +35,8 @@ class MyMessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController?.hidesBottomBarWhenPushed = true
+        
         // Do any additional setup after loading the view.
         setupLeftButton()
         
@@ -318,7 +320,7 @@ class MyMessagesViewController: UIViewController {
         CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
             if result {
                 if let comments = comments {
-                    // 跳转到公告界面
+                    // 跳转到交流界面
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
                     vc?.comments = comments
                     vc?.targetId = targetId
@@ -353,10 +355,13 @@ class MyMessagesViewController: UIViewController {
         ProbackApi.getProbackDetail(keyId, resultClosure: { (result, obj) -> Void in
             if result {
                 if let obj = obj {
+                    // 跳转到通知界面
                     let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ProbackDetailViewController") as? ProbackDetailViewController
-                    vc?.proback = obj
-                    let nav = UINavigationController(rootViewController: vc!)
-                    self.presentViewController(nav, animated: true, completion: nil)
+                    if let vc = vc {
+                        vc.proback = obj
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
                 }
             } else {
                 self.view.makeToast(NetManager.requestError)

@@ -418,24 +418,6 @@
             </objects>
             <point key="canvasLocation" x="1685" y="3921"/>
         </scene>
-        <!--About User View Controller-->
-        <scene sceneID="xST-hK-ccR">
-            <objects>
-                <viewController storyboardIdentifier="AboutUserViewController" id="ygy-A4-MxG" customClass="AboutUserViewController" customModule="CST" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NCA-xj-EeF"/>
-                        <viewControllerLayoutGuide type="bottom" id="98U-b6-y0Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BqB-Bk-UUD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gdb-PI-434" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="129" y="913"/>
-        </scene>
         <!--项目请假-->
         <scene sceneID="hdK-EU-388">
             <objects>
@@ -759,53 +741,6 @@
             </objects>
             <point key="canvasLocation" x="1129" y="3921"/>
         </scene>
-        <!--考勤日历-->
-        <scene sceneID="hKa-tl-EQK">
-            <objects>
-                <viewController id="UW3-WS-04O" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5h8-2d-VoX"/>
-                        <viewControllerLayoutGuide type="bottom" id="4kk-Rw-SjN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JrV-MX-cgb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="考勤日历" image="tab_bar_knowledge" id="DXK-ab-maf"/>
-                    <navigationItem key="navigationItem" title="考勤日历" id="Dr9-7J-CFb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="vGP-CB-vqE">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="returnBack:" destination="UW3-WS-04O" id="g2T-6f-u57"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2MV-1j-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3003" y="649"/>
-        </scene>
-        <!--交流信息-->
-        <scene sceneID="zhh-uW-JCz">
-            <objects>
-                <viewController id="c5k-7w-zOt" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CUG-cy-54G"/>
-                        <viewControllerLayoutGuide type="bottom" id="Go6-Tc-TJ8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Baf-vs-N25">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="交流信息" image="tab_bar_project" id="4aw-ia-xIP"/>
-                    <navigationItem key="navigationItem" title="交流信息" id="jja-zK-ye1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ebD-zk-SDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4075" y="-43"/>
-        </scene>
         <!--Proinfo Detail View Controller-->
         <scene sceneID="eph-Jg-p6T">
             <objects>
@@ -873,7 +808,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivA-CC-d46" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="320" height="250"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="F54-ik-QQc"/>
@@ -885,7 +820,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z9m-KR-yMo">
-                                <rect key="frame" x="0.0" y="322" width="320" height="246"/>
+                                <rect key="frame" x="0.0" y="286" width="320" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarEventCell" textLabel="ske-DH-Hee" detailTextLabel="Vmn-St-X2S" style="IBUITableViewCellStyleSubtitle" id="yVv-vJ-TLu">
@@ -918,11 +853,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Z9m-KR-yMo" firstAttribute="top" secondItem="ivA-CC-d46" secondAttribute="bottom" constant="8" symbolic="YES" id="JmQ-qB-Ley"/>
-                            <constraint firstItem="ivA-CC-d46" firstAttribute="top" secondItem="MEm-hI-NKO" secondAttribute="bottom" id="WWQ-hh-3C5"/>
                             <constraint firstAttribute="trailing" secondItem="ivA-CC-d46" secondAttribute="trailing" id="YdK-g6-mYV"/>
                             <constraint firstItem="Z9m-KR-yMo" firstAttribute="trailing" secondItem="ivA-CC-d46" secondAttribute="trailing" id="cZx-HT-OsV"/>
                             <constraint firstItem="ivA-CC-d46" firstAttribute="leading" secondItem="Hni-ld-Dnv" secondAttribute="leading" id="fkI-lq-IfR"/>
                             <constraint firstItem="Z9m-KR-yMo" firstAttribute="bottom" secondItem="VjF-ft-41m" secondAttribute="top" id="ix5-hC-uI5"/>
+                            <constraint firstItem="ivA-CC-d46" firstAttribute="top" secondItem="MEm-hI-NKO" secondAttribute="bottom" constant="8" id="m2v-E0-Sf3"/>
                             <constraint firstItem="Z9m-KR-yMo" firstAttribute="leading" secondItem="ivA-CC-d46" secondAttribute="leading" id="vhV-JJ-iFi"/>
                         </constraints>
                     </view>
@@ -1063,44 +998,6 @@
             </objects>
             <point key="canvasLocation" x="2756" y="-474"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="fBW-IA-W5F">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xG8-qi-cdx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1Ys-ak-otp"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pwu-O2-R7k">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UW3-WS-04O" kind="relationship" relationship="rootViewController" id="na9-q4-g5Z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jT1-r6-S0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2479" y="649"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="7vy-Gq-hxQ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="03H-Sw-rGP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="eRn-qx-g8l"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KAk-pk-ULk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="c5k-7w-zOt" kind="relationship" relationship="rootViewController" id="cNW-AG-ChZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pah-0n-3xd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3543" y="-43"/>
-        </scene>
         <!--Project Tab Bar Contoller-->
         <scene sceneID="jyW-Ek-sKx">
             <objects>
@@ -1132,24 +1029,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h5u-pA-8G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1677" y="1601"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="b6A-5c-X0W">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fXh-oD-jfV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nwA-Lu-tjo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eWT-eB-iEH" kind="relationship" relationship="rootViewController" id="vam-Jo-74R"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3l1-Gm-icQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1159" y="1605"/>
         </scene>
         <!--选择人员-->
         <scene sceneID="09c-Fn-USe">
@@ -1384,10 +1263,8 @@
     </scenes>
     <resources>
         <image name="CST-LOGO" width="512" height="512"/>
-        <image name="tab_bar_knowledge" width="30" height="30"/>
-        <image name="tab_bar_project" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DZb-Ep-bBx"/>
+        <segue reference="z3p-ic-LiE"/>
     </inferredMetricsTieBreakers>
 </document>
