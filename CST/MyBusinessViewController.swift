@@ -33,6 +33,8 @@ class MyBusinessViewController: UIViewController {
     var latitudeStr = ""
     var longitudeStr = ""
     
+    @IBOutlet weak var fastButtons: FastButtonsView!
+    
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
     

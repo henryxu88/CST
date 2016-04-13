@@ -21,7 +21,7 @@ class SelPrjViewController: UIViewController {
     var property = "name"
     var keyword = ""
     
-    var handleType = 0
+//    var handleType = 0
     
     var searchController = UISearchController(searchResultsController: nil)
     
@@ -31,6 +31,8 @@ class SelPrjViewController: UIViewController {
     var address = ""
     var latitudeStr = ""
     var longitudeStr = ""
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
@@ -164,7 +166,6 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 1
     func prjSignin() {
-        handleType = 1
         
         lastLocation = locService.userLocation.location
         
@@ -193,7 +194,6 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 2
     func showProbackInput() {
-        handleType = 2
         
         lastLocation = locService.userLocation.location
         
@@ -228,7 +228,6 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 3
     func showProleaveInput() {
-        handleType = 3
         
         ProleaveApi.initProleaveDetail(prjId) { (result, obj) -> Void in
             if result {
@@ -273,8 +272,14 @@ extension SelPrjViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         prjId = prjs[indexPath.row].id
         //        print("prjId: \(prjId)")
+        if appDelegate.handleType ==  "sign" {
+            prjSignin()
+        } else if appDelegate.handleType == "feedback" {
+            showProbackInput()
+        }else if appDelegate.handleType == "leave" {
+            showProleaveInput()
+        }
         
-//        menuSheet.show()    // show menu sheet
     }
 }
 
@@ -330,9 +335,9 @@ extension SelPrjViewController: BMKLocationServiceDelegate , BMKGeoCodeSearchDel
                 displayMessage("无法获得当前位置的地理信息！")
             } else {
                 
-                if handleType ==  1 {
+                if appDelegate.handleType ==  "sign" {
                     prjAssign(latitudeStr, longitude: longitudeStr)
-                } else if handleType == 2 {
+                } else if appDelegate.handleType == "feedback" {
                     probackInput(latitudeStr, longitude: longitudeStr)
                 }
                 

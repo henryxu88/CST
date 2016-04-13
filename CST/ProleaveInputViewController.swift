@@ -17,7 +17,7 @@ class ProleaveInputViewController: FormViewController {
     
     // 保存按钮触发的操作
     func submit() {
-        
+        view.endEditing(true)
         if proleave.leaveDate.isEmpty {
             view.makeToast("请选择请假日期！", duration: 3.0, position: .Center)
             return

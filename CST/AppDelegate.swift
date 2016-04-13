@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let downloader = ImageDownloader()
     let imageCache = AutoPurgingImageCache()
     
+    var handleType = ""
+    
     // MARK: - user login related
     func isLogin() -> Bool {
         return login
@@ -234,6 +236,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barTintColor = Style.barTintColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Style.barTintTextColor]
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
         
         window!.tintColor = Style.tintColor
         window!.backgroundColor = Style.backgroundColor

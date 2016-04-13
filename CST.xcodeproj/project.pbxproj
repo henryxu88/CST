@@ -94,6 +94,10 @@
 		B2DA12E41C7FDF83000645EB /* ProbackInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E31C7FDF83000645EB /* ProbackInputViewController.swift */; };
 		B2DA12E71C802FA9000645EB /* DictEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E61C802FA9000645EB /* DictEntry.swift */; };
 		B2DA12E91C80316F000645EB /* DictEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA12E81C80316F000645EB /* DictEntryList.swift */; };
+		B2DC7ED21CBDD3760071AA57 /* FastButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2DC7ED11CBDD3760071AA57 /* FastButtonsView.xib */; };
+		B2DC7ED41CBDD9A50071AA57 /* FastButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7ED31CBDD9A50071AA57 /* FastButtonsView.swift */; };
+		B2DC7ED71CBE0DD70071AA57 /* SimpleCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7ED51CBE0DD70071AA57 /* SimpleCustomView.swift */; };
+		B2DC7ED81CBE0DD70071AA57 /* SimpleCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2DC7ED61CBE0DD70071AA57 /* SimpleCustomView.xib */; };
 		B2DD391D1C8E6CCB00B8876E /* ShowImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DD391C1C8E6CCB00B8876E /* ShowImagesCell.swift */; };
 		B2DD391F1C8E706B00B8876E /* ShowImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2DD391E1C8E706B00B8876E /* ShowImagesCell.xib */; };
 		B2DD39241C8E9A3100B8876E /* GHWalkThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD39211C8E9A3100B8876E /* GHWalkThroughView.m */; };
@@ -255,6 +259,10 @@
 		B2DA12E31C7FDF83000645EB /* ProbackInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProbackInputViewController.swift; sourceTree = "<group>"; };
 		B2DA12E61C802FA9000645EB /* DictEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictEntry.swift; sourceTree = "<group>"; };
 		B2DA12E81C80316F000645EB /* DictEntryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictEntryList.swift; sourceTree = "<group>"; };
+		B2DC7ED11CBDD3760071AA57 /* FastButtonsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastButtonsView.xib; sourceTree = "<group>"; };
+		B2DC7ED31CBDD9A50071AA57 /* FastButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FastButtonsView.swift; sourceTree = "<group>"; };
+		B2DC7ED51CBE0DD70071AA57 /* SimpleCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCustomView.swift; sourceTree = "<group>"; };
+		B2DC7ED61CBE0DD70071AA57 /* SimpleCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCustomView.xib; sourceTree = "<group>"; };
 		B2DD391C1C8E6CCB00B8876E /* ShowImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImagesCell.swift; sourceTree = "<group>"; };
 		B2DD391E1C8E706B00B8876E /* ShowImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowImagesCell.xib; sourceTree = "<group>"; };
 		B2DD39201C8E9A3100B8876E /* GHWalkThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHWalkThroughView.h; sourceTree = "<group>"; };
@@ -487,6 +495,8 @@
 		B2A121A91C48C3B000D28BBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2DC7ED51CBE0DD70071AA57 /* SimpleCustomView.swift */,
+				B2DC7ED61CBE0DD70071AA57 /* SimpleCustomView.xib */,
 				B2062FBA1C53B84A00397181 /* Main.storyboard */,
 				B2A121831C48C31B00D28BBF /* LaunchScreen.storyboard */,
 				B2C4973C1C4FC39500224007 /* MenuSectionHeaderView.swift */,
@@ -498,6 +508,8 @@
 				B2EF077A1C715EB50009636E /* ImagesCell.swift */,
 				B2DD391C1C8E6CCB00B8876E /* ShowImagesCell.swift */,
 				B2EF773B1C61DF8B00AECC96 /* CommentCell.swift */,
+				B2DC7ED31CBDD9A50071AA57 /* FastButtonsView.swift */,
+				B2DC7ED11CBDD3760071AA57 /* FastButtonsView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -743,6 +755,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2DC7ED21CBDD3760071AA57 /* FastButtonsView.xib in Resources */,
+				B2DC7ED81CBE0DD70071AA57 /* SimpleCustomView.xib in Resources */,
 				B2EF773A1C61DD2900AECC96 /* CommentCell.xib in Resources */,
 				B2DD392F1C8EA43C00B8876E /* welcome03.jpg in Resources */,
 				B2DD392B1C8EA40D00B8876E /* welcome01.jpg in Resources */,
@@ -826,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B285398C1C6490960005EC1F /* ProsigninApi.swift in Sources */,
+				B2DC7ED71CBE0DD70071AA57 /* SimpleCustomView.swift in Sources */,
 				B2DA12E91C80316F000645EB /* DictEntryList.swift in Sources */,
 				B20B279E1C7BF2A5001AF81E /* KnowledgeList.swift in Sources */,
 				B28D6EB31C5B4C9100299D66 /* LinkmanListViewController.swift in Sources */,
@@ -884,6 +899,7 @@
 				B2F5E3B61C58B0B90020EAE5 /* CalendarEvent.swift in Sources */,
 				B2A121801C48C31B00D28BBF /* CST.xcdatamodeld in Sources */,
 				B20B27A01C7BF497001AF81E /* KnowledgeApi.swift in Sources */,
+				B2DC7ED41CBDD9A50071AA57 /* FastButtonsView.swift in Sources */,
 				B285398A1C648EDD0005EC1F /* Proleave.swift in Sources */,
 				B28D6EB51C5B4E6700299D66 /* LinkmanDetailViewController.swift in Sources */,
 				B2C8B5B81C7D3E4E005C733C /* Resume.swift in Sources */,

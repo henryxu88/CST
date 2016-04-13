@@ -90,7 +90,7 @@ class ProbackInputViewController: FormViewController {
     
     // 保存按钮触发的操作
     func submit() {
-
+        view.endEditing(true)
         let alertController = UIAlertController(title: "提示", message: "确定提交吗？", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: .Default, handler: {(action) -> () in
             self.doSubmit()

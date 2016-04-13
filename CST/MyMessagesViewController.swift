@@ -32,6 +32,8 @@ class MyMessagesViewController: UIViewController {
     var viewHeight: CGFloat = 0.0
     var scrollViewHeight: CGFloat = 0.0
     
+    @IBOutlet weak var fastButtons: FastButtonsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,7 @@ class MyMessagesViewController: UIViewController {
         // 设置滑动tab
         viewWidth = CGRectGetWidth(view.bounds)
         viewHeight = CGRectGetHeight(view.bounds)
-        scrollViewHeight = viewHeight - 148.0
+        scrollViewHeight = viewHeight - 148.0 - 70.0
         setSegmentedControl()
         
         // 设置scrollView
@@ -76,7 +78,7 @@ class MyMessagesViewController: UIViewController {
     
     func setSegmentedControl(){
         
-        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 64, viewWidth, 40))
+        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 64 + 70, viewWidth, 40))
         segmentedControl.sectionTitles = [Words.communicate, Words.annonce, Words.notice]
 //        segmentedControl.selectedSegmentIndex = 0
         
@@ -103,7 +105,7 @@ class MyMessagesViewController: UIViewController {
     }
     
     func setScrollView(){
-        scrollView = UIScrollView.init(frame: CGRectMake(0, 104, viewWidth, scrollViewHeight))
+        scrollView = UIScrollView.init(frame: CGRectMake(0, 104 + 70, viewWidth, scrollViewHeight))
         scrollView.backgroundColor = Style.backgroundColor
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

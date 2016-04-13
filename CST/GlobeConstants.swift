@@ -115,7 +115,7 @@ struct Style{
     static var tintColor = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1)    //34aadc 文字的颜色
     static var tintColorHalfAlpha = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.2)    //34aadc 文字的颜色 alpha：0.2
 
-    static var barTintColor = UIColor(red: 0/255, green: 162/255, blue: 237/255, alpha: 1)    //282828 导航条的背景色
+    static var barTintColor = UIColor(red: 0/255, green: 162/255, blue: 237/255, alpha: 1)    //00a2ed 导航条的背景色
     static var barTintTextColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)    //fafafa 导航条的文字颜色
     static var backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)    //ffffff 默认视图的背景色
     
@@ -180,6 +180,7 @@ struct Words{
     static var searchLinkmen = "搜索姓名"
     static var searchAnnounce = "搜索公告名称"
     static var searchProback = "搜索反馈内容"
+    static var searchKnowledge = "搜索标题名称"
     
     static var selectUser = "选择人员"
     static var selectUserPlaceholder = "已选择人员列表"

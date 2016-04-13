@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
 
 
     @IBAction func loginButtonTapped(sender: AnyObject) {
-        
+        view.endEditing(true)
         //手机号必填
         guard let userName = userNameTextField.text where !userName.isEmpty else {
             displayMessage("请输入手机号！")

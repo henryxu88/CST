@@ -24,6 +24,8 @@ class MyKnowledgesViewController: UIViewController {
     
     var searchController = UISearchController(searchResultsController: nil)
     
+    @IBOutlet weak var fastButtons: FastButtonsView!
+    
     //MARK: - IBOutlet -
     @IBOutlet weak var tableView: UITableView!
     
@@ -41,11 +43,13 @@ class MyKnowledgesViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         
-        searchController.searchBar.placeholder = Words.searchAnnounce
+        searchController.searchBar.placeholder = Words.searchKnowledge
         
         tableView.tableHeaderView = searchController.searchBar
         
     }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
