@@ -19,7 +19,7 @@ class ProleaveInputViewController: FormViewController {
     func submit() {
         
         if proleave.leaveDate.isEmpty {
-            view.makeToast("请选择请假日期！")
+            view.makeToast("请选择请假日期！", duration: 3.0, position: .Center)
             return
         }
         
@@ -28,7 +28,7 @@ class ProleaveInputViewController: FormViewController {
             proleave.reason = reason
         }
         if proleave.reason.isEmpty {
-            view.makeToast("请填写请假原因！")
+            view.makeToast("请填写请假原因！", duration: 3.0, position: .Center)
             return
         }
 

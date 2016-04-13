@@ -106,7 +106,7 @@ class ProbackInputViewController: FormViewController {
     
     func handleSuccess() {
 
-        view.makeToast("反馈信息提交成功！")
+        view.makeToast("反馈信息提交成功！", duration: 3.0, position: .Center)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.dismissViewControllerAnimated(true, completion: nil)

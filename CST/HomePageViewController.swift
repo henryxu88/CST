@@ -15,12 +15,12 @@ class HomePageViewController: UITabBarController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        for childView in self.tabBar.subviews {
-//            if !childView.isKindOfClass(XZMTabbarExtension) {
-//                childView.removeFromSuperview()
-//            }
-//        }
-        setTabBar()
+        for childView in self.tabBar.subviews {
+            if !childView.isKindOfClass(XZMTabbarExtension) {
+                childView.removeFromSuperview()
+            }
+        }
+
     }
     
     override func viewDidLoad() {
@@ -41,9 +41,7 @@ class HomePageViewController: UITabBarController {
         let vc3 = storyboard.instantiateViewControllerWithIdentifier("MyKnowledgesViewController") as? MyKnowledgesViewController
         tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_knowledge_nor")!, selImage: UIImage(named: "tab_bar_knowledge")! , title: Words.knowledgeShare)
         
-//        setTabBar()
-        
-       
+        setTabBar()
         
     }
 

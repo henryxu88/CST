@@ -22,6 +22,7 @@ class ProjectTabBarContoller: UITabBarController {
                 childView.removeFromSuperview()
             }
         }
+        
     }
 
     override func viewDidLoad() {
@@ -55,14 +56,6 @@ class ProjectTabBarContoller: UITabBarController {
         tabBarChildViewController(vc4!, norImage: UIImage(named: "tab_bar_user_nor")!, selImage: UIImage(named: "tab_bar_user")! , title: Words.prjBack)
         
         setTabBar()
-        
-        // 默认显示第一个tab bar item选中
-        if let tabBar = self.tabBar.subviews[0] as? XZMTabbarExtension {
-            if let btn = tabBar.seletBtn {
-                let myImageView = btn.subviews[0] as! UIImageView
-                myImageView.highlighted = true
-            }
-        }
         
     }
     
@@ -100,6 +93,11 @@ class ProjectTabBarContoller: UITabBarController {
      设置tab bar
      */
     func setTabBar(){
+        if self.tabBar.subviews.count>0 {
+            for subview in self.tabBar.subviews {
+                subview.removeFromSuperview()
+            }
+        }
         /** 创建自定义tabbar */
         let customTabBar = XZMTabbarExtension()
         customTabBar.backgroundColor = Style.barTintTextColor
@@ -112,6 +110,14 @@ class ProjectTabBarContoller: UITabBarController {
         customTabBar.delegate = self
         
         self.tabBar.addSubview(customTabBar)
+        
+        // 默认显示第一个tab bar item选中
+        if let tabBar = self.tabBar.subviews[0] as? XZMTabbarExtension {
+            if let btn = tabBar.seletBtn {
+                let myImageView = btn.subviews[0] as! UIImageView
+                myImageView.highlighted = true
+            }
+        }
     }
     
 }
