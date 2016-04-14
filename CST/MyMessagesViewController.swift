@@ -45,7 +45,7 @@ class MyMessagesViewController: UIViewController {
         // 设置滑动tab
         viewWidth = CGRectGetWidth(view.bounds)
         viewHeight = CGRectGetHeight(view.bounds)
-        scrollViewHeight = viewHeight - 148.0 - 70.0
+        scrollViewHeight = viewHeight - 218.0
         setSegmentedControl()
         
         // 设置scrollView
@@ -78,7 +78,7 @@ class MyMessagesViewController: UIViewController {
     
     func setSegmentedControl(){
         
-        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 64 + 70, viewWidth, 40))
+        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 134, viewWidth, 44))
         segmentedControl.sectionTitles = [Words.communicate, Words.annonce, Words.notice]
 //        segmentedControl.selectedSegmentIndex = 0
         
@@ -86,8 +86,8 @@ class MyMessagesViewController: UIViewController {
         segmentedControl.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14)]
         segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : Style.tintColor]
         segmentedControl.selectionIndicatorColor = Style.tintColor
-        segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox
-        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone
+        segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
         segmentedControl.tag = 101
         
 //        let button = MIBadgeButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -105,7 +105,7 @@ class MyMessagesViewController: UIViewController {
     }
     
     func setScrollView(){
-        scrollView = UIScrollView.init(frame: CGRectMake(0, 104 + 70, viewWidth, scrollViewHeight))
+        scrollView = UIScrollView.init(frame: CGRectMake(0, 178, viewWidth, scrollViewHeight))
         scrollView.backgroundColor = Style.backgroundColor
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false

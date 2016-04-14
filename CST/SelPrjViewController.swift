@@ -166,6 +166,11 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 1
     func prjSignin() {
+        if let drawer = appDelegate.drawerContainer {
+            if drawer.openSide == .Right {
+                drawer.toggleDrawerSide(.Right, animated: true, completion: nil)
+            }
+        }
         
         lastLocation = locService.userLocation.location
         
@@ -194,6 +199,11 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 2
     func showProbackInput() {
+        if let drawer = appDelegate.drawerContainer {
+            if drawer.openSide == .Right {
+                drawer.toggleDrawerSide(.Right, animated: true, completion: nil)
+            }
+        }
         
         lastLocation = locService.userLocation.location
         
@@ -228,6 +238,11 @@ class SelPrjViewController: UIViewController {
     
     // Selector for button 3
     func showProleaveInput() {
+        if let drawer = appDelegate.drawerContainer {
+            if drawer.openSide == .Right {
+                drawer.toggleDrawerSide(.Right, animated: true, completion: nil)
+            }
+        }
         
         ProleaveApi.initProleaveDetail(prjId) { (result, obj) -> Void in
             if result {

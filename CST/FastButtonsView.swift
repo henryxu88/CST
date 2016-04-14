@@ -4,12 +4,12 @@
 //
 //  Created by henry on 16/4/13.
 //  Copyright © 2016年 9joint. All rights reserved.
-//
+// @IBDesignable
 
 import UIKit
 import MMDrawerController
 
-@IBDesignable class FastButtonsView : UIView {
+class FastButtonsView : UIView {
 
     var view:UIView!;
     
@@ -56,7 +56,7 @@ import MMDrawerController
     }
     
     func doHandle(handleType: String) {
-        print("handleType:\(handleType)")
+//        print("handleType:\(handleType)")
         if let drawer = appDelegate.drawerContainer {
             appDelegate.handleType = handleType
             if drawer.openSide == .Left {

@@ -47,7 +47,7 @@ class ProjectListViewController: UIViewController {
         // 设置滑动tab
         viewWidth = CGRectGetWidth(view.bounds)
         viewHeight = CGRectGetHeight(view.bounds)
-        scrollViewHeight = viewHeight - 104.0
+        scrollViewHeight = viewHeight - 108.0
         setSegmentedControl()
         
         // 设置scrollView
@@ -60,7 +60,7 @@ class ProjectListViewController: UIViewController {
     
     func setSegmentedControl(){
         
-        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 64, viewWidth, 40))
+        segmentedControl = HMSegmentedControl.init(frame: CGRectMake(0, 64, viewWidth, 44))
         segmentedControl.sectionTitles = [Words.prjsNotFinish, Words.prjsFinished]
         segmentedControl.selectedSegmentIndex = 0
         
@@ -68,8 +68,8 @@ class ProjectListViewController: UIViewController {
         segmentedControl.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont.boldSystemFontOfSize(14)]
         segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : Style.tintColor]
         segmentedControl.selectionIndicatorColor = Style.tintColor
-        segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleBox
-        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone
+        segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
+        segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
         segmentedControl.tag = 101
         
         segmentedControl.indexChangeBlock = { [weak self] in self?.segmentIndexChanged($0) }
@@ -78,7 +78,7 @@ class ProjectListViewController: UIViewController {
     }
     
     func setScrollView(){
-        scrollView = UIScrollView.init(frame: CGRectMake(0, 104, viewWidth, scrollViewHeight))
+        scrollView = UIScrollView.init(frame: CGRectMake(0, 108, viewWidth, scrollViewHeight))
         scrollView.backgroundColor = Style.backgroundColor
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -91,7 +91,7 @@ class ProjectListViewController: UIViewController {
     
     func setTableView(){
         
-        tableView = UITableView(frame: CGRectMake(0, 0, viewWidth, viewHeight-104))
+        tableView = UITableView(frame: CGRectMake(0, 0, viewWidth, scrollViewHeight))
         tableView.dataSource = self
         tableView.delegate = self
         
