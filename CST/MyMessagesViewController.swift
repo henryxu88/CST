@@ -32,6 +32,10 @@ class MyMessagesViewController: UIViewController {
     var viewHeight: CGFloat = 0.0
     var scrollViewHeight: CGFloat = 0.0
     
+    var unreadBtn1: MIBadgeButton!
+    var unreadBtn2: MIBadgeButton!
+    var unreadBtn3: MIBadgeButton!
+    
     @IBOutlet weak var fastButtons: FastButtonsView!
     
     override func viewDidLoad() {
@@ -54,6 +58,9 @@ class MyMessagesViewController: UIViewController {
         // tableView
         setTableView()
         
+        // unread btns
+        setupUnreadBtn()
+        
         // observer
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyMessagesViewController.markDocReaded), name: "Notification_MarkDocReadedSuccess", object: nil)
         
@@ -61,6 +68,32 @@ class MyMessagesViewController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func setupUnreadBtn() {
+        let x1 = CGFloat(viewWidth/3 - 50)
+        unreadBtn1 = MIBadgeButton(frame: CGRect(x: x1, y: 148, width: 20, height: 20))
+        unreadBtn1.badgeString = ""
+        unreadBtn1.badgeTextColor = UIColor.whiteColor()
+        unreadBtn1.badgeBackgroundColor = UIColor.redColor()
+        unreadBtn1.hidden = true
+        view.addSubview(unreadBtn1)
+        
+        let x2 = CGFloat(viewWidth/3*2 - 50)
+        unreadBtn2 = MIBadgeButton(frame: CGRect(x: x2, y: 148, width: 20, height: 20))
+        unreadBtn2.badgeString = ""
+        unreadBtn2.badgeTextColor = UIColor.whiteColor()
+        unreadBtn2.badgeBackgroundColor = UIColor.redColor()
+        unreadBtn2.hidden = true
+        view.addSubview(unreadBtn2)
+
+        let x3 = CGFloat(viewWidth - 50)
+        unreadBtn3 = MIBadgeButton(frame: CGRect(x: x3, y: 148, width: 20, height: 20))
+        unreadBtn3.badgeString = ""
+        unreadBtn3.badgeTextColor = UIColor.whiteColor()
+        unreadBtn3.badgeBackgroundColor = UIColor.redColor()
+        unreadBtn3.hidden = true
+        view.addSubview(unreadBtn3)
     }
     
     func markDocReaded() {
@@ -89,14 +122,6 @@ class MyMessagesViewController: UIViewController {
         segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe
         segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown
         segmentedControl.tag = 101
-        
-//        let button = MIBadgeButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-//        button.badgeString = "120"
-//        button.badgeEdgeInsets = UIEdgeInsetsMake(10, 0, 0, 15)
-//        button.badgeTextColor = UIColor.whiteColor()
-//        button.badgeBackgroundColor = UIColor.redColor()
-//        segmentedControl.scrollView.addSubview(button)
-//        view.addSubview(button)
 
         segmentedControl.addTarget(self, action: #selector(MyMessagesViewController.segmentIndexChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
@@ -140,80 +165,99 @@ class MyMessagesViewController: UIViewController {
         tableView3.rowHeight = 66
         
         addMJHeaderAndFooter()
-        tableView1.mj_header.beginRefreshing()
         
         scrollView.addSubview(tableView1)
         scrollView.addSubview(tableView2)
         scrollView.addSubview(tableView3)
+        
+        tableView1.mj_header.beginRefreshing()
+        tableView2.mj_header.beginRefreshing()
+        tableView3.mj_header.beginRefreshing()
     }
     
     //MARK: - MJRefresh -
     private func addMJHeaderAndFooter() {
-        tableView1.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView1.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh1))
         tableView1.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
-        tableView2.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView2.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh2))
         tableView2.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
-        tableView3.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh))
+        tableView3.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.headerRefresh3))
         tableView3.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyMessagesViewController.footerRefresh))
     }
     
     
-    func headerRefresh() {
+    func headerRefresh1() {
         
         pageIndex = 1
+        tableView1.mj_footer.resetNoMoreData()
+        CommentApi.getCommentList(11, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+            self.tableView1.mj_header.endRefreshing()
+            if result {
+                if let objs = objs {
+                    self.pageIndex += 1
+                    self.comments = objs
+                    self.tableView1.reloadData()
+                    self.unreadBtn1.badgeString = "\(objs.count)"
+                    self.unreadBtn1.hidden = false
+                } else {
+                    self.unreadBtn1.badgeString = ""
+                    self.unreadBtn1.hidden = true
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+            }
+        })
         
-        switch catalog {
-        case 11:
-            tableView1.mj_footer.resetNoMoreData()
-            CommentApi.getCommentList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
-                self.tableView1.mj_header.endRefreshing()
-                if result {
-                    if objs != nil {
-                        self.pageIndex += 1
-                        self.comments = objs!
-                        self.tableView1.reloadData()
-                        
-                    }
-                } else {
-                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
-                }
-            })
-        case 12:
-            tableView2.mj_footer.resetNoMoreData()
-            AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
-                self.tableView2.mj_header.endRefreshing()
-                if result {
-                    if objs != nil {
-                        self.pageIndex += 1
-                        self.announces = objs!
-                        self.tableView2.reloadData()
-                        
-                    }
-                } else {
-                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
-                }
-            })
-        case 13:
-            tableView3.mj_footer.resetNoMoreData()
-            ProbackApi.getProbackList(catalog, pageIndex: pageIndex, resultClosure:{ (result, objs) -> Void in
-                self.tableView3.mj_header.endRefreshing()
-                if result {
-                    if objs != nil {
-                        self.pageIndex += 1
-                        self.probacks = objs!
-                        self.tableView3.reloadData()
-                        
-                    }
-                } else {
-                    self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
-                }
-            })
-
-        default:
-            break
-        }
     }
     
+    func headerRefresh2() {
+        
+        pageIndex = 1
+        tableView2.mj_footer.resetNoMoreData()
+        AnnounceApi.getAnnounceList(12, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+            self.tableView2.mj_header.endRefreshing()
+            if result {
+                if let objs = objs {
+                    self.pageIndex += 1
+                    self.announces = objs
+                    self.tableView2.reloadData()
+                    self.unreadBtn2.badgeString = "\(objs.count)"
+                    self.unreadBtn2.hidden = false
+                } else {
+                    self.unreadBtn2.badgeString = ""
+                    self.unreadBtn2.hidden = true
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+            }
+        })
+        
+    }
+    
+    func headerRefresh3() {
+        
+        pageIndex = 1
+        tableView3.mj_footer.resetNoMoreData()
+        ProbackApi.getProbackList(13, pageIndex: pageIndex, resultClosure:{ (result, objs) -> Void in
+            self.tableView3.mj_header.endRefreshing()
+            if result {
+                if let objs = objs {
+                    self.pageIndex += 1
+                    self.probacks = objs
+                    self.tableView3.reloadData()
+                    self.unreadBtn3.badgeString = "\(objs.count)"
+                    self.unreadBtn3.hidden = false
+                } else {
+                    self.unreadBtn3.badgeString = ""
+                    self.unreadBtn3.hidden = true
+                }
+            } else {
+                self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
+            }
+        })
+        
+    }
+
         
     func footerRefresh() {
         
