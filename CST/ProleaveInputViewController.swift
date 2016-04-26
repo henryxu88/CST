@@ -42,7 +42,7 @@ class ProleaveInputViewController: FormViewController {
         ProleaveApi.createProleave(proleave) { (result) -> Void in
             hud.hide(true)
             if result {
-                self.view.makeToast(NetManager.requestSuccess)
+                self.view.makeToast(NetManager.requestSuccess, duration: 3.0, position: .Center)
                 
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
