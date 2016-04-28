@@ -116,12 +116,12 @@ struct Style{
     static var tintColorHalfAlpha = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.2)    //34aadc 文字的颜色 alpha：0.2
 
     static var barTintColor = UIColor(red: 0/255, green: 162/255, blue: 237/255, alpha: 1)    //00a2ed 导航条的背景色
-    static var barTintTextColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)    //fafafa 导航条的文字颜色
+    static var barTintTextColor = UIColor(red: 252/255, green: 252/255, blue: 252/255, alpha: 1)    //fafafa 导航条的文字颜色
     static var backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)    //ffffff 默认视图的背景色
     
     // MARK: main menu vc style
     static var mainMenuBackgroundColor = UIColor(red: 110/255, green: 113/255, blue: 115/255, alpha: 1)    //6e7173 表格的背景颜色
-    static var mainMenuViewBackgroundColor = UIColor(red: 66/255, green: 69/255, blue: 71/255, alpha: 1)    //424547 View的背景色
+    static var mainMenuViewBackgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)    //View的背景色
     static var mainMenuBarColor = UIColor(red: 161/255, green: 164/255, blue: 166/255, alpha: 1)    //a1a4a6 导航条的背景色
     static var mainMenuBarTitleColor = UIColor(red: 55/255, green: 70/255, blue: 77/255, alpha: 1)    //a1a4a6 导航条的文字颜色
     
@@ -163,7 +163,7 @@ struct Words{
     
     // MARK: tab bar title
     static var myMessages = "我的消息"
-    static var currentProjects = "当前项目"
+    static var currentProjects = "我的项目"
     static var knowledgeShare = "知识共享"
     static var myBusiness = "我的业务"
     static var aboutUs = "关于我们"

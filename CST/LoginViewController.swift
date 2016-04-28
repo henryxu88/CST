@@ -46,6 +46,10 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBAction func gotoPwdField(){
+        userPwdTextField.becomeFirstResponder()
+    }
+    
     func autoLogin(username: String,digest: String){
         UserApi.authc(username, digest: digest, resultClosure: { (result, user) in
             if result {

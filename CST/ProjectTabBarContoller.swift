@@ -37,23 +37,23 @@ class ProjectTabBarContoller: UITabBarController {
         // 基本信息
         let vc1 = storyboard!.instantiateViewControllerWithIdentifier("ProinfoDetailViewController") as? ProinfoDetailViewController
         vc1?.proinfo = proinfo
-        tabBarChildViewController(vc1!, norImage: UIImage(named: "tab_bar_message_nor")!, selImage: UIImage(named: "tab_bar_message")! , title: Words.prjBasic)
+        tabBarChildViewController(vc1!, norImage: UIImage(named: "tab_bar_basic_nor")!, selImage: UIImage(named: "tab_bar_basic")! , title: Words.prjBasic)
         
         // 交流信息
         let vc2 = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
         vc2?.targetId = proinfo.id
-        tabBarChildViewController(vc2!, norImage: UIImage(named: "tab_bar_project_nor")!, selImage: UIImage(named: "tab_bar_project")! , title: Words.prjComment)
+        tabBarChildViewController(vc2!, norImage: UIImage(named: "tab_bar_comment_nor")!, selImage: UIImage(named: "tab_bar_comment")! , title: Words.prjComment)
         
         // 考勤日历
         let vc3 = storyboard!.instantiateViewControllerWithIdentifier("CalendarListViewController") as? CalendarListViewController
         vc3?.proinfoId = proinfo.id
-        tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_knowledge_nor")!, selImage: UIImage(named: "tab_bar_knowledge")! , title: Words.prjSignin)
+        tabBarChildViewController(vc3!, norImage: UIImage(named: "tab_bar_calendar_nor")!, selImage: UIImage(named: "tab_bar_calendar")! , title: Words.prjSignin)
         
         // 反馈列表
         let vc4 = storyboard!.instantiateViewControllerWithIdentifier("ProbackListViewController") as? ProbackListViewController
         vc4?.catalog = 9
         vc4?.proinfoId = proinfo.id
-        tabBarChildViewController(vc4!, norImage: UIImage(named: "tab_bar_user_nor")!, selImage: UIImage(named: "tab_bar_user")! , title: Words.prjBack)
+        tabBarChildViewController(vc4!, norImage: UIImage(named: "tab_bar_feedback_nor")!, selImage: UIImage(named: "tab_bar_feedback")! , title: Words.prjBack)
         
         setTabBar()
         
@@ -104,7 +104,7 @@ class ProjectTabBarContoller: UITabBarController {
         customTabBar.frame = tabBar.bounds
         /** 传递模型数组 */
         customTabBar.items = itemArray
-        customTabBar.xzm_setShadeItemBackgroundColor(Style.tintColorHalfAlpha)
+//        customTabBar.xzm_setShadeItemBackgroundColor(Style.tintColorHalfAlpha)
         
         /** 设置代理 */
         customTabBar.delegate = self

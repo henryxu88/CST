@@ -86,11 +86,12 @@ class HomePageViewController: UITabBarController {
         }
         /** 创建自定义tabbar */
         let customTabBar = XZMTabbarExtension()
+//        customTabBar.backgroundColor = UIColor.whiteColor()
         customTabBar.backgroundColor = Style.barTintTextColor
         customTabBar.frame = tabBar.bounds
         /** 传递模型数组 */
         customTabBar.items = itemArray
-        customTabBar.xzm_setShadeItemBackgroundColor(Style.tintColorHalfAlpha)
+//        customTabBar.xzm_setShadeItemBackgroundColor(Style.tintColorHalfAlpha)
         
         /** 设置代理 */
         customTabBar.delegate = self

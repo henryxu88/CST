@@ -60,11 +60,11 @@ class SelPrjViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth,UIViewAutoresizing.FlexibleHeight]
-        tableView.backgroundColor = Style.mainMenuBackgroundColor
+        tableView.backgroundColor = Style.backgroundColor
         tableView.separatorStyle = .None
         
         view.backgroundColor = Style.mainMenuViewBackgroundColor
-        navigationController?.navigationBar.barTintColor = Style.mainMenuBarColor
+        navigationController?.navigationBar.barTintColor = Style.mainMenuViewBackgroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Style.mainMenuBarTitleColor]
         
         // table data loading

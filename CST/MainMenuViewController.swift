@@ -16,6 +16,8 @@ class MainMenuViewController: UITableViewController {
     let settingMenu = [Words.menuUserLogout]
 //    let settingMenu = [Words.menuUserLogout , Words.menuExitApp]
     let sectionMenu = [Words.menuCategoryBusiness , Words.menuCategorySetting]
+    let businessMenuImage = ["khyl","lxryl","xmyl","kqyl","fkyl","jlyl","ggyl"]
+    let settingMenuImage = ["zxyh"]
     let cellID = "MenuCell"
 
     override func viewDidLoad() {
@@ -24,11 +26,11 @@ class MainMenuViewController: UITableViewController {
         self.tabBarController?.selectedIndex = 0
 
         tableView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth,UIViewAutoresizing.FlexibleHeight]
-        tableView.backgroundColor = Style.mainMenuBackgroundColor
+        tableView.backgroundColor = Style.backgroundColor //Style.mainMenuBackgroundColor
         tableView.separatorStyle = .None
         
         view.backgroundColor = Style.mainMenuViewBackgroundColor
-        navigationController?.navigationBar.barTintColor = Style.mainMenuBarColor
+        navigationController?.navigationBar.barTintColor = Style.mainMenuViewBackgroundColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : Style.mainMenuBarTitleColor]
         
     }
@@ -56,25 +58,27 @@ class MainMenuViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
-        
+        let imageView = cell.viewWithTag(501) as! UIImageView
+        let label = cell.viewWithTag(502) as! UILabel
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = businessMenu[indexPath.row]
+            label.text = businessMenu[indexPath.row]
+            imageView.image = UIImage(named: businessMenuImage[indexPath.row])
         case 1:
-            cell.textLabel?.text = settingMenu[indexPath.row]
+            label.text = settingMenu[indexPath.row]
+            imageView.image = UIImage(named: settingMenuImage[indexPath.row])
         default:
             break
         }
-        
         return cell
     }
-
+    
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionMenu[section]
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headView = MenuSectionHeaderView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 56.0))
+        let headView = MenuSectionHeaderView(frame: CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), 35.0))
         headView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth,UIViewAutoresizing.FlexibleHeight]
         headView.setSectionTitle(sectionMenu[section])
         return headView
@@ -95,7 +99,8 @@ class MainMenuViewController: UITableViewController {
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        menuText = cell?.textLabel?.text ?? ""
+        let label = cell!.viewWithTag(502) as! UILabel
+        menuText = label.text ?? ""
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         switch indexPath.section {
