@@ -90,8 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // location 
         mapManager = BMKMapManager() // 初始化 BMKMapManager
-        // 如果要关注网络及授权验证事件，请设定generalDelegate参数  在此处输入您的授权Key Release: MlgNspG5faWfR7koWpLGtxN1
-        let ret = mapManager?.start("xd3uZTc1GUSl8UatHdULp7Mo", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
+        // 如果要关注网络及授权验证事件，请设定generalDelegate参数  
+        // 在此处输入您的授权Key Release: MlgNspG5faWfR7koWpLGtxN1 Test: xd3uZTc1GUSl8UatHdULp7Mo
+        let ret = mapManager?.start("MlgNspG5faWfR7koWpLGtxN1", generalDelegate: nil)  // 注意此时 ret 为 Bool? 类型
         if let ret = ret where ret {
             print("mapManager start success!")
         } else {

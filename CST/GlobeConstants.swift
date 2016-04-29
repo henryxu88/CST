@@ -39,7 +39,8 @@ struct CellManager {
 
 // urls
 struct NetManager {
-    static let HOST = "http://10.10.11.49:8089/"
+    static let HOST = "http://cst.9joint-eco.com/"
+//    static let HOST = "http://10.10.11.49:8089/"
     static let BASE_PATH = HOST + "ec-web/app/"
     static let BASE_PATH_COM = HOST + "ec-web/com/"
     
