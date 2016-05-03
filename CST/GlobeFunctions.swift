@@ -65,14 +65,14 @@ extension UIViewController {
     
     //MARK: - 跳转批注界面
     func setupCommentButton(){
-        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: Selector("commentButtonTapped"))
+        let btn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Organize, target: self, action: "commentButtonTapped")
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
     }
     
     //MARK: - 保存按钮
     func setupSaveButton(){
-        let btn = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("submit"))
+        let btn = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: "submit")
         btn.tintColor = UIColor.whiteColor()
         navigationItem.setRightBarButtonItem(btn, animated: true)
     }

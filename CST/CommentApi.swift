@@ -11,7 +11,7 @@ import Alamofire
 
 class CommentApi {
     
-    class func getCommentList(catalog: Int, pageIndex: Int, keyword: String = "", targetId: String = "" ,resultClosure:((Bool,[Comment]?) -> Void)){
+    class func getCommentList(catalog: Int, pageIndex: Int, keyword: String = "", targetId: String = "" ,resultClosure:((Bool,[Comment]?,Int) -> Void)){
         
         var parameters = [String:AnyObject]()
         
@@ -43,19 +43,19 @@ class CommentApi {
                         let objs = commentList.list
                         //                            print("objs.count: \(objs.count)")
                         if objs.count == 0 {
-                            resultClosure(true,nil)
+                            resultClosure(true,nil,0)
                         } else {
-                            resultClosure(true,objs)
+                            resultClosure(true,objs,commentList.totalCount)
                         }
                         
                     } else {
                         print("code:\(res.errorCode) msg:\(res.errorMessage)")
-                        resultClosure(false,nil)
+                        resultClosure(false,nil,0)
                     }
                 }
             case .Failure(let error):
                 print(error)
-                resultClosure(false,nil)
+                resultClosure(false,nil,0)
             }
         }
         

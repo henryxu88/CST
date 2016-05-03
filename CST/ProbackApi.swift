@@ -11,7 +11,7 @@ import Alamofire
 
 class ProbackApi {
     
-    class func getProbackList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", proinfoId: String = "" ,resultClosure:((Bool,[Proback]?) -> Void)){
+    class func getProbackList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", proinfoId: String = "" ,resultClosure:((Bool,[Proback]?,Int) -> Void)){
         
         var parameters = [String:AnyObject]()
         
@@ -43,19 +43,19 @@ class ProbackApi {
                         let objs = probackList.list
                         //                            print("objs.count: \(objs.count)")
                         if objs.count == 0 {
-                            resultClosure(true,nil)
+                            resultClosure(true,nil,0)
                         } else {
-                            resultClosure(true,objs)
+                            resultClosure(true,objs,probackList.totalCount)
                         }
                         
                     } else {
                         print("code:\(res.errorCode) msg:\(res.errorMessage)")
-                        resultClosure(false,nil)
+                        resultClosure(false,nil,0)
                     }
                 }
             case .Failure(let error):
                 print(error)
-                resultClosure(false,nil)
+                resultClosure(false,nil,0)
             }
         }
         

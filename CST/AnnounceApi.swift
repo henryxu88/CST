@@ -11,7 +11,7 @@ import Alamofire
 
 class AnnounceApi {
     
-    class func getAnnounceList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", resultClosure:((Bool,[Announce]?) -> Void)){
+    class func getAnnounceList(catalog: Int, pageIndex: Int, property: String = "", keyword: String = "", resultClosure:((Bool,[Announce]?,Int) -> Void)){
         
         var parameters = [String:AnyObject]()
         
@@ -38,19 +38,19 @@ class AnnounceApi {
                         let objs = list.list
 
                         if objs.count == 0 {
-                            resultClosure(true,nil)
+                            resultClosure(true,nil,0)
                         } else {
-                            resultClosure(true,objs)
+                            resultClosure(true,objs,list.totalCount)
                         }
                         
                     } else {
                         print("code:\(res.errorCode) msg:\(res.errorMessage)")
-                        resultClosure(false,nil)
+                        resultClosure(false,nil,0)
                     }
                 }
             case .Failure(let error):
                 print(error)
-                resultClosure(false,nil)
+                resultClosure(false,nil,0)
             }
         }
         

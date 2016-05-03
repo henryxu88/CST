@@ -190,14 +190,14 @@ class MyMessagesViewController: UIViewController {
         
         pageIndex = 1
         tableView1.mj_footer.resetNoMoreData()
-        CommentApi.getCommentList(11, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+        CommentApi.getCommentList(11, pageIndex: pageIndex, resultClosure: { (result, objs, numCount) -> Void in
             self.tableView1.mj_header.endRefreshing()
             if result {
                 if let objs = objs {
                     self.pageIndex += 1
                     self.comments = objs
                     self.tableView1.reloadData()
-                    self.unreadBtn1.badgeString = "\(objs.count)"
+                    self.unreadBtn1.badgeString = "\(numCount)"
                     self.unreadBtn1.hidden = false
                 } else {
                     self.unreadBtn1.badgeString = ""
@@ -214,14 +214,14 @@ class MyMessagesViewController: UIViewController {
         
         pageIndex = 1
         tableView2.mj_footer.resetNoMoreData()
-        AnnounceApi.getAnnounceList(12, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+        AnnounceApi.getAnnounceList(12, pageIndex: pageIndex, resultClosure: { (result, objs, numCount) -> Void in
             self.tableView2.mj_header.endRefreshing()
             if result {
                 if let objs = objs {
                     self.pageIndex += 1
                     self.announces = objs
                     self.tableView2.reloadData()
-                    self.unreadBtn2.badgeString = "\(objs.count)"
+                    self.unreadBtn2.badgeString = "\(numCount)"
                     self.unreadBtn2.hidden = false
                 } else {
                     self.unreadBtn2.badgeString = ""
@@ -238,14 +238,14 @@ class MyMessagesViewController: UIViewController {
         
         pageIndex = 1
         tableView3.mj_footer.resetNoMoreData()
-        ProbackApi.getProbackList(13, pageIndex: pageIndex, resultClosure:{ (result, objs) -> Void in
+        ProbackApi.getProbackList(13, pageIndex: pageIndex, resultClosure:{ (result, objs, numCount) -> Void in
             self.tableView3.mj_header.endRefreshing()
             if result {
                 if let objs = objs {
                     self.pageIndex += 1
                     self.probacks = objs
                     self.tableView3.reloadData()
-                    self.unreadBtn3.badgeString = "\(objs.count)"
+                    self.unreadBtn3.badgeString = "\(numCount)"
                     self.unreadBtn3.hidden = false
                 } else {
                     self.unreadBtn3.badgeString = ""
@@ -264,7 +264,7 @@ class MyMessagesViewController: UIViewController {
         switch catalog {
         case 11:
            
-            CommentApi.getCommentList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+            CommentApi.getCommentList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs, numCount) -> Void in
                 self.tableView1.mj_header.endRefreshing()
                 if result {
                     if objs == nil {
@@ -288,7 +288,7 @@ class MyMessagesViewController: UIViewController {
             })
         case 12:
             
-            AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs) -> Void in
+            AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, resultClosure: { (result, objs, numCount) -> Void in
                 self.tableView2.mj_header.endRefreshing()
                 if result {
                     if objs == nil {
@@ -311,7 +311,7 @@ class MyMessagesViewController: UIViewController {
             })
         case 13:
             
-            ProbackApi.getProbackList(catalog, pageIndex: pageIndex, resultClosure:{ (result, objs) -> Void in
+            ProbackApi.getProbackList(catalog, pageIndex: pageIndex, resultClosure:{ (result, objs, numCount) -> Void in
                 self.tableView3.mj_header.endRefreshing()
                 if result {
                     if objs == nil {
@@ -363,7 +363,7 @@ class MyMessagesViewController: UIViewController {
     }
     
     func setDetailComment(keyword: String, targetId: String, targetClass: String) {
-        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
+        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments, numCount) -> Void in
             if result {
                 if let comments = comments {
                     // 跳转到交流界面

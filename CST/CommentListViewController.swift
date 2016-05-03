@@ -70,7 +70,7 @@ class CommentListViewController: UIViewController {
         
         pageIndex = 1
 
-        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs) -> Void in
+        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
@@ -86,7 +86,7 @@ class CommentListViewController: UIViewController {
     
     func footerRefresh() {
 
-        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs) -> Void in
+        CommentApi.getCommentList(catalog, pageIndex: pageIndex, keyword: keyword, targetId: targetId) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 
@@ -134,7 +134,7 @@ class CommentListViewController: UIViewController {
     }
     
     func setDetailObj(keyword: String, targetId: String) {
-        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
+        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments, numCount) -> Void in
             if result {
                 if let comments = comments {
                     self.performSegueWithIdentifier("CommentDetail", sender: comments)

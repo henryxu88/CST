@@ -92,7 +92,7 @@ class ProbackListViewController: UIViewController {
         pageIndex = 1
         getKeyWord()
         
-        ProbackApi.getProbackList(catalog, pageIndex: pageIndex, property: property, keyword: keyword, proinfoId: proinfoId) { (result, objs) -> Void in
+        ProbackApi.getProbackList(catalog, pageIndex: pageIndex, property: property, keyword: keyword, proinfoId: proinfoId) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
@@ -109,7 +109,7 @@ class ProbackListViewController: UIViewController {
     func footerRefresh() {
         getKeyWord()
         
-        ProbackApi.getProbackList(catalog, pageIndex: pageIndex, property: property, keyword: keyword, proinfoId: proinfoId) { (result, objs) -> Void in
+        ProbackApi.getProbackList(catalog, pageIndex: pageIndex, property: property, keyword: keyword, proinfoId: proinfoId) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 

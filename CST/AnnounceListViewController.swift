@@ -85,7 +85,7 @@ class AnnounceListViewController: UIViewController {
         pageIndex = 1
         getKeyWord()
         
-        AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+        AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 if objs != nil {
@@ -102,7 +102,7 @@ class AnnounceListViewController: UIViewController {
     func footerRefresh() {
         getKeyWord()
         
-        AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs) -> Void in
+        AnnounceApi.getAnnounceList(catalog, pageIndex: pageIndex, property: property, keyword: keyword) { (result, objs, numCount) -> Void in
             self.tableView.mj_header.endRefreshing()
             if result {
                 

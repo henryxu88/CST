@@ -47,7 +47,7 @@ class CommentDetailViewController: JSQMessagesViewController {
             messages.removeAll()
         }
         
-        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments) -> Void in
+        CommentApi.getCommentList(51, pageIndex: 1, keyword: keyword, targetId: targetId) { (result, comments, numCount) -> Void in
             if result {
                 if let comments = comments {
                     self.comments = comments
