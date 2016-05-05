@@ -17,7 +17,7 @@ class CalendarEventApi {
         
         parameters["catalog"] = catalog // 272
         parameters["pageIndex"] = pageIndex // 1
-        parameters["pageSize"] = NetManager.pageSize // 20
+        parameters["pageSize"] = 200 // NetManager.pageSize
         parameters["proinfoId"] = proinfoId
         parameters["_startTime"] = "\(startTime)"
         parameters["_endTime"] = "\(endTime)"

@@ -70,6 +70,7 @@ class AnnounceDetailViewController: FormViewController {
         // 跳转到CommentDetailViewController界面
         let vc = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
         vc?.targetId = announce.id
+        vc?.targetClass = Words.targetClass_announce
         let nav = UINavigationController(rootViewController: vc!)
         self.presentViewController(nav, animated: true, completion: nil)
     }

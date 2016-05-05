@@ -17,6 +17,7 @@ class ProinfoDetailViewController: FormViewController {
         super.viewDidLoad()
         
         setupReturnButton()
+        setupCommentButton()
         
         tableView?.rowHeight = 44.0
         
@@ -134,6 +135,16 @@ class ProinfoDetailViewController: FormViewController {
             return indexPath
         }
         return nil
+    }
+    
+    // MARK: - 批注按钮事件
+    func commentButtonTapped() {
+        // 跳转到CommentDetailViewController界面
+        let vc = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
+        vc?.targetId = proinfo.id
+        vc?.targetClass = Words.targetClass_proinfo
+        let nav = UINavigationController(rootViewController: vc!)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 
 }

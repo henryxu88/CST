@@ -133,6 +133,7 @@ class CalendarListViewController: UIViewController, FSCalendarDataSource, FSCale
                         self.tableView.reloadData()
                     }
                 }
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
             } else {
                 self.view.makeToast(NetManager.requestError, duration: 3.0, position: .Center)
             }

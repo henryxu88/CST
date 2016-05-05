@@ -185,4 +185,9 @@ struct Words{
     
     static var selectUser = "选择人员"
     static var selectUserPlaceholder = "已选择人员列表"
+    
+    // MARK: comment's targetClass
+    static var targetClass_proinfo = "com.joint.core.entity.ProInfo"
+    static var targetClass_proback = "com.joint.core.entity.ProBack"
+    static var targetClass_announce = "com.joint.core.entity.Announce"
 }

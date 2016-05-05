@@ -151,6 +151,7 @@ class ProbackDetailViewController: FormViewController {
         // 跳转到CommentDetailViewController界面
         let vc = storyboard!.instantiateViewControllerWithIdentifier("CommentDetailViewController") as? CommentDetailViewController
         vc?.targetId = proback.id
+        vc?.targetClass = Words.targetClass_proback
         let nav = UINavigationController(rootViewController: vc!)
         self.presentViewController(nav, animated: true, completion: nil)
     }

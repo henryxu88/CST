@@ -175,6 +175,7 @@ class ProbackInputViewController: FormViewController {
         if proback.id.isEmpty {
             isNewDoc = true
             proback.backDate = NSDate().fs_stringWithFormat("yyyy-MM-dd")
+            proback.regular = "1"   // 初始为正常
         } else {
             if !proback.photoList.isEmpty {
                 photoList = proback.photoList
