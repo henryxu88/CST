@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
             let digest = userDefaults.stringForKey("digest")
             
             if let username=username, digest=digest {
+                userNameTextField.text = username
+                userPwdTextField.text = userDefaults.stringForKey("userPwd")
                 autoLogin(username,digest:digest)
             }
         }
@@ -143,6 +145,7 @@ class LoginViewController: UIViewController {
                         let userDefaults = NSUserDefaults.standardUserDefaults()
                         userDefaults.setObject(user.username, forKey: "username")
                         userDefaults.setObject(user.digest, forKey: "digest")
+                        userDefaults.setObject(userPwd, forKey: "userPwd")
                         userDefaults.setObject("yes", forKey: "hasLogged")
                         userDefaults.synchronize()
                         

@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JPUSHService.registerForRemoteNotificationTypes(UIUserNotificationType.Badge.rawValue + UIUserNotificationType.Sound.rawValue + UIUserNotificationType.Alert.rawValue, categories: nil)
         // Release: c7b6e401927f91b143609040 Test:9f79c4d603f2050cb7e8ab1c
         JPUSHService.setupWithOption(launchOptions, appKey: "c7b6e401927f91b143609040", channel: "App Store", apsForProduction: true)
-        //JPUSHService.setupWithOption(launchOptions, appKey: "9f79c4d603f2050cb7e8ab1c", channel: "App Store", apsForProduction: false)
+//        JPUSHService.setupWithOption(launchOptions, appKey: "9f79c4d603f2050cb7e8ab1c", channel: "App Store", apsForProduction: false)
         
         
         
